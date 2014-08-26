@@ -1,11 +1,11 @@
 {
 
 "lobby": {
-	"entrance_text": "You are in the first room of the new, data-driven world we are creating in an attempt to be a halfway intelligent human.", 
-	"name": "the game lobby", 
+	"name": "the game lobby",
 	"exits": {
 		"south": "town_square"
-		}
+	},
+	"entrance_text": "You are in the first room of the new, data-driven world we are creating in an attempt to be a halfway intelligent human.", 
 },
 
 "town_square": {
@@ -18,7 +18,8 @@
 	"exits": {
 		"north" : "cider_brewery_front",
 		"south" : "drury_lane_front",
-		"west"  : "donutorium_front"
+
+		"west"  : "donutorium_frontdesign."
 	}
 },
 
@@ -26,6 +27,8 @@
 	"name" : "the cider brewery",
 
 	"look" : "The best damn apple cider plant in the land."
+
+	"entrance_text": "The cider brewery, housed in what used to be the biggest barn in town. Now significantly larger (and noisier), but you can still see where the original building 	
 },
 
 "drury_lane_front": {
