@@ -1,0 +1,44 @@
+{
+
+"lobby": {
+	"entrance_text": "You are in the first room of the new, data-driven world we are creating in an attempt to be a halfway intelligent human.", 
+	"name": "the game lobby", 
+	"exits": {
+		"south": "town_square"
+		}
+},
+
+"town_square": {
+	"name" : "the town square",
+
+	"look" : "The town square, full of people and activities.",
+
+	"entrance_text": "You are in the Delran town square, which is bustling with activity. It's autumn, and the weekends are always like this -- people traveling to the blacksmith or the cobbler's, or rushing over to the dairy to try to get the last of the week's butter. The sun is out, there are leaves on the ground, and all seems well.",
+
+	"exits": {
+		"north" : "cider_brewery_front",
+		"south" : "drury_lane_front",
+		"west"  : "donutorium_front"
+	}
+},
+
+"cider_brewery_front": {
+	"name" : "the cider brewery",
+
+	"look" : "The best damn apple cider plant in the land."
+},
+
+"drury_lane_front": {
+	"name" : "Drury Lane",
+
+	"look" : "The entrance to Drury Lane."
+
+},
+
+"donutorium_front": {
+	"name" : "the Donutorium",
+	
+	"look" : "The town's world-famous donut factory."
+}
+
+}
