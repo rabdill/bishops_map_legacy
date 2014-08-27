@@ -14,7 +14,6 @@ def directions(location,rooms):
        block("To the {0} is {1}.".format(direction, rooms[rooms[location]['exits'][direction]]['name']))
 
 
-
 # Go through all the stuff you'd have to print when arriving
 # in a new room
 def room(location,rooms):
