@@ -1,7 +1,8 @@
 {
 
 "lobby": {
-	"name": "the game lobby",
+	"type" : "room",
+    "name" : "the game lobby",
 	"exits": {
 		"south": "town_square"
 	},
@@ -10,6 +11,7 @@
 
 
 "town_square": {
+    "type" : "room",
 	"name" : "the town square",
 
 	"look" : "The town square, full of people and activities.",
@@ -26,7 +28,9 @@
 
 
 "cider_brewery_front": {
-	"name" : "the front of the cider brewery",
+	"type" : "room",
+
+    "name" : "the front of the cider brewery",
 
 	"look" : "The best damn apple cider plant in the land.",
 	
@@ -40,6 +44,7 @@
 
 
 "cider_brewery": {
+    "type" : "room",
 	"name" : "the cider brewery",
 
 	"look": "The front door of the Cider Brewery. Predictably, everything here smells like apples.",
@@ -53,6 +58,8 @@
 
 
 "drury_lane_front": {
+    "type" : "room",
+
 	"name" : "the entrance to Drury Lane",
 
 	"look" : "The entrance to quaint, quiet Drury Lane, actually a court because it doesn't go anywhere. Trees line the streets, in between gaslamps along thin sidewalks.",
@@ -68,6 +75,8 @@
 
 
 "drury_lane": {
+    "type" : "room",
+
 	"name" : "Drury Lane",
 
 	"look" : "Drury Lane, the same old street you grew up on. As a kid, you were bored out of your mind on this dead-end, but now you can appreciate its peaceful atmosphere and unassuming construction.",
@@ -81,6 +90,8 @@
 
 
 "donutorium_front": {
+    "type" : "room",
+
 	"name" : "the front of the Donutorium",
 	
 	"look" : "The gates of the town donutorium, the most famous donut factory in all the land.",
@@ -96,6 +107,8 @@
 
 
 "donutorium" : {
+    "type" : "room",
+
 	"name" : "the Donutorium",
 
 	"look" : "The front door of the Donutorium, behind the short wooden fence that's clearly there more for decoration than security.",
