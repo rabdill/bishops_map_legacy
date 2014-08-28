@@ -19,3 +19,8 @@ def directions(location,rooms):
 def room(location,rooms):
     block(location['entrance_text'])
     directions(location,rooms)
+
+def menu(menu):
+    block(menu["prompt"])
+    for choice in menu["choices"]:
+        block("{0}: {1}".format(choice,menu["choices"][choice]))

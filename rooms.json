@@ -19,7 +19,6 @@
 	"exits": {
 		"north" : "cider_brewery_front",
 		"south" : "drury_lane_front",
-
 		"west"  : "donutorium_front"
 	},
 
