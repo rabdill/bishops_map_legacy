@@ -1,0 +1,42 @@
+{
+
+"test" : {
+        "type" : "menu",
+        "prompt" : "This is the first question, ok?",
+        "choices" : {
+            "1" : "First option",
+            "2" : "Second option",
+            "3" : "Maybe a third",
+            "4" : "This points to another menu."
+        },
+
+        "responses" : {
+                "1" : {"final" : "You pick the first thing. Everybody dies."},
+                "2" : {"final" : "You do the second thing. We burp."},
+                "3" : {"final" : "The third thing is boring"},
+                "4" : {"branch" : "cider"}
+            }
+        
+},
+
+"cider" : {
+    "type" : "menu",
+    "prompt" : "You approach the front desk. The man smiles.\n\t\"Hello!\" he says, \"Welcome to the Delran Cider Brewery, where apples turn into heaven. What can I do for you?\"",
+    "choices" : {
+        "1" : "\"Can you tell me a little about this place?\"",
+        "2" : "Option b, dontchaknow"
+    },
+   
+    "responses" : { 
+        "1" : {"loop" : "\"Sure I can. We were founded here in this very building back in 1712, so next year will be our big 50th anniversary celebration. I don't have to tell you how hard it is to transport stuff from place to place, but even so, our cider is sold all over the country. People love this stuff.\n\tA lot of our unique flavor can be attributed to the wonderful orchards of Appleton, the town to the east. Their soil isn't like the soil anywhere else -- the apples that grow there are bigger and juicier than any we could ever grow here, but there wasn't enough room in town to build a brewery. So the founders came here instead.\n\tDelran was a lot smaller then, of course. There were some houses, and a small general store, but it was really a company town at that point -- everyone who lived here worked at the donut factory. We were one of the first independent businesses in town.\"",
+            "prompt" : "\"What else can I help you with?\" the man asks."
+        },
+
+
+        "2" : {"final" : "It's working! b"}
+    
+    }
+
+}
+
+}
