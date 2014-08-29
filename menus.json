@@ -14,7 +14,7 @@
                 "1" : {"final" : "You pick the first thing. Everybody dies."},
                 "2" : {"final" : "You do the second thing. We burp."},
                 "3" : {"final" : "The third thing is boring"},
-                "4" : {"branch" : "cider"}
+                "4" : {"menu" : "cider"}
             }
         
 },
@@ -24,7 +24,9 @@
     "prompt" : "You approach the front desk. The man smiles.\n\t\"Hello!\" he says, \"Welcome to the Delran Cider Brewery, where apples turn into heaven. What can I do for you?\"",
     "choices" : {
         "1" : "\"Can you tell me a little about this place?\"",
-        "2" : "Option b, dontchaknow"
+        "2" : "\"Why do people like the cider so much?\"",
+        "3" : "\"I'd like to buy some cider, please.\"",
+        "4" : "\"Thanks, but I was just leaving.\""
     },
    
     "responses" : { 
@@ -33,10 +35,17 @@
         },
 
 
-        "2" : {"final" : "It's working! b"}
-    
-    }
+        "2" : {"loop" : "Because it tastes good, of course. It's also very popular for people who spend a lot of time traveling in the rougher regions, as it's said to have significant healing powers, for those who need it. I wouldn't know first-hand, of course.\"",
+            "prompt" : ""
+        },
 
+        "3" : {"room" : "cider buying"},
+
+        "4" : {"final" : "\"OK!\" he says. \"Come back if you need anything!\""}
+    }
+    
 }
+
+
 
 }

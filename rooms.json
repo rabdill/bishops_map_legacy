@@ -4,7 +4,7 @@
 	"type" : "room",
     "name" : "the game lobby",
 	"exits": {
-		"south": "town_square"
+		"south": "town square"
 	},
 	"entrance_text": "You are in the first room of the new, data-driven world we are creating in an attempt to be a halfway intelligent human.",
 
@@ -12,16 +12,16 @@
 },
 
 
-"town_square": {
+"town square": {
     "type" : "room",
 	"name" : "the town square",
 
 	"look" : "The town square, full of people and activities.",
 
 	"exits": {
-		"north" : "cider_brewery_front",
-		"south" : "drury_lane_front",
-		"west"  : "donutorium_front"
+		"north" : "cider brewery front",
+		"south" : "drury lane front",
+		"west"  : "donutorium front"
 	},
 
 	"entrance_text": "You are in the Delran town square, which is bustling with activity. It's autumn, and the weekends are always like this -- people traveling to the blacksmith or the cobbler's, or rushing over to the dairy to try to get the last of the week's butter. The sun is out, there are leaves on the ground, and all seems well.",
@@ -31,7 +31,7 @@
 },
 
 
-"cider_brewery_front": {
+"cider brewery front": {
 	"type" : "room",
 
     "name" : "the front of the cider brewery",
@@ -39,8 +39,8 @@
 	"look" : "The best damn apple cider plant in the land.",
 	
 	"exits": {
-		"south" : "town_square",
-		"north" : "cider_brewery"
+		"south" : "town square",
+		"north" : "cider brewery"
 	},	
 	
 	"entrance_text": "The cider brewery, housed in what used to be the biggest barn in town. Now significantly larger (and noisier), but you can still see where the original building was worked into the larger design.",
@@ -49,14 +49,14 @@
 },
 
 
-"cider_brewery": {
+"cider brewery": {
     "type" : "room",
 	"name" : "the cider brewery",
 
 	"look": "The front door of the Cider Brewery. Predictably, everything here smells like apples.",
 
 	"exits": {
-		"south" : "cider_brewery_front"
+		"south" : "cider brewery front"
 	},
 
 	"entrance_text": "The old Delran Cider Brewery, the second-largest culinary outfit in town. You can hear the workers yelling apple-related things at each other just behind a large door. A young man sits at a desk in the lobby.",
@@ -69,7 +69,7 @@
 },
 
 
-"drury_lane_front": {
+"drury lane front": {
     "type" : "room",
 
 	"name" : "the entrance to Drury Lane",
@@ -77,8 +77,8 @@
 	"look" : "The entrance to quaint, quiet Drury Lane, actually a court because it doesn't go anywhere. Trees line the streets, in between gaslamps along thin sidewalks.",
 
 	"exits" : {
-		"north" : "town_square",
-		"south" : "drury_lane"
+		"north" : "town square",
+		"south" : "drury lane"
 	},
 
 	"entrance_text": "You turn and walk down Drury Lane, the street on which you grew up. It's one of the few streets in town without wagon ruts worn in the middle, as most of the other streets have a mix of businesses and homes. Drury, however, has only a few houses, to the south.",
@@ -88,7 +88,7 @@
 },
 
 
-"drury_lane": {
+"drury lane": {
     "type" : "room",
 
 	"name" : "Drury Lane",
@@ -96,7 +96,7 @@
 	"look" : "Drury Lane, the same old street you grew up on. As a kid, you were bored out of your mind on this dead-end, but now you can appreciate its peaceful atmosphere and unassuming construction.",
 
 	"exits" : {
-		"north" : "drury_lane_front"
+		"north" : "drury lane front"
 	},
 
 	"entrance_text" : "You're on Drury Lane.",
@@ -105,7 +105,7 @@
 },
 
 
-"donutorium_front": {
+"donutorium front": {
     "type" : "room",
 
 	"name" : "the front of the Donutorium",
@@ -114,7 +114,7 @@
 
 	"exits": {
 		"west" : "donutorium",
-		"east" : "town_square"
+		"east" : "town square"
 	},
 
 	"entrance_text": "You are at the front gates of the illustrious Delran Donutorium. No better donut has ever been made than the one that comes out of this place hundreds of times a day.",
@@ -132,7 +132,7 @@
 	"look" : "The front door of the Donutorium, behind the short wooden fence that's clearly there more for decoration than security.",
 
 	"exits" : {
-		"east" : "donutorium_front"
+		"east" : "donutorium front"
 	},
 
 	"entrance_text" : "In the donut factory!",

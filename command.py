@@ -52,12 +52,13 @@ def get(current,rooms,menus):
 
 
     elif current['type'] == "menu":
-        while need_command is True:
+        while True:
             command = raw_input("Which do you choose? > ")
             if command in current['choices']:
-                if "final" in current['responses'][command]: #if it's not a menu
+                # if it just says something, then returns you to the room:
+                if "final" in current['responses'][command]:
                     printer.block(current['responses'][command]["final"])
-                    need_command = False
+                    return current['origin']
                 
                 #if you should get the same menu again
                 elif "loop" in current['responses'][command]:
@@ -69,7 +70,10 @@ def get(current,rooms,menus):
                     return current
                 
                 # If it's another menu, send the next menu along:
-                else:
-                    return menus[current['responses'][command]["branch"]]
+                elif "menu" in current['responses'][command]:
+                    return menus[current['responses'][command]["menu"]]
+
+                elif "room" in current['responses'][command]:
+                    return rooms[current['responses'][command]["room"]]
             else:
                 printer.block("Not an option, bub.")
