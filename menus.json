@@ -21,6 +21,7 @@
 
 "cider" : {
     "type" : "menu",
+    "origin" : "cider brewery",
     "prompt" : "You approach the front desk. The man smiles.\n\t\"Hello!\" he says, \"Welcome to the Delran Cider Brewery, where apples turn into heaven. What can I do for you?\"",
     "choices" : {
         "1" : "\"Can you tell me a little about this place?\"",

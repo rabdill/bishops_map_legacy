@@ -58,7 +58,7 @@ def get(current,rooms,menus):
                 # if it just says something, then returns you to the room:
                 if "final" in current['responses'][command]:
                     printer.block(current['responses'][command]["final"])
-                    return current['origin']
+                    return rooms[current['origin']]
                 
                 #if you should get the same menu again
                 elif "loop" in current['responses'][command]:
