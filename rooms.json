@@ -6,7 +6,9 @@
 	"exits": {
 		"south": "town_square"
 	},
-	"entrance_text": "You are in the first room of the new, data-driven world we are creating in an attempt to be a halfway intelligent human."
+	"entrance_text": "You are in the first room of the new, data-driven world we are creating in an attempt to be a halfway intelligent human.",
+
+    "actions" : {}
 },
 
 
@@ -22,8 +24,11 @@
 		"west"  : "donutorium_front"
 	},
 
-	"entrance_text": "You are in the Delran town square, which is bustling with activity. It's autumn, and the weekends are always like this -- people traveling to the blacksmith or the cobbler's, or rushing over to the dairy to try to get the last of the week's butter. The sun is out, there are leaves on the ground, and all seems well."
-	},
+	"entrance_text": "You are in the Delran town square, which is bustling with activity. It's autumn, and the weekends are always like this -- people traveling to the blacksmith or the cobbler's, or rushing over to the dairy to try to get the last of the week's butter. The sun is out, there are leaves on the ground, and all seems well.",
+
+    "actions" : {}
+    
+},
 
 
 "cider_brewery_front": {
@@ -38,7 +43,9 @@
 		"north" : "cider_brewery"
 	},	
 	
-	"entrance_text": "The cider brewery, housed in what used to be the biggest barn in town. Now significantly larger (and noisier), but you can still see where the original building was worked into the larger design."
+	"entrance_text": "The cider brewery, housed in what used to be the biggest barn in town. Now significantly larger (and noisier), but you can still see where the original building was worked into the larger design.",
+
+    "actions" : {}
 },
 
 
@@ -52,7 +59,13 @@
 		"south" : "cider_brewery_front"
 	},
 
-	"entrance_text": "The old Delran Cider Brewery, the second-largest culinary outfit in town. You can hear the workers yelling apple-related things at each other just behind a large door. A young man sits at a desk in the lobby."
+	"entrance_text": "The old Delran Cider Brewery, the second-largest culinary outfit in town. You can hear the workers yelling apple-related things at each other just behind a large door. A young man sits at a desk in the lobby.",
+
+    "actions" : {
+        "talk" : {
+            "man" : {"menu" : "cider"}
+        }
+    }
 },
 
 
@@ -68,7 +81,9 @@
 		"south" : "drury_lane"
 	},
 
-	"entrance_text": "You turn and walk down Drury Lane, the street on which you grew up. It's one of the few streets in town without wagon ruts worn in the middle, as most of the other streets have a mix of businesses and homes. Drury, however, has only a few houses, to the south."
+	"entrance_text": "You turn and walk down Drury Lane, the street on which you grew up. It's one of the few streets in town without wagon ruts worn in the middle, as most of the other streets have a mix of businesses and homes. Drury, however, has only a few houses, to the south.",
+
+    "actions" : {}
 
 },
 
@@ -84,7 +99,9 @@
 		"north" : "drury_lane_front"
 	},
 
-	"entrance_text" : "You're on Drury Lane."
+	"entrance_text" : "You're on Drury Lane.",
+
+    "actions" : {}
 },
 
 
@@ -100,7 +117,9 @@
 		"east" : "town_square"
 	},
 
-	"entrance_text": "You are at the front gates of the illustrious Delran Donutorium. No better donut has ever been made than the one that comes out of this place hundreds of times a day."	
+	"entrance_text": "You are at the front gates of the illustrious Delran Donutorium. No better donut has ever been made than the one that comes out of this place hundreds of times a day.",
+
+    "actions" : {}
 
 },
 
@@ -116,7 +135,9 @@
 		"east" : "donutorium_front"
 	},
 
-	"entrance_text" : "In the donut factory!"
+	"entrance_text" : "In the donut factory!",
+
+    "actions" : {}
 }
 
 }
