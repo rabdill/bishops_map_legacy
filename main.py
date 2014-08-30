@@ -11,8 +11,8 @@ print "\n\nBishop's Map v0.1.0\n\n"
 first_scene="cider brewery"
 
 printer.scene(rooms[first_scene],rooms,player)
-next_move = command.get(rooms[first_scene],rooms,menus)
+next_move = command.get(rooms[first_scene],rooms,menus,player)
 
 while True:
     printer.scene(next_move,rooms,player)
-    next_move = command.get(next_move,rooms,menus)
+    next_move = command.get(next_move,rooms,menus,player)

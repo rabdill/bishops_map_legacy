@@ -33,12 +33,10 @@ def store(room,player):
 
     block("FOR SALE:")
     for item in room['items']:
-        if item['name'] in player['inventory']:
-            current_quantity = player['inventory'][item['name']]
-        else:
-            current_quantity = 0
+        if item['name'] not in player['inventory']:
+            player['inventory'][item['name']] = 0
 
-        print "\t{0}: {1} - ${2}\n\t\t({3} available, you have {4})".format(room['items'].index(item), item['name'],item['price'],item['qty available'],current_quantity )
+        print "\t{0}: {1} - {2} coins\n\t\t({3} available, you have {4})".format(room['items'].index(item), item['name'],item['price'],item['qty available'], player['inventory'][item['name']] )
 
 
 def scene(current,rooms,player):

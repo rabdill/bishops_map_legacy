@@ -1,6 +1,6 @@
 import printer
 
-def get(current,rooms,menus):
+def get(current,rooms,menus,player):
     need_command = True
     if current['type'] == "room":
         while need_command is True:
@@ -36,17 +36,23 @@ def get(current,rooms,menus):
                         return menus[current['actions'][command[0]][command[1]]["menu"]]   
 
             elif command[0] == 'go':
-                if command[1] not in current['exits']:
-                    printer.block("That's not a direction in which you can go.") 
-                else:
-                    need_command = False
+                if command[1] in current['exits']:
                     return rooms[current['exits'][command[1]]]
+                else:
+                    printer.block("That's not a direction in which you can go.") 
 
             elif command[0] == 'look':
-                if command[1] not in current['exits']:
-                    printer.block("That's not a direction in which you can look.")
-                else:
+                if command[1] in current['exits']:
                     printer.block(rooms[current['exits'][command[1]]]['look'])
+                else:
+                    printer.block("That's not a direction in which you can look.")
+
+            elif command[0] == 'view':
+                if command[1] == 'inventory':
+                    print(player['inventory'])
+                else:
+                    printer.block("That's not something you can view.")
+                
             else:
                 printer.block("Sorry, unrecognized command.")
 
@@ -83,3 +89,16 @@ def get(current,rooms,menus):
         command = int(raw_input("Which to buy? > "))
         if command < len(current['items']):
             qty = int(raw_input("How many? > "))
+            # If you want to buy too many:
+            if qty > current['items'][command]['qty available']:
+                block("The store doesn't have that many available.")
+            
+            # If you can't afford that many:
+            elif (qty * current['items'][command]['price']) > player['inventory']['coins']:
+                block("You don't have enough money. That would cost you {} coins.".format(qty * current['items'][command]['price']))
+
+            # Otherwise, buy em:
+            else:
+                player['inventory']['coins'] -= qty * current['items'][command]['price']
+                player['inventory'][current['items'][command]['name']] += qty
+                return rooms[current['origin']] 

@@ -30,6 +30,7 @@
 
 "buy cider" : {
     "type" : "store",
+    "origin" : "cider brewery", 
     "items" : [
         {"name" : "Pint of cider",
         "price" : 3,
