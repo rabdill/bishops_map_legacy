@@ -138,16 +138,7 @@
 	"entrance_text" : "In the donut factory!",
 
     "actions" : {}
-},
-
-
-"buy cider" : {
-    "type" : "store",
-    "items" : [
-        {"Pint of cider" : 3}
-    ],
-
-    "greeting" : "\"We can do that! How much cider would you like?\""
 }
+
 
 }

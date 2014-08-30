@@ -3,28 +3,41 @@
     "type" : "menu",
     "origin" : "cider brewery",
     "prompt" : "You approach the front desk. The man smiles.\n\t\"Hello!\" he says, \"Welcome to the Delran Cider Brewery, where apples turn into heaven. What can I do for you?\"",
-    "choices" : {
-        "1" : "\"Can you tell me a little about this place?\"",
-        "2" : "\"Why do people like the cider so much?\"",
-        "3" : "\"I'd like to buy some cider, please.\"",
-        "4" : "\"Thanks, but I was just leaving.\""
-    },
+    "choices" :[ 
+        "\"Can you tell me a little about this place?\"",
+        "\"Why do people like the cider so much?\"",
+        "\"I'd like to buy some cider, please.\"",
+        "\"Thanks, but I was just leaving.\""
+    ],
    
-    "responses" : { 
-        "1" : {"loop" : "\"Sure I can. We were founded here in this very building back in 1712, so next year will be our big 50th anniversary celebration. I don't have to tell you how hard it is to transport stuff from place to place, but even so, our cider is sold all over the country. People love this stuff.\n\tA lot of our unique flavor can be attributed to the wonderful orchards of Appleton, the town to the east. Their soil isn't like the soil anywhere else -- the apples that grow there are bigger and juicier than any we could ever grow here, but there wasn't enough room in town to build a brewery. So the founders came here instead.\n\tDelran was a lot smaller then, of course. There were some houses, and a small general store, but it was really a company town at that point -- everyone who lived here worked at the donut factory. We were one of the first independent businesses in town.\"",
+    "responses" : [ 
+        {"loop" : "\"Sure I can. We were founded here in this very building back in 1712, so next year will be our big 50th anniversary celebration. I don't have to tell you how hard it is to transport stuff from place to place, but even so, our cider is sold all over the country. People love this stuff.\n\tA lot of our unique flavor can be attributed to the wonderful orchards of Appleton, the town to the east. Their soil isn't like the soil anywhere else -- the apples that grow there are bigger and juicier than any we could ever grow here, but there wasn't enough room in town to build a brewery. So the founders came here instead.\n\tDelran was a lot smaller then, of course. There were some houses, and a small general store, but it was really a company town at that point -- everyone who lived here worked at the donut factory. We were one of the first independent businesses in town.\"",
             "prompt" : "\"What else can I help you with?\" the man asks."
         },
 
 
-        "2" : {"loop" : "Because it tastes good, of course. It's also very popular for people who spend a lot of time traveling in the rougher regions, as it's said to have significant healing powers, for those who need it. I wouldn't know first-hand, of course.\"",
+        {"loop" : "Because it tastes good, of course. It's also very popular for people who spend a lot of time traveling in the rougher regions, as it's said to have significant healing powers, for those who need it. I wouldn't know first-hand, of course.\"",
             "prompt" : ""
         },
 
-        "3" : {"room" : "buy cider"},
+       {"menu" : "buy cider"},
 
-        "4" : {"final" : "\"OK!\" he says. \"Come back if you need anything!\""}
-    }
+       {"final" : "\"OK!\" he says. \"Come back if you need anything!\""}
+    ] 
     
+},
+
+
+"buy cider" : {
+    "type" : "store",
+    "items" : [
+        {"name" : "Pint of cider",
+        "price" : 3,
+        "qty available" : 780
+        }
+    ],
+
+    "greeting" : "\"We can do that! How much cider would you like?\""
 }
 
 }

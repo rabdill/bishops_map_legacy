@@ -23,14 +23,18 @@ def room(location,rooms):
 def menu(menu):
     block(menu["prompt"])
     for choice in menu["choices"]:
-        block("{0}: {1}".format(choice,menu["choices"][choice]))
+        block("{0}: {1}".format(menu["choices"].index(choice), choice))
 
 def store(room):
     block(room['greeting'])
-    block("For sale:")
-    for item in room['items']:  #the "items()" is a built-in python method
-        for key,value in item.iteritems():
-            block("{0}: ${1}".format(key,value))
+
+    # Get current row number:
+    row = "\033[6n" #.rpartition(';')[0]
+
+    block("FOR SALE:")
+    for item in room['items']:
+        block("{0}: ${1}\t({2} available)".format(item['name'],item['price'],item['qty available']))
+
 
 def scene(current,rooms):
     if current['type'] == "room":

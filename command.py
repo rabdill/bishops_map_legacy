@@ -53,8 +53,8 @@ def get(current,rooms,menus):
 
     elif current['type'] == "menu":
         while True:
-            command = raw_input("Which do you choose? > ")
-            if command in current['choices']:
+            command = int(raw_input("Which do you choose? > "))
+            if command < len( current['choices']):
                 # if it just says something, then returns you to the room:
                 if "final" in current['responses'][command]:
                     printer.block(current['responses'][command]["final"])
