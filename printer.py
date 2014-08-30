@@ -25,7 +25,7 @@ def menu(menu):
     for choice in menu["choices"]:
         block("{0}: {1}".format(menu["choices"].index(choice), choice))
 
-def store(room):
+def store(room,player):
     block(room['greeting'])
 
     # Get current row number:
@@ -33,13 +33,18 @@ def store(room):
 
     block("FOR SALE:")
     for item in room['items']:
-        block("{0}: ${1}\t({2} available)".format(item['name'],item['price'],item['qty available']))
+        if item['name'] in player['inventory']:
+            current_quantity = player['inventory'][item['name']]
+        else:
+            current_quantity = 0
+
+        print "\t{0}: {1} - ${2}\n\t\t({3} available, you have {4})".format(room['items'].index(item), item['name'],item['price'],item['qty available'],current_quantity )
 
 
-def scene(current,rooms):
+def scene(current,rooms,player):
     if current['type'] == "room":
         room(current,rooms)
     elif current['type'] == "menu":
         menu(current)
     elif current['type'] == "store":
-        store(current)
+        store(current,player)

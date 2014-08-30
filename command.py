@@ -77,3 +77,9 @@ def get(current,rooms,menus):
                     return rooms[current['responses'][command]["room"]]
             else:
                 printer.block("Not an option, bub.")
+
+
+    elif current['type'] == "store":
+        command = int(raw_input("Which to buy? > "))
+        if command < len(current['items']):
+            qty = int(raw_input("How many? > "))
