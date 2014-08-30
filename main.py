@@ -8,11 +8,11 @@ for inFile in ["rooms","menus"]:
 
 print "\n\nBishop's Map v0.1.0\n\n"
 
-next_move = rooms["lobby"]
+first_scene="cider brewery"
+
+printer.scene(rooms[first_scene],rooms)
+next_move = command.get(rooms[first_scene],rooms,menus)
 
 while True:
-    if next_move['type'] == "room":
-        printer.room(next_move,rooms)
-    elif next_move['type'] == "menu":
-        printer.menu(next_move)
+    printer.scene(next_move,rooms)
     next_move = command.get(next_move,rooms,menus)

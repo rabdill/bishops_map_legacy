@@ -1,24 +1,4 @@
 {
-
-"test" : {
-        "type" : "menu",
-        "prompt" : "This is the first question, ok?",
-        "choices" : {
-            "1" : "First option",
-            "2" : "Second option",
-            "3" : "Maybe a third",
-            "4" : "This points to another menu."
-        },
-
-        "responses" : {
-                "1" : {"final" : "You pick the first thing. Everybody dies."},
-                "2" : {"final" : "You do the second thing. We burp."},
-                "3" : {"final" : "The third thing is boring"},
-                "4" : {"menu" : "cider"}
-            }
-        
-},
-
 "cider" : {
     "type" : "menu",
     "origin" : "cider brewery",
@@ -40,13 +20,11 @@
             "prompt" : ""
         },
 
-        "3" : {"room" : "cider buying"},
+        "3" : {"room" : "buy cider"},
 
         "4" : {"final" : "\"OK!\" he says. \"Come back if you need anything!\""}
     }
     
 }
-
-
 
 }

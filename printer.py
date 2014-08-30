@@ -24,3 +24,18 @@ def menu(menu):
     block(menu["prompt"])
     for choice in menu["choices"]:
         block("{0}: {1}".format(choice,menu["choices"][choice]))
+
+def store(room):
+    block(room['greeting'])
+    block("For sale:")
+    for item in room['items']:  #the "items()" is a built-in python method
+        for key,value in item.iteritems():
+            block("{0}: ${1}".format(key,value))
+
+def scene(current,rooms):
+    if current['type'] == "room":
+        room(current,rooms)
+    elif current['type'] == "menu":
+        menu(current)
+    elif current['type'] == "store":
+        store(current)
