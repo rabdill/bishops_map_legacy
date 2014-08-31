@@ -6,9 +6,8 @@
 	"exits": {
 		"south": "town square"
 	},
-	"entrance_text": "You are in the first room of the new, data-driven world we are creating in an attempt to be a halfway intelligent human.",
+	"entrance text": "You are in the first room of the new, data-driven world we are creating in an attempt to be a halfway intelligent human."
 
-    "actions" : {}
 },
 
 
@@ -24,9 +23,8 @@
 		"west"  : "donutorium front"
 	},
 
-	"entrance_text": "You are in the Delran town square, which is bustling with activity. It's autumn, and the weekends are always like this -- people traveling to the blacksmith or the cobbler's, or rushing over to the dairy to try to get the last of the week's butter. The sun is out, there are leaves on the ground, and all seems well.",
+	"entrance text": "You are in the Delran town square, which is bustling with activity. It's autumn, and the weekends are always like this -- people traveling to the blacksmith or the cobbler's, or rushing over to the dairy to try to get the last of the week's butter. The sun is out, there are leaves on the ground, and all seems well."
 
-    "actions" : {}
     
 },
 
@@ -43,9 +41,8 @@
 		"north" : "cider brewery"
 	},	
 	
-	"entrance_text": "The cider brewery, housed in what used to be the biggest barn in town. Now significantly larger (and noisier), but you can still see where the original building was worked into the larger design.",
+	"entrance text": "The cider brewery, housed in what used to be the biggest barn in town. Now significantly larger (and noisier), but you can still see where the original building was worked into the larger design."
 
-    "actions" : {}
 },
 
 
@@ -59,7 +56,7 @@
 		"south" : "cider brewery front"
 	},
 
-	"entrance_text": "The old Delran Cider Brewery, the second-largest culinary outfit in town. You can hear the workers yelling apple-related things at each other just behind a large door. A young man sits at a desk in the lobby.",
+	"entrance text": "The old Delran Cider Brewery, the second-largest culinary outfit in town. You can hear the workers yelling apple-related things at each other just behind a large door. A young man sits at a desk in the lobby.",
 
     "actions" : {
         "talk" : {
@@ -81,9 +78,8 @@
 		"south" : "drury lane"
 	},
 
-	"entrance_text": "You turn and walk down Drury Lane, the street on which you grew up. It's one of the few streets in town without wagon ruts worn in the middle, as most of the other streets have a mix of businesses and homes. Drury, however, has only a few houses, to the south.",
+	"entrance text": "You turn and walk down Drury Lane, the street on which you grew up. It's one of the few streets in town without wagon ruts worn in the middle, as most of the other streets have a mix of businesses and homes. Drury, however, has only a few houses, to the south."
 
-    "actions" : {}
 
 },
 
@@ -96,12 +92,12 @@
 	"look" : "Drury Lane, the same old street you grew up on. As a kid, you were bored out of your mind on this dead-end, but now you can appreciate its peaceful atmosphere and unassuming construction.",
 
 	"exits" : {
-		"north" : "drury lane front"
+		"north" : "drury lane front",
+        "south" : "parents house front"
 	},
 
-	"entrance_text" : "You're on Drury Lane.",
+	"entrance text" : "You're on Drury Lane."
 
-    "actions" : {}
 },
 
 
@@ -117,9 +113,8 @@
 		"east" : "town square"
 	},
 
-	"entrance_text": "You are at the front gates of the illustrious Delran Donutorium. No better donut has ever been made than the one that comes out of this place hundreds of times a day.",
+	"entrance text": "You are at the front gates of the illustrious Delran Donutorium. No better donut has ever been made than the one that comes out of this place hundreds of times a day."
 
-    "actions" : {}
 
 },
 
@@ -135,10 +130,27 @@
 		"east" : "donutorium front"
 	},
 
-	"entrance_text" : "In the donut factory!",
+	"entrance text" : "In the donut factory!"
 
-    "actions" : {}
+},
+
+"parents house front" : {
+    "type" : "room",
+
+    "name" : "your parents' porch",
+
+    "look" : "The front door of your parent's house -- a small, two-story bungalow with a pointy roof and window boxes full of flowers and herbs.",
+
+    "exits" : {
+        "north" : "drury lane"
+    },
+
+    "entrance text" : "You are on your parents' porch.",
+
+    "items" : {
+        "pumpkin" : "A large pumpkin sits by the door."
+    }
+
 }
-
 
 }

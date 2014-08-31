@@ -13,11 +13,16 @@ def directions(location,rooms):
     for direction in location['exits']:
        block("To the {0} is {1}.".format(direction, rooms[location['exits'][direction]]['name']))
 
+def items(items):
+    for item in items:
+        block(items[item])
 
 # Go through all the stuff you'd have to print when arriving
 # in a new room
 def room(location,rooms):
-    block(location['entrance_text'])
+    block(location['entrance text'])
+    if 'items' in location:
+        items(location['items'])
     directions(location,rooms)
 
 def menu(menu):

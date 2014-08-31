@@ -28,14 +28,15 @@ def get(current,rooms,menus,player):
                 pass  
 
             # if the verb is a possible action:
-            if command[0] in current['actions']:
-                #if the noun is a possible recipient of the verb:
-                if command[1] in current['actions'][command[0]]:
-                    #if the result is a menu:
-                    if "menu" in current['actions'][command[0]][command[1]]:
-                        return menus[current['actions'][command[0]][command[1]]["menu"]]   
+            if 'actions' in current:
+                if command[0] in current['actions']:
+                    #if the noun is a possible recipient of the verb:
+                    if command[1] in current['actions'][command[0]]:
+                        #if the result is a menu:
+                        if "menu" in current['actions'][command[0]][command[1]]:
+                            return menus[current['actions'][command[0]][command[1]]["menu"]]   
 
-            elif command[0] == 'go':
+            if command[0] == 'go':
                 if command[1] in current['exits']:
                     return rooms[current['exits'][command[1]]]
                 else:

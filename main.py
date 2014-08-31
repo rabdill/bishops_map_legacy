@@ -8,7 +8,7 @@ for inFile in ["rooms","menus","player"]:
 
 print "\n\nBishop's Map v0.1.0\n\n"
 
-first_scene="cider brewery"
+first_scene="drury lane"
 
 printer.scene(rooms[first_scene],rooms,player)
 next_move = command.get(rooms[first_scene],rooms,menus,player)
