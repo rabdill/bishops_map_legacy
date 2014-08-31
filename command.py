@@ -1,5 +1,11 @@
 import printer
 
+def inventory_add(item,qty,player):
+    if item in player['inventory']:
+        player['inventory'][item] += qty
+    else:
+        player['inventory'][item] = qty
+
 def get(current,rooms,menus,player):
     need_command = True
     if current['type'] == "room":
@@ -56,6 +62,13 @@ def get(current,rooms,menus,player):
                 else:
                     printer.block("That's not something you can view.")
                 
+            elif command[0] == 'take':
+                if 'items' in current:    # if there are items
+                    if command[1] in current['items']: #if the specified item exists
+                       inventory_add(command[1], 1, player)
+                       del current['items'][command[1]] 
+                else:
+                    printer.block("There is nothing to take.")
             else:
                 printer.block("Sorry, unrecognized command.")
 
