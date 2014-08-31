@@ -28,15 +28,12 @@ def menu(menu):
 def store(room,player):
     block(room['greeting'])
 
-    # Get current row number:
-    row = "\033[6n" #.rpartition(';')[0]
-
     block("FOR SALE:")
     for item in room['items']:
         if item['name'] not in player['inventory']:
             player['inventory'][item['name']] = 0
 
-        print "\t{0}: {1} - {2} coins\n\t\t({3} available, you have {4})".format(room['items'].index(item), item['name'],item['price'],item['qty available'], player['inventory'][item['name']] )
+        print "\t{0}: {1} - {2} coins\n\t\t({3} available)".format(room['items'].index(item), item['name'],item['price'],item['qty available'] )
 
 
 def scene(current,rooms,player):

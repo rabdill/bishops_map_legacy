@@ -49,7 +49,9 @@ def get(current,rooms,menus,player):
 
             elif command[0] == 'view':
                 if command[1] == 'inventory':
-                    print(player['inventory'])
+                    for item in player['inventory']:
+                        printer.block("{0}  x  {1}".format(item, player['inventory'][item]))
+                    
                 else:
                     printer.block("That's not something you can view.")
                 
@@ -86,19 +88,26 @@ def get(current,rooms,menus,player):
 
 
     elif current['type'] == "store":
-        command = int(raw_input("Which to buy? > "))
-        if command < len(current['items']):
-            qty = int(raw_input("How many? > "))
-            # If you want to buy too many:
-            if qty > current['items'][command]['qty available']:
-                block("The store doesn't have that many available.")
+        while True:
+            command = int(raw_input("Which item to buy? > "))
+            if command < len(current['items']):
+                qty = int(raw_input("How many? (You have {0} coins, or enough for as many as {1}) > ".format(player['inventory']['coins'], player['inventory']['coins']/current['items'][command]['price'] )))
+                # If you want to buy too many:
+                if qty > current['items'][command]['qty available']:
+                    block("The store doesn't have that many available.")
             
-            # If you can't afford that many:
-            elif (qty * current['items'][command]['price']) > player['inventory']['coins']:
-                block("You don't have enough money. That would cost you {} coins.".format(qty * current['items'][command]['price']))
+                # If you can't afford that many:
+                elif (qty * current['items'][command]['price']) > player['inventory']['coins']:
+                    block("You don't have enough money. That would cost you {} coins.".format(qty * current['items'][command]['price']))
 
-            # Otherwise, buy em:
+                # Otherwise, buy em:
+                else:
+                    player['inventory']['coins'] -= qty * current['items'][command]['price']
+                    player['inventory'][current['items'][command]['name']] += qty
+            
+                    printer.block("{0}: You spent {1} coins on {2} of them.".format(current['items'][command]['name'], qty * current['items'][command]['price'], qty))
+                    return rooms[current['origin']]
+
+            # If you pick something that isn't an option
             else:
-                player['inventory']['coins'] -= qty * current['items'][command]['price']
-                player['inventory'][current['items'][command]['name']] += qty
-                return rooms[current['origin']] 
+                printer.block("Not an option, friend.")
