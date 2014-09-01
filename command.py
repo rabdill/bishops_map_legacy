@@ -10,6 +10,9 @@ def get(current,rooms,menus,player):
     need_command = True
     if current['type'] == "room":
         while need_command is True:
+            #whether the player has been told the results of a command           
+            processed_command = False
+            
             command = raw_input("What do you want to do? > ").split() # makes it a list
             # Strip out the articles:
             try:
@@ -33,27 +36,45 @@ def get(current,rooms,menus,player):
             except Exception: 
                 pass  
 
-            # if the verb is a possible action:
-            if 'actions' in current:
-                if command[0] in current['actions']:
+
+            #check if the verb is something that can be done to an item in the room:
+            if 'items' in current: #if the room has items
+                if command[1] in current['items']:
+                    if command[0] in current['items'][command[1]]['states']:
+                        current['items'][command[1]]['status'] = command[0]
+                        processed_command = True
+                    else:
+                        printer.block("Sorry, you can't {} that.".format(command[0]))
+                        processed_command = True
+
+            ####
+            # "Check actions" block above the generic commands so you can override
+            # the generic commands in the actions section.
+
+            if 'actions' in current: #if the room has possible actions
+                if command[0] in current['actions']: #if the action is possible
                     #if the noun is a possible recipient of the verb:
                     if command[1] in current['actions'][command[0]]:
                         #if the result is a menu:
                         if "menu" in current['actions'][command[0]][command[1]]:
-                            return menus[current['actions'][command[0]][command[1]]["menu"]]   
-           
+                            return menus[current['actions'][command[0]][command[1]]["menu"]] 
             
             if command[0] == 'go':
                 if command[1] in current['exits']:
                     return rooms[current['exits'][command[1]]]
                 else:
-                    printer.block("That's not a direction in which you can go.") 
-
+                    if processed_command == False:
+                        printer.block("That's not a direction in which you can go.")
+                        processed_command = True
             elif command[0] == 'look':
                 if command[1] in current['exits']:
                     printer.block(rooms[current['exits'][command[1]]]['look'])
+                    processed_command = True
+                elif command[1] == 'around':
+                    return current
                 else:
-                    printer.block("That's not a direction in which you can look.")
+                    if processed_command == False:
+                        printer.block("That's not a direction in which you can look.")
 
             elif command[0] == 'view':
                 if command[1] == 'inventory':
@@ -61,7 +82,8 @@ def get(current,rooms,menus,player):
                         printer.block("{0}  x  {1}".format(item, player['inventory'][item]))
                     
                 else:
-                    printer.block("That's not something you can view.")
+                    if processed_command == False:
+                        printer.block("That's not something you can view.")
                 
             elif command[0] == 'take':
                 if 'items' in current:    # if there are items
@@ -74,19 +96,20 @@ def get(current,rooms,menus,player):
                                 current['items'][command[1]]['status'] = command[0]
                             printer.block("You took it.")
                         else:
-                            block("You can't take that item.")
+                            printer.block("You can't take that item.")
                     else:
-                        block("That's not a recognized item here.")
+                        if processed_command == False:
+                            printer.block("That's not a recognized item here.")
+                            processed_command = True
                 else:
-                    printer.block("There is nothing to take.")
-            
-            #check if the verb is something that can be done to an item in the room:
-            elif command[1] in current['items']:
-                if command[0] in current['items'][command[1]]['states']:
-                    current['items'][command[1]]['status'] = command[0]
+                    if processed_command == False:
+                        printer.block("There is nothing to take.")
+                        processed_command = True
 
             else:
-                printer.block("Sorry, unrecognized command.") 
+                if processed_command == False:
+                    printer.block("Sorry, unrecognized command.") 
+                    processed_command = True
 
 
     elif current['type'] == "menu":
