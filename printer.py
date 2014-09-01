@@ -15,7 +15,7 @@ def directions(location,rooms):
 
 def items(items):
     for item in items:
-        block(items[item])
+        block(items[item]['states'][items[item]['status']])
 
 # Go through all the stuff you'd have to print when arriving
 # in a new room

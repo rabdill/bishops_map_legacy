@@ -148,7 +148,14 @@
     "entrance text" : "You are on your parents' porch.",
 
     "items" : {
-        "pumpkin" : "A large pumpkin sits by the door."
+        "pumpkin" : {
+            "status" : "default",
+            "states" : {
+            "default" : "A large pumpkin sits by the door.",
+            "take" : "",
+            "smash" : "The gloppy remains of a smashed-up old pumpkin sit by the door."
+            }
+        }
     }
 
 
