@@ -156,11 +156,13 @@
                 },
                 "take" : {
                     "descriptor" : "",
-                    "transition" : "You take the pumpkin."
+                    "transition" : "You take the pumpkin.",
+                    "from" : ["default"]
                 },
                 "smash" : {
                     "descriptor" : "The gloppy remains of a smashed-up old pumpkin sit by the door.",
-                    "transition" : "You lift the pumpkin high over your head and slam it back down on the porch. It crumbles into little pumpkin chunklets."
+                    "transition" : "You lift the pumpkin high over your head and slam it back down on the porch. It crumbles into little pumpkin chunklets.",
+                    "from" : ["default"]
                 }
             }
         }

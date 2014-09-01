@@ -39,11 +39,18 @@ def get(current,rooms,menus,player):
 
             #check if the verb is something that can be done to an item in the room:
             if 'items' in current: #if the room has items
+                #if the room has this item:
                 if command[1] in current['items']:
+                    #if the item can be put into the proposed state:
                     if command[0] in current['items'][command[1]]['states']:
-                        current['items'][command[1]]['status'] = command[0]
-                        processed_command = True
-                        printer.block(current['items'][command[1]]['states'][command[0]]['transition'])
+                        #if the item can be put into the proposed state from its current state:
+                        if current['items'][command[1]]['status'] in current['items'][command[1]]['states'][command[0]]['from']:
+                            current['items'][command[1]]['status'] = command[0]
+                            processed_command = True
+                            printer.block(current['items'][command[1]]['states'][command[0]]['transition'])
+                        else:
+                            printer.block("You can't {0} that item after you {1} it.".format(command[0], current['items'][command[1]]['status']))
+                            processed_command = True
                     else:
                         printer.block("Sorry, you can't {} that.".format(command[0]))
                         processed_command = True
@@ -91,13 +98,7 @@ def get(current,rooms,menus,player):
                     if command[1] in current['items']: #if the specified item exists
                         if 'take' in current['items'][command[1]]['states']: #if it can be taken
                             inventory_add(command[1], 1, player)
-                            if current['items'][command[1]]['states'][command[0]] == "":
-                                del current['items'][command[1]] #delete it
-                            else:
-                                current['items'][command[1]]['status'] = command[0]
-                            printer.block("You took it.")
-                        else:
-                            printer.block("You can't take that item.")
+                            processed_command = True
                     else:
                         if processed_command == False:
                             printer.block("That's not a recognized item here.")
