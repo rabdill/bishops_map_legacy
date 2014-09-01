@@ -1,6 +1,7 @@
 import printer
 
 def inventory_add(item,qty,player):
+    # If the item is already in the player's inventory, give her more, otherwise create the entry:
     if item in player['inventory']:
         player['inventory'][item] += qty
     else:
@@ -43,11 +44,15 @@ def get(current,rooms,menus,player):
                 if command[1] in current['items']:
                     #if the item can be put into the proposed state:
                     if command[0] in current['items'][command[1]]['states']:
-                        #if the item can be put into the proposed state from its current state:
+                        #if the item can be put into the proposed state from its current state, do it:
                         if current['items'][command[1]]['status'] in current['items'][command[1]]['states'][command[0]]['from']:
                             current['items'][command[1]]['status'] = command[0]
                             processed_command = True
                             printer.block(current['items'][command[1]]['states'][command[0]]['transition'])
+                            #special section for "take":
+                            if command[0] == 'take':
+                                inventory_add(command[1], 1, player)
+                                processed_command = True
                         else:
                             printer.block("You can't {0} that item after you {1} it.".format(command[0], current['items'][command[1]]['status']))
                             processed_command = True
@@ -93,21 +98,6 @@ def get(current,rooms,menus,player):
                     if processed_command == False:
                         printer.block("That's not something you can view.")
                 
-            elif command[0] == 'take':
-                if 'items' in current:    # if there are items
-                    if command[1] in current['items']: #if the specified item exists
-                        if 'take' in current['items'][command[1]]['states']: #if it can be taken
-                            inventory_add(command[1], 1, player)
-                            processed_command = True
-                    else:
-                        if processed_command == False:
-                            printer.block("That's not a recognized item here.")
-                            processed_command = True
-                else:
-                    if processed_command == False:
-                        printer.block("There is nothing to take.")
-                        processed_command = True
-
             else:
                 if processed_command == False:
                     printer.block("Sorry, unrecognized command.") 
