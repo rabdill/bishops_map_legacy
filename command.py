@@ -41,7 +41,8 @@ def get(current,rooms,menus,player):
                         #if the result is a menu:
                         if "menu" in current['actions'][command[0]][command[1]]:
                             return menus[current['actions'][command[0]][command[1]]["menu"]]   
-
+           
+            
             if command[0] == 'go':
                 if command[1] in current['exits']:
                     return rooms[current['exits'][command[1]]]
@@ -78,8 +79,14 @@ def get(current,rooms,menus,player):
                         block("That's not a recognized item here.")
                 else:
                     printer.block("There is nothing to take.")
+            
+            #check if the verb is something that can be done to an item in the room:
+            elif command[1] in current['items']:
+                if command[0] in current['items'][command[1]]['states']:
+                    current['items'][command[1]]['status'] = command[0]
+
             else:
-                printer.block("Sorry, unrecognized command.")
+                printer.block("Sorry, unrecognized command.") 
 
 
     elif current['type'] == "menu":
