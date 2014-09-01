@@ -151,14 +151,20 @@
         "pumpkin" : {
             "status" : "default",
             "states" : {
-            "default" : "A large pumpkin sits by the door.",
-            "take" : "",
-            "smash" : "The gloppy remains of a smashed-up old pumpkin sit by the door."
+                "default" : {
+                    "descriptor" : "A large pumpkin sits by the door."
+                },
+                "take" : {
+                    "descriptor" : "",
+                    "transition" : "You take the pumpkin."
+                },
+                "smash" : {
+                    "descriptor" : "The gloppy remains of a smashed-up old pumpkin sit by the door.",
+                    "transition" : "You lift the pumpkin high over your head and slam it back down on the porch. It crumbles into little pumpkin chunklets."
+                }
             }
         }
     }
-
-
 }
 
 }

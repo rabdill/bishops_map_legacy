@@ -43,6 +43,7 @@ def get(current,rooms,menus,player):
                     if command[0] in current['items'][command[1]]['states']:
                         current['items'][command[1]]['status'] = command[0]
                         processed_command = True
+                        printer.block(current['items'][command[1]]['states'][command[0]]['transition'])
                     else:
                         printer.block("Sorry, you can't {} that.".format(command[0]))
                         processed_command = True
