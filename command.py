@@ -65,8 +65,17 @@ def get(current,rooms,menus,player):
             elif command[0] == 'take':
                 if 'items' in current:    # if there are items
                     if command[1] in current['items']: #if the specified item exists
-                       inventory_add(command[1], 1, player)
-                       del current['items'][command[1]] 
+                        if 'take' in current['items'][command[1]]['states']: #if it can be taken
+                            inventory_add(command[1], 1, player)
+                            if current['items'][command[1]]['states'][command[0]] == "":
+                                del current['items'][command[1]] #delete it
+                            else:
+                                current['items'][command[1]]['status'] = command[0]
+                            printer.block("You took it.")
+                        else:
+                            block("You can't take that item.")
+                    else:
+                        block("That's not a recognized item here.")
                 else:
                     printer.block("There is nothing to take.")
             else:
