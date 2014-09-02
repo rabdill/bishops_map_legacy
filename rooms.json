@@ -156,12 +156,40 @@
                 },
                 "take" : {
                     "descriptor" : "",
-                    "transition" : "You take the pumpkin.",
-                    "from" : ["default"]
+                    "from" : {"default" : "You take the pumpkin."}
                 },
                 "smash" : {
                     "descriptor" : "The gloppy remains of a smashed-up old pumpkin sit by the door.",
-                    "transition" : "You lift the pumpkin high over your head and slam it back down on the porch. It crumbles into little pumpkin chunklets.",
+                    "from" : {"default" : "You lift the pumpkin high over your head and slam it back down on the porch. It crumbles into little pumpkin chunklets."}
+                }
+            }
+        }
+    }
+},
+
+"parents house" : {
+    "type" : "room",
+    
+    "name" : "your parents' house",
+
+    "look" : "You can't see through the door, but can hear someone bustling around inside.",
+
+    "exits" : {
+        "north" : "parents house front",
+        "south" : "parents yard"
+    },
+
+    "entrance text" : "You walk through the door and into your childhood home, almost totally unchanged. It's cleaner now that there aren't kids running around banging on everything, but the decorations are safe and familiar.",
+
+    "items" : {
+        "cookie" : {
+            "status" : "default",
+            "states" : {
+                "default" : {
+                    "descriptor" : "Your mom hugs you tightly. \n\"Welcome home, dear,\" she says. \"Have a cookie!\"",
+
+                    "transition" : "You lift the pumpkin over your head.",
+
                     "from" : ["default"]
                 }
             }

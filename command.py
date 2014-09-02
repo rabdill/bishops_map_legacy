@@ -45,10 +45,12 @@ def get(current,rooms,menus,player):
                     #if the item can be put into the proposed state:
                     if command[0] in current['items'][command[1]]['states']:
                         #if the item can be put into the proposed state from its current state, do it:
-                        if current['items'][command[1]]['status'] in current['items'][command[1]]['states'][command[0]]['from']:
-                            current['items'][command[1]]['status'] = command[0]
+                        if current['items'][command[1]]['status'] in \
+                          current['items'][command[1]]['states'][command[0]]['from']:
                             processed_command = True
-                            printer.block(current['items'][command[1]]['states'][command[0]]['transition'])
+                            printer.block(current['items'][command[1]]['states'][command[0]]['from'][current['items'][command[1]]['status']])
+                            current['items'][command[1]]['status'] = command[0]
+                            
                             #special section for "take":
                             if command[0] == 'take':
                                 inventory_add(command[1], 1, player)
