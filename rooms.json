@@ -142,7 +142,8 @@
     "look" : "The front door of your parent's house -- a small, two-story bungalow with a pointy roof and window boxes full of flowers and herbs.",
 
     "exits" : {
-        "north" : "drury lane"
+        "north" : "drury lane",
+        "south" : "parents house"
     },
 
     "entrance text" : "You are on your parents' porch.",
@@ -175,8 +176,7 @@
     "look" : "You can't see through the door, but can hear someone bustling around inside.",
 
     "exits" : {
-        "north" : "parents house front",
-        "south" : "parents yard"
+        "north" : "parents house front"
     },
 
     "entrance text" : "You walk through the door and into your childhood home, almost totally unchanged. It's cleaner now that there aren't kids running around banging on everything, but the decorations are safe and familiar.",
@@ -186,11 +186,11 @@
             "status" : "default",
             "states" : {
                 "default" : {
-                    "descriptor" : "Your mom hugs you tightly. \n\"Welcome home, dear,\" she says. \"Have a cookie!\"",
-
-                    "transition" : "You lift the pumpkin over your head.",
-
-                    "from" : ["default"]
+                    "descriptor" : "Your mom hugs you tightly. \n\t\"Welcome home, dear,\" she says. \"Have a cookie!\""
+                },
+                "take" : {
+                    "descriptor" : "Your mom is bustling around the house, doing random spring cleaning.",
+                    "from" : {"default" : "You take the cookie and put it in your pack. \n\t\"Thanks, Mom,\" you say, \"I'm sure this will come in handy soon.\""}
                 }
             }
         }
