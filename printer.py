@@ -22,18 +22,18 @@ def items(items):
 
 # Process any applicable "change scenarios" in the room:
 def process_changes(location,rooms):
-    do_change = False
-    for condition in location['change scenarios']['conditions']:
-        if vars()[condition[0]][condition[1]][condition[2]] == condition[3]:
-            do_change = True
+    for scenario in location['change scenarios']:
+        do_change = 0 
+        for condition in scenario['conditions']:
+            if vars()[condition[0]][condition[1]][condition[2]] == condition[3]:
+                block("|{0}|, which is |{1}|, DOES EQUAL |{2}|".format(condition,vars()[condition[0]][condition[1]][condition[2]], condition[3]))
+                do_change += 1
+        if do_change == len(scenario['conditions']):
+            block("CHANGING STUFF")
+            for change in scenario['changes']:
+                vars()[change[0]][change[1]][change[2]] = change[3]
         else:
-            do_change = False
-    if do_change:
-        block("CHANGING STUFF")
-        for change in location['change scenarios']['changes']:
-            vars()[change[0]][change[1]][change[2]] = change[3]
-    else:
-        block("Business as usual.")
+            block("Business as usual.")
 
 # Go through all the stuff you'd have to print when arriving
 # in a new room

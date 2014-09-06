@@ -25,15 +25,17 @@
 
 	"entrance text": "You are in the Delran town square, which is bustling with activity. It's autumn, and the weekends are always like this -- people traveling to the blacksmith or the cobbler's, or rushing over to the dairy to try to get the last of the week's butter. The sun is out, there are leaves on the ground, and all seems well.",
 
-    "change scenarios" : {
-        "conditions" : [
-            ["rooms", "cider brewery", "visited", 1],
-            ["rooms", "parents house", "visited", 1]
-        ],
-        "changes" : [
-            ["rooms", "town square", "entrance text", "HOLY SHIT"]
-        ]
-    },
+    "change scenarios" : [
+        {
+            "conditions" : [
+                ["rooms", "cider brewery", "visited", 1],
+                ["rooms", "parents house", "visited", 1]
+            ],
+            "changes" : [
+                ["rooms", "town square", "entrance text", "This changed! Hooray!"]
+            ]
+        }
+    ],
 
     "visited" : 0
 
