@@ -21,10 +21,12 @@ def items(items):
 # Go through all the stuff you'd have to print when arriving
 # in a new room
 def room(location,rooms):
+    location['visits'] += 1
     block(location['entrance text'])
     if 'items' in location:
         items(location['items'])
     directions(location,rooms)
+    print "\nYou've been here {} times now.\n\n".format(location['visits'])
 
 def menu(menu):
     block(menu["prompt"])
