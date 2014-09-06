@@ -18,15 +18,34 @@ def items(items):
     for item in items:
         block(items[item]['states'][items[item]['status']]['descriptor'])
 
+
+
+# Process any applicable "change scenarios" in the room:
+def process_changes(location,rooms):
+    do_change = False
+    for condition in location['change scenarios']['conditions']:
+        if vars()[condition[0]][condition[1]][condition[2]] == condition[3]:
+            do_change = True
+        else:
+            do_change = False
+    if do_change:
+        block("CHANGING STUFF")
+        for change in location['change scenarios']['changes']:
+            vars()[change[0]][change[1]][change[2]] = change[3]
+    else:
+        block("Business as usual.")
+
 # Go through all the stuff you'd have to print when arriving
 # in a new room
 def room(location,rooms):
-    location['visits'] += 1
+    if "change scenarios" in location:
+        process_changes(location,rooms)
+
+    location['visited'] = 1
     block(location['entrance text'])
     if 'items' in location:
         items(location['items'])
     directions(location,rooms)
-    print "\nYou've been here {} times now.\n\n".format(location['visits'])
 
 def menu(menu):
     block(menu["prompt"])
