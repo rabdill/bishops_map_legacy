@@ -28,11 +28,22 @@
     "change scenarios" : [
         {
             "conditions" : [
+                ["rooms", "drury lane front", "visited", 1],
+                ["player", "inventory", "coins", 100]
+            ],
+            "changes" : [
+                ["rooms", "town square", "entrance text", "COIN ONE! HUZZAH!"]
+            ]
+
+        },
+
+        {
+            "conditions" : [
                 ["rooms", "cider brewery", "visited", 1],
                 ["rooms", "parents house", "visited", 1]
             ],
             "changes" : [
-                ["rooms", "town square", "entrance text", "This changed! Hooray!"]
+                ["rooms", "town square", "entrance text", "The invasion would be here."]
             ]
         }
     ],

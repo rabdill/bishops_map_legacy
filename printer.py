@@ -21,7 +21,7 @@ def items(items):
 
 
 # Process any applicable "change scenarios" in the room:
-def process_changes(location,rooms):
+def process_changes(location,rooms,player):
     for scenario in location['change scenarios']:
         do_change = 0 
         for condition in scenario['conditions']:
@@ -37,9 +37,9 @@ def process_changes(location,rooms):
 
 # Go through all the stuff you'd have to print when arriving
 # in a new room
-def room(location,rooms):
+def room(location,rooms,player):
     if "change scenarios" in location:
-        process_changes(location,rooms)
+        process_changes(location,rooms,player)
 
     location['visited'] = 1
     block(location['entrance text'])
@@ -65,7 +65,7 @@ def store(room,player):
 
 def scene(current,rooms,player):
     if current['type'] == "room":
-        room(current,rooms)
+        room(current,rooms,player)
     elif current['type'] == "menu":
         menu(current)
     elif current['type'] == "store":
