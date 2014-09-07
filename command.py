@@ -11,7 +11,9 @@ def get(current,rooms,menus,player):
     need_command = True
     
     if current['type'] == "room" and "menu" in current['entrance text']: #if entrance text is a menu label
-        current = menus[current['entrance text']['menu']]
+        menu_name = current['entrance text']['menu'] #save the name so we can clear it from the room
+        del(current['entrance text']['menu']) #get rid of the menu so it's only processed once
+        current = menus[menu_name] #set the menu as where we are
 
 
     if current['type'] == "room":

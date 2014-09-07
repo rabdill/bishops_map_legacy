@@ -60,13 +60,13 @@ def room(location,rooms,player,menus):
 
     location['visited'] = 1
     
-    if "statement" in location['entrance text']:
+    if "menu" in location['entrance text']: #if there's a menu, it takes precedence over everything else
+        menu(menus[location['entrance text']['menu']])
+    elif "statement" in location['entrance text']:
         block(location['entrance text']['statement'])
         if 'items' in location:
             items(location['items'])
         directions(location,rooms)
-    elif "menu" in location['entrance text']:
-        menu(menus[location['entrance text']['menu']])
 
 def menu(menu):
     block(menu["prompt"])
