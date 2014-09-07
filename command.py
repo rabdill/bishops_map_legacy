@@ -9,6 +9,11 @@ def inventory_add(item,qty,player):
 
 def get(current,rooms,menus,player):
     need_command = True
+    
+    if current['type'] == "room" and "menu" in current['entrance text']: #if entrance text is a menu label
+        current = menus[current['entrance text']['menu']]
+
+
     if current['type'] == "room":
         while need_command is True:
             #whether the player has been told the results of a command           

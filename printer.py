@@ -54,15 +54,19 @@ def process_changes(location,rooms,player):
 
 # Go through all the stuff you'd have to print when arriving
 # in a new room
-def room(location,rooms,player):
+def room(location,rooms,player,menus):
     if "change scenarios" in location:
         process_changes(location,rooms,player)
 
     location['visited'] = 1
-    block(location['entrance text'])
-    if 'items' in location:
-        items(location['items'])
-    directions(location,rooms)
+    
+    if "statement" in location['entrance text']:
+        block(location['entrance text']['statement'])
+        if 'items' in location:
+            items(location['items'])
+        directions(location,rooms)
+    elif "menu" in location['entrance text']:
+        menu(menus[location['entrance text']['menu']])
 
 def menu(menu):
     block(menu["prompt"])
@@ -80,9 +84,9 @@ def store(room,player):
         print "\t{0}: {1} - {2} coins\n\t\t({3} available)".format(room['items'].index(item), item['name'],item['price'],item['qty available'] )
 
 
-def scene(current,rooms,player):
+def scene(current,rooms,player,menus):
     if current['type'] == "room":
-        room(current,rooms,player)
+        room(current,rooms,player,menus)
     elif current['type'] == "menu":
         menu(current)
     elif current['type'] == "store":

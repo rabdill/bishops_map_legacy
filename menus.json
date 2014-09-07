@@ -39,6 +39,25 @@
     ],
 
     "greeting" : "\"We can do that! How much cider would you like?\""
+},
+
+
+"invasion0" : {
+    "type" : "menu",
+    "origin" : "town square",
+    "prompt" : "This is the invasion!",
+    "choices" : [
+        "The first invasion choice!",
+        "Another invasion choice",
+        "The third choice ok."
+    ],
+
+    "responses" : [
+        {"loop" : "An excellent choice, this first one. Oh yes.",
+            "prompt" : ""},
+        {"menu" : "buy cider"},
+        {"final" : "You thirded it."}
+    ]
 }
 
 }

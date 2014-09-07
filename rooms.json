@@ -6,7 +6,7 @@
 	"exits": {
 		"south": "town square"
 	},
-	"entrance text": "You are in the first room of the new, data-driven world we are creating in an attempt to be a halfway intelligent human."
+	"entrance text" : {"statement" : "You are in the first room of the new, data-driven world we are creating in an attempt to be a halfway intelligent human."}
 
 },
 
@@ -23,7 +23,7 @@
 		"west"  : "donutorium front"
 	},
 
-	"entrance text": "You are in the Delran town square, which is bustling with activity. It's autumn, and the weekends are always like this -- people traveling to the blacksmith or the cobbler's, or rushing over to the dairy to try to get the last of the week's butter. The sun is out, there are leaves on the ground, and all seems well.",
+	"entrance text" : {"statement" : "You are in the Delran town square, which is bustling with activity. It's autumn, and the weekends are always like this -- people traveling to the blacksmith or the cobbler's, or rushing over to the dairy to try to get the last of the week's butter. The sun is out, there are leaves on the ground, and all seems well."},
 
     "change scenarios" : [
         {
@@ -32,7 +32,7 @@
                 ["player", "inventory", "coins", 100]
             ],
             "changes" : [
-                ["rooms", "town square", "entrance text", "COIN ONE! HUZZAH!"]
+                ["rooms", "town square", "entrance text", {"statement" : "COIN ONE! HUZZAH!"} ]
             ]
 
         },
@@ -43,7 +43,7 @@
                 ["rooms", "parents house", "visited", 1]
             ],
             "changes" : [
-                ["rooms", "town square", "entrance text", "The invasion would be here."]
+                ["rooms", "town square", "entrance text", {"menu" : "invasion0"} ]
             ]
         }
     ],
@@ -66,7 +66,7 @@
 		"north" : "cider brewery"
 	},	
 	
-	"entrance text": "The cider brewery, housed in what used to be the biggest barn in town. Now significantly larger (and noisier), but you can still see where the original building was worked into the larger design.",
+	"entrance text" : {"statement" : "The cider brewery, housed in what used to be the biggest barn in town. Now significantly larger (and noisier), but you can still see where the original building was worked into the larger design."},
 
     "visited" : 0
 
@@ -83,7 +83,7 @@
 		"south" : "cider brewery front"
 	},
 
-	"entrance text": "The old Delran Cider Brewery, the second-largest culinary outfit in town. You can hear the workers yelling apple-related things at each other just behind a large door. A young man sits at a desk in the lobby.",
+	"entrance text" : {"statement" : "The old Delran Cider Brewery, the second-largest culinary outfit in town. You can hear the workers yelling apple-related things at each other just behind a large door. A young man sits at a desk in the lobby."},
 
     "visited" : 0,
 
@@ -107,7 +107,7 @@
 		"south" : "drury lane"
 	},
 
-	"entrance text": "You turn and walk down Drury Lane, the street on which you grew up. It's one of the few streets in town without wagon ruts worn in the middle, as most of the other streets have a mix of businesses and homes. Drury, however, has only a few houses, to the south.",
+	"entrance text" : {"statement" : "You turn and walk down Drury Lane, the street on which you grew up. It's one of the few streets in town without wagon ruts worn in the middle, as most of the other streets have a mix of businesses and homes. Drury, however, has only a few houses, to the south."},
 
     "visited" : 0
 
@@ -127,7 +127,7 @@
         "south" : "parents house front"
 	},
 
-	"entrance text" : "You're on Drury Lane.",
+	"entrance text" : {"statement" : "You're on Drury Lane."},
 
     "visited" : 0
 
@@ -146,7 +146,7 @@
 		"east" : "town square"
 	},
 
-	"entrance text": "You are at the front gates of the illustrious Delran Donutorium. No better donut has ever been made than the one that comes out of this place hundreds of times a day.",
+	"entrance text" : {"statement" : "You are at the front gates of the illustrious Delran Donutorium. No better donut has ever been made than the one that comes out of this place hundreds of times a day."},
 
     "visited" : 0
 
@@ -165,7 +165,7 @@
 		"east" : "donutorium front"
 	},
 
-	"entrance text" : "In the donut factory!",
+	"entrance text" : {"statement" : "In the donut factory!"},
 
     "visited" : 0
 
@@ -183,7 +183,7 @@
         "south" : "parents house"
     },
 
-    "entrance text" : "You are on your parents' porch.",
+    "entrance text" : {"statement" : "You are on your parents' porch."},
 
     "visited" : 0,
 
@@ -218,7 +218,7 @@
         "north" : "parents house front"
     },
 
-    "entrance text" : "You walk through the door and into your childhood home, almost totally unchanged. It's cleaner now that there aren't kids running around banging on everything, but the decorations are safe and familiar.",
+    "entrance text" : {"statement" : "You walk through the door and into your childhood home, almost totally unchanged. It's cleaner now that there aren't kids running around banging on everything, but the decorations are safe and familiar."},
 
     "visited" : 0,
 

@@ -10,9 +10,9 @@ print "\n\nBishop's Map v0.1.0\n\n"
 
 first_scene="parents house front"
 
-printer.scene(rooms[first_scene],rooms,player)
+printer.scene(rooms[first_scene],rooms,player,menus)
 next_move = command.get(rooms[first_scene],rooms,menus,player)
 
 while True:
-    printer.scene(next_move,rooms,player)
+    printer.scene(next_move,rooms,player,menus)
     next_move = command.get(next_move,rooms,menus,player)
