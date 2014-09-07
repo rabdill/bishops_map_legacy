@@ -145,7 +145,7 @@ def get(current,rooms,menus,player):
             
                 # If you can't afford that many:
                 elif (qty * current['items'][command]['price']) > player['inventory']['coins']:
-                    block("You don't have enough money. That would cost you {} coins.".format(qty * current['items'][command]['price']))
+                    printer.block("You don't have enough money. That would cost you {} coins.".format(qty * current['items'][command]['price']))
 
                 # Otherwise, buy em:
                 else:

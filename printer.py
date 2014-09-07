@@ -22,16 +22,33 @@ def items(items):
 
 # Process any applicable "change scenarios" in the room:
 def process_changes(location,rooms,player):
-    for scenario in location['change scenarios']:
-        do_change = 0 
-        for condition in scenario['conditions']:
-            if vars()[condition[0]][condition[1]][condition[2]] == condition[3]:
-                block("|{0}|, which is |{1}|, DOES EQUAL |{2}|".format(condition,vars()[condition[0]][condition[1]][condition[2]], condition[3]))
-                do_change += 1
-        if do_change == len(scenario['conditions']):
+    for scenario in location['change scenarios']: #go through each scenario set
+        do_change = 0 #the number of conditions that were actually met
+        for condition in scenario['conditions']: #check all the conditions
+            if len(condition) == 2: #needs to be at least 2: a variable and a criteria
+                if vars()[condition[0]] == condition[1]:
+                    do_change += 1
+            elif len(condition) == 3:  #if the variable in question is nested 1 level in
+                if vars()[condition[0]][condition[1]] == condition[2]:
+                    do_change += 1
+            elif len(condition) == 4: #if the variable is nested 2 levels in
+                if vars()[condition[0]][condition[1]][condition[2]] == condition[3]:
+                    do_change += 1
+            elif len(condition) == 5: # 3 levels in, etc, etc
+                if vars()[condition[0]][condition[1]][condition[2]][condition[3]] == condition[4]:
+                    do_change += 1
+            elif len(condition) == 6:
+                if vars()[condition[0]][condition[1]][condition[2]][condition[3]][condition[4]] == condition[5]:
+                    do_change += 1
+            elif len(condition) == 7:
+                if vars()[condition[0]][condition[1]][condition[2]][condition[3]][condition[4]][condition[5]] == condition[6]:
+                    do_change += 1
+
+        if do_change == len(scenario['conditions']): #if all the criteria are satisfied
             block("CHANGING STUFF")
             for change in scenario['changes']:
-                vars()[change[0]][change[1]][change[2]] = change[3]
+                if len(change) == 4:
+                    vars()[change[0]][change[1]][change[2]] = change[3]
         else:
             block("Business as usual.")
 
