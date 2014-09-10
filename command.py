@@ -1,5 +1,13 @@
 import printer
 
+
+def get_text(prompt,debug):
+    if len(debug) == 0:
+        return raw_input(prompt)
+    else:
+        return debug.pop(0)
+
+
 def inventory_add(item,qty,player):
     # If the item is already in the player's inventory, give her more, otherwise create the entry:
     if item in player['inventory']:
@@ -7,7 +15,7 @@ def inventory_add(item,qty,player):
     else:
         player['inventory'][item] = qty
 
-def get(current,rooms,menus,player):
+def get(current,rooms,menus,player,debug):
     need_command = True
     
     if current['type'] == "room" and "menu" in current['entrance text']: #if entrance text is a menu label
@@ -21,7 +29,7 @@ def get(current,rooms,menus,player):
             #whether the player has been told the results of a command           
             processed_command = False
             
-            command = raw_input("What do you want to do? > ").split() # makes it a list
+            command = get_text("What do you want to do? > ", debug).split() # makes it a list
             # Strip out the articles:
             try:
                 command.remove("the")
@@ -115,7 +123,7 @@ def get(current,rooms,menus,player):
 
     elif current['type'] == "menu":
         while True:
-            command = int(raw_input("Which do you choose? > "))
+            command = int(get_text("Which do you choose? > ", debug))
             if command < len( current['choices']):
                 # if it just says something, then returns you to the room:
                 if "final" in current['responses'][command]:
@@ -143,9 +151,9 @@ def get(current,rooms,menus,player):
 
     elif current['type'] == "store":
         while True:
-            command = int(raw_input("Which item to buy? > "))
+            command = int(get_text("Which item to buy? > ", debug))
             if command < len(current['items']):
-                qty = int(raw_input("How many? (You have {0} coins, or enough for as many as {1}) > ".format(player['inventory']['coins'], player['inventory']['coins']/current['items'][command]['price'] )))
+                qty = int(get_text("How many? (You have {0} coins, or enough for as many as {1}) > ".format(player['inventory']['coins'], player['inventory']['coins']/current['items'][command]['price'] ), debug))
                 # If you want to buy too many:
                 if qty > current['items'][command]['qty available']:
                     block("The store doesn't have that many available.")
