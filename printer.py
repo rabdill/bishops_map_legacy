@@ -45,12 +45,9 @@ def process_changes(location,rooms,player):
                     do_change += 1
 
         if do_change == len(scenario['conditions']): #if all the criteria are satisfied
-            block("CHANGING STUFF")
             for change in scenario['changes']:
                 if len(change) == 4:
                     vars()[change[0]][change[1]][change[2]] = change[3]
-        else:
-            block("Business as usual.")
 
 # Go through all the stuff you'd have to print when arriving
 # in a new room

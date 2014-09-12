@@ -45,7 +45,7 @@
 "invasion0" : {
     "type" : "menu",
     "origin" : "town square",
-    "prompt" : "This is the invasion!",
+    "prompt" : "You walk casually into the town square. The sky darkens.\n\tSOMETHING IS AMISS.\n\tYou start looking around at the same time everyone else seems to get a feeling of unease. Suddenly, the clatter of ironclad horse hooves floods the square, and five cloaked riders burst in throught he arches at the front of town, holding long swords with thick, studded gloves. Two head straight for the Donutorium.\n\tThree stay behind, blocking the factory gates and preventing anyone from coming or going from the square. One wears a blue cloak, another green, and the third is in black, with extra armor. All have long cavalry swords.",
     "choices" : [
         "The first invasion choice!",
         "Another invasion choice",
