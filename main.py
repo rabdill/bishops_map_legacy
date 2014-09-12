@@ -10,7 +10,7 @@ for inFile in ["rooms","menus","player"]:
 
 #Check for an automation script:
 debug = []
-if len(sys.argv) > 0:
+if len(sys.argv) > 1:
 	print "DEBUG MODE"
 	debug = [line.rstrip('\n') for line in open(sys.argv[1])]
 
