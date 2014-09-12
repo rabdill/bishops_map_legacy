@@ -28,25 +28,16 @@
     "change scenarios" : [
         {
             "conditions" : [
-                ["rooms", "drury lane front", "visited", 1],
-                ["player", "inventory", "coins", 100]
-            ],
-            "changes" : [
-                ["rooms", "town square", "entrance text", {"statement" : "COIN ONE! HUZZAH!"} ]
-            ]
-
-        },
-
-        {
-            "conditions" : [
                 ["rooms", "cider brewery", "visited", 1],
                 ["rooms", "parents house", "visited", 1]
             ],
             "changes" : [
-                ["rooms", "town square", "entrance text", {"menu" : "invasion0",
-                    "statement" : "Everyone is hiding after the invasion."} ]
+                ["rooms", "town square", "entrance text", {"statement" : "You walk casually into the town square. The sky darkens.\n\tSOMETHING IS AMISS.\n\tYou start looking around at the same time everyone else seems to get a feeling of unease. Suddenly, the clatter of ironclad horse hooves floods the square, and five cloaked riders burst in throught he arches at the front of town, holding long swords with thick, studded gloves. Two head straight for the Donutorium.\n\tThree stay behind, blocking the factory gates and preventing anyone from coming or going from the square. One wears a blue cloak, another green, and the third is in black, with extra armor. All have long cavalry swords.\n\tThe black-robed rider, positioned in front of the Donutorium gates, removes his hood and speaks.\n\t\"Too long has Delran taken its donut success for granted,\" he says. \"As we speak, our colleagues are dismantling your factory. You may be able to repair the machines, but you will never see your glaze crystal again.\"\n\tEveryone stands perfectly still, spread out all over the square. A teenaged girl stands next to you, fidgeting with the sides of her cloak."} ],
+                ["rooms", "town square", "actions", {"talk" : {"girl" : {"menu" : "invasion0"}}}]
             ]
         }
+
+
     ],
 
     "visited" : 0
