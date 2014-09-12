@@ -5,7 +5,9 @@ def get_text(prompt,debug):
     if len(debug) == 0:
         return raw_input(prompt)
     else:
-        return debug.pop(0)
+        result = debug.pop(0)
+        printer.block("{0}FILE: {1}".format(prompt,result))
+        return result
 
 
 def inventory_add(item,qty,player):
