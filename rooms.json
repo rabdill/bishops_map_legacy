@@ -1,6 +1,6 @@
 {
 
-"lobby": {
+"lobby" : {
 	"type" : "room",
     "name" : "the game lobby",
 	"exits": {

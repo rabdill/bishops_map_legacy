@@ -1,8 +1,42 @@
 # Bishop's Map
 
-*A data-driven text adventure engine written in Python. Very much under construction and not particularly usable.*
+A data-driven text adventure engine written in Python. Very much under construction and not particularly usable. All of the things outlined below *do* work, though, and you're welcome to give it a shot.
 
+Markdown isn't the perfect formatting syntax for JSON, so if you get lost with weird indents, just check out some of the project's JSON files for reference.
 
+## Your first room
+First, you need to build the room your player is going to start in. "Rooms" are the units that make up the games' maps &ndash; you might start in the "lobby," for example, then `go east` into the "bakery," then `go north` into the woods. Though there are other methods of interacting with the player, every time someone goes somewhere, they're moving from room to room.
+
+Anyway, let's call the first room `lobby`. Go over into main.py and find the line that looks like this, and set the scene name to lobby:
+`first_scene="lobby"`
+
+Now we have to make the room itself: Open up rooms.json and add a new room block in between the existing brackets:
+```
+{
+    "lobby": {
+    "type" : "room",
+    "name" : "the game lobby",
+    "exits" : {},
+    "entrance text" : {"statement" : "You are in the first room of the new, data-driven world we are creating in an attempt to be a halfway intelligent human."}
+}
+```
+
+OK, there's a lot going on here:
+
+1. `"lobby" : {`
+    - This sets the name of the room, as it's referred to in other places in the system. When you want to say the lobby is to the south of some other room, you would do it using this name. It can be multiple words, if you really want.
+
+2. `"type" : "room",`
+    - This sets the item apart from other things, like a `menu` or a `store`.
+
+3. `"name" : "the game lobby",`
+    - This is how the room is shown when referenced in the game, to the player. For example, "To the south is the game lobby."
+
+4. `"exits" : {},`
+    - This will be a dictionary of other rooms to which the player can `go`. For example, `"exits" : { "east" : "bakery" },` would mean that when the player typed `go east`, they would be taken to the room labeled "bakery." These are printed whenever a player enters a room ("To the east is the muffin bakery.").
+
+5.  `"entrance text" : {"statement" : "You are in the first room of the new, data-driven world we are creating in an attempt to be a halfway intelligent human."}`
+    - The entrance text is what is printed when the player is taken to that room. The "statement" delegation is in place because, as you will see later, there can be other items added to the "entrance text" dictionary, such as a `menu`.
 
 ## About
 
