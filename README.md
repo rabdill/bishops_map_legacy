@@ -73,7 +73,6 @@ That's it! You just have to say that the room labeled `bakery` is to the east of
 ```
 Bishop's Map v0.1.0
 
-
     You are in the first room of the new, data-driven
     world we are creating in an attempt to be a
     halfway intelligent human. 
@@ -109,3 +108,32 @@ The game was set in a section of Kentucky's [Mammoth Cave](https://en.wikipedia.
 One of the first people to find their way around Mammoth Cave, however, was Stephen Bishop, a slave brought to the cave as a guide in 1838. He was the first man to cross the cave's "Bottomless Pit," helping reveal portions of the cave previously unknown. In 1844, he drew a map of the cave, from memory, that was used by explorers for more than 40 years.
 
 Bishop was freed from slavery in 1856, and died of tuberculosis sometime between 1857 and 1859. In 1972, a connection to Mammoth Cave was discovered in the Flint Ridge Cave system, joining it to what is now the longest cave in the world. Revisiting Bishop's map, cavers discovered Bishop had already found and mapped the connection more than a century before.
+
+
+
+
+
+
+
+
+(misc. notes that don't do anything important yet, but I'll forget:)
+A menu with all the options:
+    "invasion0" : {
+        "type" : "menu",
+        "origin" : "town square",
+        "prompt" : "T\"Psst,\" you say. \"You OK?\"\n\t\"Yeah,\" she responds. \"My name's Marlo. Do I know you?\"",
+        "choices" : [
+            "Respond: \"No, I don't suppose you would. I left town a long time ago.\"",
+            "Respond: \"No need for the third-degree, I was just checking if you were OK.\"",
+            "Respond: \"There's no time for introductions. We have to DO something.\""
+        ],
+
+        "responses" : [
+            {"loop" : "An excellent choice, this first one. Oh yes.",
+                "prompt" : ""},
+            {"menu" : "buy cider"},
+            {"final" : "You thirded it."}
+        ]
+    }
+    
+(write about debug mode)
