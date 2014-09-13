@@ -67,6 +67,7 @@ def room(location,rooms,player,menus):
 
 def menu(menu):
     block(menu["prompt"])
+    print "\t\t\t\t--"
     for choice in menu["choices"]:
         block("{0}: {1}".format(menu["choices"].index(choice), choice))
 
