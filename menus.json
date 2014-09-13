@@ -45,18 +45,17 @@
 "invasion0" : {
     "type" : "menu",
     "origin" : "town square",
-    "prompt" : "This is the first of all the invasion menus",
+    "prompt" : "\"Psst,\" you say. \"You OK?\"\n\t\"Yeah,\" she responds. \"My name's Marlo. Do I know you?\"",
     "choices" : [
-        "The first invasion choice!",
-        "Another invasion choice",
-        "The third choice ok."
+        "Respond: \"No, I don't suppose you would. I left town a long time ago.\"",
+        "Respond: \"No need for the third-degree, I was just checking if you were OK.\"",
+        "Respond: \"There's no time for introductions. We have to DO something.\""
     ],
 
     "responses" : [
-        {"loop" : "An excellent choice, this first one. Oh yes.",
-            "prompt" : ""},
-        {"menu" : "buy cider"},
-        {"final" : "You thirded it."}
+        {"menu" : "invasion1a"},
+        {"menu" : "invasion1b"},
+        {"menu" : "invasion1c"}
     ]
 }
 

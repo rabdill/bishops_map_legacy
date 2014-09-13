@@ -1,29 +1,29 @@
 {
 
 "lobby" : {
-	"type" : "room",
+    "type" : "room",
     "name" : "the game lobby",
-	"exits": {
-		"south": "town square"
-	},
-	"entrance text" : {"statement" : "You are in the first room of the new, data-driven world we are creating in an attempt to be a halfway intelligent human."}
+    "exits": {
+        "south": "town square"
+    },
+    "entrance text" : {"statement" : "You are in the first room of the new, data-driven world we are creating in an attempt to be a halfway intelligent human."}
 
 },
 
 
 "town square": {
     "type" : "room",
-	"name" : "the town square",
+    "name" : "the town square",
 
-	"look" : "The town square, full of people and activities.",
+    "look" : "The town square, full of people and activities.",
 
-	"exits": {
-		"north" : "cider brewery front",
-		"south" : "drury lane front",
-		"west"  : "donutorium front"
-	},
+    "exits": {
+        "north" : "cider brewery front",
+        "south" : "drury lane front",
+        "west"  : "donutorium front"
+    },
 
-	"entrance text" : {"statement" : "You are in the Delran town square, which is bustling with activity. It's autumn, and the weekends are always like this -- people traveling to the blacksmith or the cobbler's, or rushing over to the dairy to try to get the last of the week's butter. The sun is out, there are leaves on the ground, and all seems well."},
+    "entrance text" : {"statement" : "You are in the Delran town square, which is bustling with activity. It's autumn, and the weekends are always like this -- people traveling to the blacksmith or the cobbler's, or rushing over to the dairy to try to get the last of the week's butter. The sun is out, there are leaves on the ground, and all seems well."},
 
     "change scenarios" : [
         {
@@ -33,7 +33,8 @@
             ],
             "changes" : [
                 ["rooms", "town square", "entrance text", {"statement" : "You walk casually into the town square. The sky darkens.\n\tSOMETHING IS AMISS.\n\tYou start looking around at the same time everyone else seems to get a feeling of unease. Suddenly, the clatter of ironclad horse hooves floods the square, and five cloaked riders burst in throught he arches at the front of town, holding long swords with thick, studded gloves. Two head straight for the Donutorium.\n\tThree stay behind, blocking the factory gates and preventing anyone from coming or going from the square. One wears a blue cloak, another green, and the third is in black, with extra armor. All have long cavalry swords.\n\tThe black-robed rider, positioned in front of the Donutorium gates, removes his hood and speaks.\n\t\"Too long has Delran taken its donut success for granted,\" he says. \"As we speak, our colleagues are dismantling your factory. You may be able to repair the machines, but you will never see your glaze crystal again.\"\n\tEveryone stands perfectly still, spread out all over the square. A teenaged girl stands next to you, fidgeting with the sides of her cloak."} ],
-                ["rooms", "town square", "actions", {"talk" : {"girl" : {"menu" : "invasion0"}}}]
+                ["rooms", "town square", "actions", {"talk" : {"girl" : {"menu" : "invasion0"}}}],
+                ["rooms", "town square", "exits", {}]
             ]
         }
 
@@ -47,18 +48,18 @@
 
 
 "cider brewery front": {
-	"type" : "room",
+    "type" : "room",
 
     "name" : "the front of the cider brewery",
 
-	"look" : "The best damn apple cider plant in the land.",
-	
-	"exits": {
-		"south" : "town square",
-		"north" : "cider brewery"
-	},	
-	
-	"entrance text" : {"statement" : "The cider brewery, housed in what used to be the biggest barn in town. Now significantly larger (and noisier), but you can still see where the original building was worked into the larger design."},
+    "look" : "The best damn apple cider plant in the land.",
+    
+    "exits": {
+        "south" : "town square",
+        "north" : "cider brewery"
+    },  
+    
+    "entrance text" : {"statement" : "The cider brewery, housed in what used to be the biggest barn in town. Now significantly larger (and noisier), but you can still see where the original building was worked into the larger design."},
 
     "visited" : 0
 
@@ -67,15 +68,15 @@
 
 "cider brewery": {
     "type" : "room",
-	"name" : "the cider brewery",
+    "name" : "the cider brewery",
 
-	"look": "The front door of the Cider Brewery. Predictably, everything here smells like apples.",
+    "look": "The front door of the Cider Brewery. Predictably, everything here smells like apples.",
 
-	"exits": {
-		"south" : "cider brewery front"
-	},
+    "exits": {
+        "south" : "cider brewery front"
+    },
 
-	"entrance text" : {"statement" : "The old Delran Cider Brewery, the second-largest culinary outfit in town. You can hear the workers yelling apple-related things at each other just behind a large door. A young man sits at a desk in the lobby."},
+    "entrance text" : {"statement" : "The old Delran Cider Brewery, the second-largest culinary outfit in town. You can hear the workers yelling apple-related things at each other just behind a large door. A young man sits at a desk in the lobby."},
 
     "visited" : 0,
 
@@ -90,16 +91,16 @@
 "drury lane front": {
     "type" : "room",
 
-	"name" : "the entrance to Drury Lane",
+    "name" : "the entrance to Drury Lane",
 
-	"look" : "The entrance to quaint, quiet Drury Lane, actually a court because it doesn't go anywhere. Trees line the streets, in between gaslamps along thin sidewalks.",
+    "look" : "The entrance to quaint, quiet Drury Lane, actually a court because it doesn't go anywhere. Trees line the streets, in between gaslamps along thin sidewalks.",
 
-	"exits" : {
-		"north" : "town square",
-		"south" : "drury lane"
-	},
+    "exits" : {
+        "north" : "town square",
+        "south" : "drury lane"
+    },
 
-	"entrance text" : {"statement" : "You turn and walk down Drury Lane, the street on which you grew up. It's one of the few streets in town without wagon ruts worn in the middle, as most of the other streets have a mix of businesses and homes. Drury, however, has only a few houses, to the south."},
+    "entrance text" : {"statement" : "You turn and walk down Drury Lane, the street on which you grew up. It's one of the few streets in town without wagon ruts worn in the middle, as most of the other streets have a mix of businesses and homes. Drury, however, has only a few houses, to the south."},
 
     "visited" : 0
 
@@ -110,16 +111,16 @@
 "drury lane": {
     "type" : "room",
 
-	"name" : "Drury Lane",
+    "name" : "Drury Lane",
 
-	"look" : "Drury Lane, the same old street you grew up on. As a kid, you were bored out of your mind on this dead-end, but now you can appreciate its peaceful atmosphere and unassuming construction.",
+    "look" : "Drury Lane, the same old street you grew up on. As a kid, you were bored out of your mind on this dead-end, but now you can appreciate its peaceful atmosphere and unassuming construction.",
 
-	"exits" : {
-		"north" : "drury lane front",
+    "exits" : {
+        "north" : "drury lane front",
         "south" : "parents house front"
-	},
+    },
 
-	"entrance text" : {"statement" : "You're on Drury Lane."},
+    "entrance text" : {"statement" : "You're on Drury Lane."},
 
     "visited" : 0
 
@@ -129,16 +130,16 @@
 "donutorium front": {
     "type" : "room",
 
-	"name" : "the front of the Donutorium",
-	
-	"look" : "The gates of the town donutorium, the most famous donut factory in all the land.",
+    "name" : "the front of the Donutorium",
+    
+    "look" : "The gates of the town donutorium, the most famous donut factory in all the land.",
 
-	"exits": {
-		"west" : "donutorium",
-		"east" : "town square"
-	},
+    "exits": {
+        "west" : "donutorium",
+        "east" : "town square"
+    },
 
-	"entrance text" : {"statement" : "You are at the front gates of the illustrious Delran Donutorium. No better donut has ever been made than the one that comes out of this place hundreds of times a day."},
+    "entrance text" : {"statement" : "You are at the front gates of the illustrious Delran Donutorium. No better donut has ever been made than the one that comes out of this place hundreds of times a day."},
 
     "visited" : 0
 
@@ -149,15 +150,15 @@
 "donutorium" : {
     "type" : "room",
 
-	"name" : "the Donutorium",
+    "name" : "the Donutorium",
 
-	"look" : "The front door of the Donutorium, behind the short wooden fence that's clearly there more for decoration than security.",
+    "look" : "The front door of the Donutorium, behind the short wooden fence that's clearly there more for decoration than security.",
 
-	"exits" : {
-		"east" : "donutorium front"
-	},
+    "exits" : {
+        "east" : "donutorium front"
+    },
 
-	"entrance text" : {"statement" : "In the donut factory!"},
+    "entrance text" : {"statement" : "In the donut factory!"},
 
     "visited" : 0
 
