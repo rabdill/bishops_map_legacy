@@ -52,7 +52,11 @@ def get(current,rooms,menus,player,npc,debug):
             try:
                 command.remove("in")
             except Exception: 
-                pass  
+                pass
+
+            #check to see if the direct object is 2 words instead of 1:
+            if len(command) > 2:
+                command[1] += " " + command[2] 
 
 
             #check if the verb is something that can be done to an item in the room:
