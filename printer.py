@@ -20,8 +20,8 @@ def items(items):
 
 
 
-# Process any applicable "change scenarios" in the room:
-def process_changes(location,rooms,player):
+# Process any applicable "change scenarios" in a room:
+def check_for_changes(location,rooms,player,menus,npc):
     for scenario in location['change scenarios']: #go through each scenario set
         do_change = 0 #the number of conditions that were actually met
         for condition in scenario['conditions']: #check all the conditions
@@ -45,15 +45,28 @@ def process_changes(location,rooms,player):
                     do_change += 1
 
         if do_change == len(scenario['conditions']): #if all the criteria are satisfied
-            for change in scenario['changes']:
-                if len(change) == 4:
-                    vars()[change[0]][change[1]][change[2]] = change[3]
+            process_changes(scenario['changes'],rooms,menus,player,npc)
+
+def process_changes(changes,rooms,menus,player,npc):
+    for change in changes:
+        if len(change) == 2:
+            vars()[change[0]] = change[1]
+        elif len(change) == 3:
+            vars()[change[0]][change[1]] = change[2]
+        elif len(change) == 4:
+            vars()[change[0]][change[1]][change[2]] = change[3]
+        elif len(change) == 5:
+            vars()[change[0]][change[1]][change[2]][change[3]] = change[4]
+        elif len(change) == 6:
+            vars()[change[0]][change[1]][change[2]][change[3]][change[4]] = change[5]
+        elif len(change) == 7:
+            vars()[change[0]][change[1]][change[2]][change[3]][change[4]][change[5]] = change[6]
 
 # Go through all the stuff you'd have to print when arriving
 # in a new room
-def room(location,rooms,player,menus):
+def room(location,rooms,player,menus,npc):
     if "change scenarios" in location:
-        process_changes(location,rooms,player)
+        check_for_changes(location,rooms,player,menus,npc)
 
     location['visited'] = 1
     
@@ -82,9 +95,9 @@ def store(room,player):
         print "\t{0}: {1} - {2} coins\n\t\t({3} available)".format(room['items'].index(item), item['name'],item['price'],item['qty available'] )
 
 
-def scene(current,rooms,player,menus):
+def scene(current,rooms,player,menus,npc):
     if current['type'] == "room":
-        room(current,rooms,player,menus)
+        room(current,rooms,player,menus,npc)
     elif current['type'] == "menu":
         menu(current)
     elif current['type'] == "store":

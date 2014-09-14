@@ -53,9 +53,96 @@
     ],
 
     "responses" : [
-        {"menu" : "invasion1"},
-        {"menu" : "invasion1"},
-        {"menu" : "invasion1"}
+        {"premessage" : "\"Well, welcome back,\" she says, almost laughing.",
+            "menu" : "invasion1"},
+        {"premessage" : "\"I don't care anyway,\" she says, snorting.",
+            "menu" : "invasion1"},
+        {"premessage" : "\"My thoughts exactly,\" she says, pulling a flintlock from her tunic. \"I've got a pistol. I think I can stop them.\"",
+            "menu" : "invasion2"}
+    ]
+},
+
+"invasion1" : {
+    "type" : "menu",
+    "origin" : "town square",
+    "prompt" : "Marlo continues: \"I've got a pistol. I think I can stop them.\"",
+    "choices" : [
+        "Respond: \"A pistol? What?! Is this 'glaze crystal' thing really that important?\"",
+        "Respond: \"It's not worth it! They probably have guns too! Let them go.\"",
+        "Respond: \"How can I help?\""
+    ],
+
+    "responses" : [
+        {"menu" : "invasion1a"},
+        {"premessage" : "\"It's worth it to me,\" Marlo says, pulling a flintlock from her tunic.",
+            "menu" : "invasion2"},
+        {"premessage" : "\"I'll need time for reloading. Stall them,\" Marlo says, pulling a flintlock from her tunic.",
+            "menu" : "invasion2"}
+    ]
+},
+
+"invasion1a" : {
+    "type" : "menu",
+    "origin" : "town square",
+    "prompt" : "\"The glaze crystal is what makes the Delran donuts so famous -- it's used in the process, I don't know how. But it's the reason the town *exists*. They can't take it. They CAN'T,\" Marlo says.",
+    "choices" : [
+        "Respond: \"It's not worth it! They probably have guns too! Let them go.\"",
+        "Respond: \"How can I help?\""
+    ],
+
+    "responses" : [
+        {"premessage" : "\"It's worth it to me,\" Marlo says, pulling a flintlock from her tunic.",
+            "menu" : "invasion2"},
+        {"premessage" : "\"I'll need time for reloading. Stall them,\" Marlo says, pulling a flintlock from her tunic.",
+            "menu" : "invasion2"}
+    ]
+},
+
+"invasion2" : {
+    "type" : "menu",
+    "origin" : "town square",
+    "prompt" : "Before you can stop her, she points the heavy wooden gun at the rider who just finished speaking. She pulls the trigger.\n\tFlames shoot from both ends of the barrel. You  look over just in time to see the bullet hit the green-robed rider in the head. He tumbles backward off his horse. The townspeople panic, and scatter.\n\tMarlo reaches frantically into her pocket and grabs another small paper cartridge, ripping the top off with her teeth and pouring the gunpowder inside it into the barrel of the gun. As she does, the other two riders head straight for her.",
+    "choices" : [
+        "Hide behind some barrels of grain on a patio.",
+        "Drag Marlo behind the patio grain barrels.",
+        "Run at one of the horses and scream, trying to startle it.",
+        "Throw one of your shoes at the head of a rider."
+    ],
+
+    "responses" : [
+        {
+            "final" : "Marlo looks over and sees you cowering behind the barrel. She looks back and fires at the blue rider, who flips backward off his horse. The black rider, however, remains unscathed, and raises his sword over his head.\n\tBefore Marlo has time to react, the sword swings down and catches her on the side of the head. The crowd screams, and Marlo falls to the ground, dead.\n\t The black rider continues toward you, but before he can make it much farther, the other two riders emerge from the Donutorium.\n\t\"We got it,\" one of them yells, and the three of them ride back out of the city gates, leaving the two dead riders in the square.",
+            "changes" : [
+                ["rooms", "town square", "entrance text", {"statement" : "Everybody is like, ohhhh shit."}],
+                ["npc", "marlo", "health", 0],
+                ["rooms", "town square", "items",
+                    "marlo's corpse", {
+                        "status" : "default",
+                        "states" : {
+                            "default" : {
+                                "descriptor" : "Marlo is on the ground here, dead of a sword wound to the head."
+                            }
+                        }
+                    }
+                ],
+                ["rooms", "town square", "items",
+                    "green robes", {
+                        "status" : "default",
+                        "states" : {
+                            "default" : {
+                                "descriptor" : "The corpse of a dark rider is on the ground here, wearing green robes."
+                            },
+                            "take" : {
+                                "descriptor" : "The corpse of a dark rider is on the ground here. His robes have been taken.",
+                                "from" : {"default" : "You reach down and pull off the rider's heavy green robes. They are sturdy and protective."}
+                            }
+                        }
+                    }
+                ]
+            ]
+        },
+        {"premessage" : "\"I'll need time for reloading. Stall them,\" Marlo says, pulling a flintlock from her tunic.",
+            "menu" : "invasion2"}
     ]
 }
 

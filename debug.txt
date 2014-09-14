@@ -17,3 +17,6 @@ talk man
 go south
 go south
 talk girl
+0
+0
+0

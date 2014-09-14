@@ -4,7 +4,7 @@ import printer
 import sys		#For loading command-line parameters
 
 # Load the game data:
-for inFile in ["rooms","menus","player"]:
+for inFile in ["rooms","menus","player","npc"]:
     json_data = open("{}.json".format(inFile))
     vars()[inFile] = json.load(json_data)
 
@@ -18,9 +18,9 @@ print "\n\nBishop's Map v0.1.0\n\n"
 
 first_scene="lobby"
 
-printer.scene(rooms[first_scene],rooms,player,menus)
-next_move = command.get(rooms[first_scene],rooms,menus,player,debug)
+printer.scene(rooms[first_scene],rooms,player,menus,npc)
+next_move = command.get(rooms[first_scene],rooms,menus,player,npc,debug)
 
 while True:
-    printer.scene(next_move,rooms,player,menus)
-    next_move = command.get(next_move,rooms,menus,player,debug)
+    printer.scene(next_move,rooms,player,menus,npc)
+    next_move = command.get(next_move,rooms,menus,player,npc,debug)

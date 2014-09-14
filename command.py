@@ -17,7 +17,7 @@ def inventory_add(item,qty,player):
     else:
         player['inventory'][item] = qty
 
-def get(current,rooms,menus,player,debug):
+def get(current,rooms,menus,player,npc,debug):
     need_command = True
     
     if current['type'] == "room" and "menu" in current['entrance text']: #if entrance text is a menu label
@@ -130,6 +130,10 @@ def get(current,rooms,menus,player,debug):
                 #if you want to print a message before the next printing
                 if "premessage" in current['responses'][command]:
                     printer.block(current['responses'][command]["premessage"])
+
+                #if any variables get shifted around
+                if "changes" in current['responses'][command]:
+                    printer.process_changes(current['responses'][command]['changes'],rooms,menus,player,npc)
 
                 # if it just says something, then returns you to the room:
                 if "final" in current['responses'][command]:
