@@ -53,10 +53,11 @@
     ],
 
     "responses" : [
-        {"menu" : "invasion1a"},
-        {"menu" : "invasion1b"},
-        {"menu" : "invasion1c"}
+        {"menu" : "invasion1"},
+        {"menu" : "invasion1"},
+        {"menu" : "invasion1"}
     ]
 }
+
 
 }

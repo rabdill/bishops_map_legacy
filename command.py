@@ -127,6 +127,10 @@ def get(current,rooms,menus,player,debug):
         while True:
             command = int(get_text("Which do you choose? > ", debug))
             if command < len( current['choices']):
+                #if you want to print a message before the next printing
+                if "premessage" in current['responses'][command]:
+                    printer.block(current['responses'][command]["premessage"])
+
                 # if it just says something, then returns you to the room:
                 if "final" in current['responses'][command]:
                     printer.block(current['responses'][command]["final"])
