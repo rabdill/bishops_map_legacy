@@ -1,0 +1,14 @@
+{
+    "marlo" : {
+        "health" : 100
+    },
+    "black rider" : {
+        "health" : 100
+    },
+    "green rider" : {
+        "health" : 100
+    },
+    "blue rider" : {
+        "health" : 100
+    }
+}
