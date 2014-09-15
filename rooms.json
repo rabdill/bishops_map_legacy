@@ -45,8 +45,8 @@
                 ["rooms", "town square", "look", "The town square, abandoned."]
             ],
             "changes" : [
-                ["rooms", "donutorium gates", "entrance text", "The old wooden gates of the Delran Donutorium, hanging broken after the invasion by the dark riders."],
-                ["rooms", "donutorium front", "entrance text", "The front door of the donutorium is boarded up. No one has gone in or out since the invasion."]
+                ["rooms", "donutorium gates", "entrance text", {"statement" : "The old wooden gates of the Delran Donutorium, hanging broken after the invasion by the dark riders."}],
+                ["rooms", "donutorium front", "entrance text", {"statement" : "The front door of the donutorium is boarded up. No one has gone in or out since the invasion."}]
 
             ]
         }
@@ -145,7 +145,7 @@
 "donutorium gates": {
     "type" : "room",
 
-    "name" : "the front of the Donutorium",
+    "name" : "the Donutorium gates",
     
     "look" : "The gates of the town donutorium, the most famous donut factory in all the land.",
 
@@ -165,7 +165,7 @@
 "donutorium front" : {
     "type" : "room",
 
-    "name" : "the Donutorium",
+    "name" : "the front door of the Donutorium",
 
     "look" : "The front door of the Donutorium, behind the short wooden fence that's clearly there more for decoration than security.",
 

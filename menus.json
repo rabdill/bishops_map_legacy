@@ -110,7 +110,7 @@
 "invasion2" : {
     "type" : "menu",
     "origin" : "town square",
-    "prompt" : "Before you can stop her, she points the heavy wooden gun at the rider who just finished speaking. She pulls the trigger.\n\tFlames shoot from both ends of the barrel. You  look over just in time to see the bullet hit the green-robed rider in the head. He tumbles backward off his horse. The townspeople panic, and scatter.\n\tMarlo reaches frantically into her pocket and grabs another small paper cartridge, ripping the top off with her teeth and pouring the gunpowder inside it into the barrel of the gun. As she does, the other two riders head straight for her.",
+    "prompt" : "Before you can stop her, she points the heavy wooden gun at the rider who just finished speaking. She pulls the trigger.\n\tFlames shoot from both ends of the barrel. You look over just in time to see the bullet hit the green-robed rider in the head. He tumbles backward off his horse. The townspeople panic, and scatter.\n\tMarlo reaches frantically into her pocket and grabs another small paper cartridge, ripping the top off with her teeth and pouring the gunpowder inside it into the barrel of the gun. As she does, the other two riders head straight for her.",
     "choices" : [
         "Hide behind some barrels of grain on a patio.",
         "Drag Marlo behind the patio grain barrels.",
@@ -190,7 +190,27 @@
             ],
             "menu" : "invasion3"
         },
-        {******},
+        {
+            "premessage" : "You scream at the top of your lungs, running at the blue-robed rider and flailing your arms wildly. His horse barely notices, but when the rider looks over at you to see what all the racket is, a bullet whizzes through the air and stops in his chest. He tumbles to the ground.",
+            "changes" : [
+                ["rooms", "town square", "items",
+                    "blue robes", {
+                        "name" : "heavy blue robes",
+                        "status" : "default",
+                        "states" : {
+                            "default" : {
+                                "descriptor" : "The corpse of a dark rider is on the ground here, wearing blue robes."
+                            },
+                            "take" : {
+                                "descriptor" : "The corpse of a dark rider is on the ground here. His robes have been taken.",
+                                "from" : {"default" : "You reach down and pull off the rider's heavy blue robes. They are sturdy and protective."}
+                            }
+                        }
+                    }
+                ]
+            ],
+            "menu" : "invasion4"
+        },
         {
             "premessage" : "You wind up, and throw your shoe at the blue rider as hard as you can.\n\tYou miss wide left, and the rider doesn't seem to notice.",
             "menu" : "invasion3"
@@ -290,6 +310,106 @@
         }
     ]
 
+},
+
+"invasion4" : {
+    "type" : "menu",
+    "origin" : "town square",
+    "prompt" : "The tactic works -- the black rider isn't riding toward Marlo anymore. Now, though... he's headed straight for you.",
+    
+    "choices" : [
+        "Hide behind a barrel",
+        "Try to make a run for it",
+        "Keep yelling and screaming at the black rider",
+        "Throw a shoe at the black rider"
+    ],
+    
+    "responses" : [
+        {
+            "final" : "You wheel around and stumble back behind the grain. The black rider quickly reaches you, but can't reach you with his sword if he stays on his horse.\n\t \"You don't know whom you step in front of,\" he says in a deep, raspy voice. He dismounts from his horse, and you try to put as much room as possible between him and you. He steps slowly up onto the porch, you breathe in to scream. Before you can, however, there is a gunshot, and you see a bullet from somewhere behind the rider burst through his chest and fly away into the square somewhere. He falls to the ground, dead.\n\t\"Marlo!\" you yell. \"Wow... thank you.\"\n\tBefore she can respond, however, the other two riders emerge from the Donutorium.\n\t\"We got it!\" one of them yells, before he realizes his partners are dead. He and the other rider pause and look around for a moment, seeing Marlo in the middle of the square with a smoking pistol. They head for her at the same time, and she hustles to the black rider's horse and jumps on, taking off between two houses and into the woods.\n\tThe two remaining riders don't get out of town before they decide it isn't worth the trouble of navigating the woods this close to dusk.\n\t\"Farewell, and good luck without your precious glaze crystal,\" one of them says, and the riders speed through the gates and out of town.",
+            "changes" : [
+                ["rooms", "town square", "items",
+                    "black robes", {
+                        "name" : "black robes with armor",
+                        "status" : "default",
+                        "states" : {
+                            "default" : {
+                                "descriptor" : "The corpse of a dark rider is on the ground here, wearing heavy black robes."
+                            },
+                            "take" : {
+                                "descriptor" : "The corpse of a dark rider is on the ground here. His robes have been taken.",
+                                "from" : {"default" : "You reach down and pull off the rider's heavy robes. They're far weightier than the others, and seem to have chainmail sewn inside them."}
+                            }
+                        }
+                    }
+                ]
+            ]
+        },
+        {
+            "final" : "You turn and sprint between two houses to try to get away. As you run, you hear a gunshot, and turn around in time to see the black rider fall from his horse. Before you can thank Marlo for saving your life, though, the other two riders emerge from the Donutorium.\n\t\"We got it!\" one of them yells, before he realizes his partners are dead. He and the other rider pause and look around for a moment, seeing Marlo in the middle of the square with a smoking pistol. They head for her at the same time, and she hustles to the black rider's horse and jumps on, taking off between two houses and into the woods.\n\tThe two remaining riders don't get out of town before they decide it isn't worth the trouble of navigating the woods this close to dusk.\n\t\"Farewell, and good luck without your precious glaze crystal,\" one of them says, and the riders speed through the gates and out of town.",
+            "changes" : [
+                ["rooms", "town square", "items",
+                    "black robes", {
+                        "name" : "black robes with armor",
+                        "status" : "default",
+                        "states" : {
+                            "default" : {
+                                "descriptor" : "The corpse of a dark rider is on the ground here, wearing heavy black robes."
+                            },
+                            "take" : {
+                                "descriptor" : "The corpse of a dark rider is on the ground here. His robes have been taken.",
+                                "from" : {"default" : "You reach down and pull off the rider's heavy robes. They're far weightier than the others, and seem to have chainmail sewn inside them."}
+                            }
+                        }
+                    }
+                ]
+            ]
+        },
+        {
+            "premessage" : "You refuse to flinch at the advance of the black rider. You yell and taunt the horse, and look around for a place to duck away when he swings his sword. Before he's within sword range, though, the rider pulls a hard, black rock from his robe, and throws it at you with all his strength.. Before you can react, it hits you hard in the shoulder. It knocks you to the ground.",
+            "changes" : [
+                ["player", "health", -35],
+                ["rooms", "town square", "items",
+                    "rock", {
+                        "name" : "mysterious hot rock",
+                        "status" : "default",
+                        "states" : {
+                            "default" : {
+                                "descriptor" : "A smooth black rock is on the ground, still curiously hot after being thrown by the black rider."
+                            },
+                            "take" : {
+                                "descriptor" : "",
+                                "from" : {"default" : "You poke at the rock for a moment, ensuring it's cool enough to touch. You pick it up and put it in your pack."}
+                            }
+                        }
+                    }
+                ]
+            ],
+            "final" : "Your shoulder feels burned, and when you look over, you notice the rock in the dust, steaming. You look up at Marlo.\n\t\"Run!\" you yell.\n\tMarlo sprints away, between two buildings and into the woods. The black rider continues toward you, but before he can make it much farther, the other two riders emerge from the Donutorium.\n\t\"We got it,\" one of them yells, and the three of them ride back out of the city gates."
+        },
+        {
+            "premessage" : "You wind up, and throw your shoe at the black rider as hard as you can. You miss wide left, and the rider continues straight at you.Before he's within sword range, though, the rider pulls a hard, black rock from his robe, and throws it at you with all his strength.. Before you can react, it hits you hard in the shoulder. It knocks you to the ground.",
+            "changes" : [
+                ["player", "health", -35],
+                ["rooms", "town square", "items",
+                    "rock", {
+                        "name" : "mysterious hot rock",
+                        "status" : "default",
+                        "states" : {
+                            "default" : {
+                                "descriptor" : "A smooth black rock is on the ground, still curiously hot after being thrown by the black rider."
+                            },
+                            "take" : {
+                                "descriptor" : "",
+                                "from" : {"default" : "You poke at the rock for a moment, ensuring it's cool enough to touch. You pick it up and put it in your pack."}
+                            }
+                        }
+                    }
+                ]
+            ],
+            "final" : "Your shoulder feels burned, and when you look over, you notice the rock in the dust, steaming. You look up at Marlo.\n\t\"Run!\" you yell.\n\tMarlo sprints away, between two buildings and into the woods. The black rider continues toward you, but before he can make it much farther, the other two riders emerge from the Donutorium.\n\t\"We got it,\" one of them yells, and the three of them ride back out of the city gates."
+        }
+    ]
 }
 
 }
