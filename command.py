@@ -134,7 +134,8 @@ def get(current,rooms,menus,player,npc,debug):
                 #if you want to print a message before the next printing
                 if "premessage" in current['responses'][command]:
                     printer.block(current['responses'][command]["premessage"])
-
+                #NOTE: The ONLY thing that happens before the changes listed in a
+                #response is the premessage. Everything else happens afterward.
                 #if any variables get shifted around
                 if "changes" in current['responses'][command]:
                     printer.process_changes(current['responses'][command]['changes'],rooms,menus,player,npc)

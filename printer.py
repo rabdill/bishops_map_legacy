@@ -49,18 +49,36 @@ def check_for_changes(location,rooms,player,menus,npc):
 
 def process_changes(changes,rooms,menus,player,npc):
     for change in changes:
-        if len(change) == 2:
-            vars()[change[0]] = change[1]
-        elif len(change) == 3:
-            vars()[change[0]][change[1]] = change[2]
-        elif len(change) == 4:
-            vars()[change[0]][change[1]][change[2]] = change[3]
-        elif len(change) == 5:
-            vars()[change[0]][change[1]][change[2]][change[3]] = change[4]
-        elif len(change) == 6:
-            vars()[change[0]][change[1]][change[2]][change[3]][change[4]] = change[5]
-        elif len(change) == 7:
-            vars()[change[0]][change[1]][change[2]][change[3]][change[4]][change[5]] = change[6]
+        # if it's a health modifier:
+        if "health" in change:
+            #if it's the player's health:
+            if "player" in change:
+                player["health"] += change[2]
+                if change[2] > 0:
+                    block("You gain {0} health points! (Now at {1}.)".format(change[2],player["health"])) 
+                else:
+                    block("You lose {0} health points! (Now at {1}.)".format(-change[2],player["health"]))
+            #if it's an NPC:
+            else:
+                npc[change[1]]["health"] += change[3]
+                if change[3] > 0:
+                    block("{0} gains {1} health points! (Now at {2}.)".format(npc[change[1]]["name"],change[3],npc[change[1]]["health"]))
+                else:
+                    block("{0} loses {1} health points! (Now at {2}.)".format(npc[change[1]]["name"],-change[3],npc[change[1]]["health"]))
+        #if it's any other modifier:
+        else:
+            if len(change) == 2:
+                vars()[change[0]] = change[1]
+            elif len(change) == 3:
+                vars()[change[0]][change[1]] = change[2]
+            elif len(change) == 4:
+                vars()[change[0]][change[1]][change[2]] = change[3]
+            elif len(change) == 5:
+                vars()[change[0]][change[1]][change[2]][change[3]] = change[4]
+            elif len(change) == 6:
+                vars()[change[0]][change[1]][change[2]][change[3]][change[4]] = change[5]
+            elif len(change) == 7:
+                vars()[change[0]][change[1]][change[2]][change[3]][change[4]][change[5]] = change[6]
 
 # Go through all the stuff you'd have to print when arriving
 # in a new room
