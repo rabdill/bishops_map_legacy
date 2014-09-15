@@ -64,7 +64,7 @@ def process_changes(changes,rooms,menus,player,npc):
                 if change[3] > 0:
                     block("{0} gains {1} health points! (Now at {2}.)".format(npc[change[1]]["name"],change[3],npc[change[1]]["health"]))
                 else:
-                    block("{0} loses {1} health points! (Now at {2}.)".format(npc[change[1]]["name"],-change[3],npc[change[1]]["health"]))
+                    block("{0} loses {1} health points! (Now at {2}.)".format(npc[change[1]]["name"],change[3],npc[change[1]]["health"]))
         #if it's any other modifier:
         else:
             if len(change) == 2:
@@ -82,7 +82,7 @@ def process_changes(changes,rooms,menus,player,npc):
 
 # Go through all the stuff you'd have to print when arriving
 # in a new room
-def room(location,rooms,player,menus,npc):
+def room(location,rooms,menus,player,npc):
     if "change scenarios" in location:
         check_for_changes(location,rooms,player,menus,npc)
 
@@ -96,11 +96,13 @@ def room(location,rooms,player,menus,npc):
             items(location['items'])
         directions(location,rooms)
 
-def menu(menu):
+def menu(menu,rooms,menus,player,npc):
     block(menu["prompt"])
     print "\t\t\t\t--"
     for choice in menu["choices"]:
         block("{0}: {1}".format(menu["choices"].index(choice), choice))
+    if "changes" in menu:
+        process_changes(menu['changes'],rooms,menus,player,npc)
 
 def store(room,player):
     block(room['greeting'])
@@ -115,8 +117,8 @@ def store(room,player):
 
 def scene(current,rooms,player,menus,npc):
     if current['type'] == "room":
-        room(current,rooms,player,menus,npc)
+        room(current,rooms,menus,player,npc)
     elif current['type'] == "menu":
-        menu(current)
+        menu(current,rooms,menus,player,npc)
     elif current['type'] == "store":
         store(current,player)
