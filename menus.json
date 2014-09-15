@@ -108,7 +108,22 @@
         "Run at one of the horses and scream, trying to startle it.",
         "Throw one of your shoes at the head of a rider."
     ],
-
+    "changes" : [
+        ["rooms", "town square", "items",
+            "green robes", {
+                "status" : "default",
+                "states" : {
+                    "default" : {
+                        "descriptor" : "The corpse of a dark rider is on the ground here, wearing green robes."
+                    },
+                    "take" : {
+                        "descriptor" : "The corpse of a dark rider is on the ground here. His robes have been taken.",
+                        "from" : {"default" : "You reach down and pull off the rider's heavy green robes. They are sturdy and protective."}
+                    }
+                }
+            }
+        ]
+    ],
     "responses" : [
         {
             "premessage" : "Marlo looks over and sees you cowering behind the barrel. She looks back and fires at the blue rider, who flips backward off his horse. The black rider, however, remains unscathed, and raises his sword over his head.\n\tBefore Marlo has time to react, the sword swings down and catches her on the side of the head. The crowd screams, and Marlo falls to the ground, dead.",
@@ -136,20 +151,6 @@
                             "take" : {
                                 "descriptor" : "",
                                 "from" : {"default" : "You grab the hefty pistol and tuck it in your pack."}
-                            }
-                        }
-                    }
-                ],
-                ["rooms", "town square", "items",
-                    "green robes", {
-                        "status" : "default",
-                        "states" : {
-                            "default" : {
-                                "descriptor" : "The corpse of a dark rider is on the ground here, wearing green robes."
-                            },
-                            "take" : {
-                                "descriptor" : "The corpse of a dark rider is on the ground here. His robes have been taken.",
-                                "from" : {"default" : "You reach down and pull off the rider's heavy green robes. They are sturdy and protective."}
                             }
                         }
                     }
@@ -185,6 +186,38 @@
             "menu" : "invasion3"
         }
     ]
+},
+
+"invasion3" : {
+    "type" : "menu",
+    "origin" : "town square",
+    "prompt" : "Marlo turns her attention back to the riders -- she fires again, and the blue rider falls near the green one. The black-robed rider, however, gains on her too quickly for her to reload. He raises his sword as he gallops toward her.\n\tMarlo ducks as he swings, but she's unable to get completely out of the way. The rider's sword smacks into Marlo's wrist; she screams as her left hand flies off and lands in the dust.",
+    "changes" : [
+        ["npc","marlo","health",-40],
+        ["rooms", "town square", "items",
+            "blue robes", {
+                "status" : "default",
+                "states" : {
+                    "default" : {
+                        "descriptor" : "The corpse of a dark rider is on the ground here, wearing blue robes."
+                    },
+                    "take" : {
+                        "descriptor" : "The corpse of a dark rider is on the ground here. His robes have been taken.",
+                        "from" : {"default" : "You reach down and pull off the rider's heavy blue robes. They are sturdy and protective."}
+                    }
+                }
+            }
+        ]
+    ],
+    "choices" : [
+        "Hide behind some barrels of grain on a patio.",
+        "Drag Marlo behind the patio grain barrels.",
+        "Run at the black rider's horse and scream, trying to startle it.",
+        "Throw one of your shoes at the head of the rider."
+    ],
+
+    "responses" : []
+
 }
 
 }
