@@ -98,11 +98,11 @@ def room(location,rooms,menus,player,npc):
 
 def menu(menu,rooms,menus,player,npc):
     block(menu["prompt"])
+    if "changes" in menu:
+        process_changes(menu['changes'],rooms,menus,player,npc)
     print "\t\t\t\t--"
     for choice in menu["choices"]:
         block("{0}: {1}".format(menu["choices"].index(choice), choice))
-    if "changes" in menu:
-        process_changes(menu['changes'],rooms,menus,player,npc)
 
 def store(room,player):
     block(room['greeting'])
