@@ -197,6 +197,7 @@
 
     "items" : {
         "pumpkin" : {
+            "name" : "pumpkin",
             "status" : "default",
             "states" : {
                 "default" : {
@@ -232,6 +233,7 @@
 
     "items" : {
         "cookie" : {
+            "name" : "Mom's cookie",
             "status" : "default",
             "states" : {
                 "default" : {

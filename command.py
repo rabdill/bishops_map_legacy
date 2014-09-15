@@ -74,7 +74,7 @@ def get(current,rooms,menus,player,npc,debug):
                             
                             #special section for "take":
                             if command[0] == 'take':
-                                inventory_add(command[1], 1, player)
+                                inventory_add(current['items'][command[1]]["name"], 1, player)
                                 processed_command = True
                         else:
                             printer.block("You can't {0} that item after you {1} it.".format(command[0], current['items'][command[1]]['status']))

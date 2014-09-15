@@ -111,6 +111,7 @@
     "changes" : [
         ["rooms", "town square", "items",
             "green robes", {
+                "name" : "heavy green robes",
                 "status" : "default",
                 "states" : {
                     "default" : {
@@ -133,6 +134,7 @@
                 ["npc", "marlo", "health", -800],
                 ["rooms", "town square", "items",
                     "marlo's corpse", {
+                        "name" : "Marlo's dead body",
                         "status" : "default",
                         "states" : {
                             "default" : {
@@ -143,6 +145,7 @@
                 ],
                 ["rooms", "town square", "items",
                     "pistol", {
+                        "name" : "Marlo's flintlock",
                         "status" : "default",
                         "states" : {
                             "default" : {
@@ -157,6 +160,7 @@
                 ],
                 ["rooms", "town square", "items",
                     "blue robes", {
+                        "name" : "heavy blue robes",
                         "status" : "default",
                         "states" : {
                             "default" : {
@@ -196,6 +200,7 @@
         ["npc","marlo","health",-40],
         ["rooms", "town square", "items",
             "blue robes", {
+                "name" : "heavy blue robes",
                 "status" : "default",
                 "states" : {
                     "default" : {
@@ -204,6 +209,21 @@
                     "take" : {
                         "descriptor" : "The corpse of a dark rider is on the ground here. His robes have been taken.",
                         "from" : {"default" : "You reach down and pull off the rider's heavy blue robes. They are sturdy and protective."}
+                    }
+                }
+            }
+        ],
+        ["rooms", "town square", "items",
+            "hand", {
+                "name" : "Marlo's severed hand",
+                "status" : "default",
+                "states" : {
+                    "default" : {
+                        "descriptor" : "Marlo's severed hand is in the dust."
+                    },
+                    "take" : {
+                        "descriptor" : "",
+                        "from" : {"default" : "You gingerly pick up Marlo's bloodless hand -- it's much heavier than you expected."}
                     }
                 }
             }
