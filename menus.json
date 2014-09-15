@@ -46,6 +46,15 @@
     "type" : "menu",
     "origin" : "town square",
     "prompt" : "\"Psst,\" you say. \"You OK?\"\n\t\"Yeah,\" she responds. \"My name's Marlo. Do I know you?\"",
+    "changes" : [
+        ["rooms", "town square",
+            "exits", {
+                "north" : "cider brewery front",
+                "south" : "drury lane front",
+                "west"  : "donutorium gates"
+            }],
+        ["rooms", "town square", "entrance text", {"statement" : "You're in the town square, practically deserted after the invasion."}]
+    ],
     "choices" : [
         "Respond: \"No, I don't suppose you would. I left town a long time ago.\"",
         "Respond: \"No need for the third-degree, I was just checking if you were OK.\"",
@@ -130,7 +139,6 @@
             "premessage" : "Marlo looks over and sees you cowering behind the barrel. She looks back and fires at the blue rider, who flips backward off his horse. The black rider, however, remains unscathed, and raises his sword over his head.\n\tBefore Marlo has time to react, the sword swings down and catches her on the side of the head. The crowd screams, and Marlo falls to the ground, dead.",
             "final" : "The black rider continues toward you, but before he can make it much farther, the other two riders emerge from the Donutorium.\n\t\"We got it,\" one of them yells, and the three of them ride back out of the city gates.",
             "changes" : [
-                ["rooms", "town square", "entrance text", {"statement" : "You're in the town square, practically deserted after the invasion."}],
                 ["npc", "marlo", "health", -800],
                 ["rooms", "town square", "items",
                     "marlo's corpse", {
@@ -172,13 +180,6 @@
                             }
                         }
                     }
-                ],
-                ["rooms", "town square",
-                    "exits", {
-                        "north" : "cider brewery front",
-                        "south" : "drury lane front",
-                        "west"  : "donutorium gates"
-                    }
                 ]
             ]
         },
@@ -195,7 +196,7 @@
 "invasion3" : {
     "type" : "menu",
     "origin" : "town square",
-    "prompt" : "Marlo turns her attention back to the riders -- she fires again, and the blue rider falls near the green one. The black-robed rider, however, gains on her too quickly for her to reload. He raises his sword as he gallops toward her.\n\tMarlo ducks as he swings, but she's unable to get completely out of the way. The rider's sword smacks into Marlo's wrist; she screams as her left hand flies off and lands in the dust.",
+    "prompt" : "Marlo turns her attention back to the riders -- she fires again, and the blue rider falls near the green one. The black-robed rider, however, gains on her too quickly for her to reload. He raises his sword as he gallops toward her.\n\tMarlo ducks as he swings, but she's unable to get completely out of the way. The rider's sword smacks into Marlo's wrist; she screams as her hand flies off and lands in the dust.",
     "changes" : [
         ["npc","marlo","health",-40],
         ["rooms", "town square", "items",
@@ -236,7 +237,53 @@
         "Throw one of your shoes at the head of the rider."
     ],
 
-    "responses" : []
+    "responses" : [
+        {
+            "final" : "You run back behind the barrels and peer out at Marlo, who can't reload her gun with only one hand. She stuffs the gun back into her coat and looks around for an alternative, but there isn't anything else in the middle of the square.\n\tThe black rider yells something you can't understand, then charges again at Marlo. He swings the heavy sword again, missing Marlo's head by inches.\n\tAs he passes, Marlo sprints away, between two buildings and into the woods. The black rider appears to contemplate a chase, but before he can make a move, the other two riders emerge from the Donutorium.\n\t\"We got it,\" one of them yells, and the three of them ride back out of the city gates."},
+        {
+            "final" : "You sprint out into the square and grab Marlo's good arm. You pull her behind the barrel.\n\t\"You have to get out of here!\" you say. \"Run!\"\n\tMarlo sprints away, between two buildings and into the woods. The black rider appears to contemplate a chase, but before he can make a move, the other two riders emerge from the Donutorium.\n\t\"We got it,\" one of them yells, and the three of them ride back out of the city gates."
+        },
+        {
+            "premessage" : "You scream at the top of your lungs, running at the black rider. He turns and pulls a hard, black rock from his robe, and throws it at you full-force. Before you can react, it hits you hard in the shoulder. It knocks you to the ground.",
+            "changes" : [
+                ["player", "health", -35],
+                ["rooms", "town square", "items",
+                    "rock", {
+                        "name" : "mysterious hot rock",
+                        "status" : "default",
+                        "states" : {
+                            "default" : {
+                                "descriptor" : "A smooth black rock is on the ground, still curiously hot after being thrown by the black rider."
+                            },
+                            "take" : {
+                                "descriptor" : "",
+                                "from" : {"default" : "You poke at the rock for a moment, ensuring it's cool enough to touch. You pick it up and put it in your pack."}
+                            }
+                        }
+                    }
+                ]
+            ],
+            "final" : "Your shoulder feels burned, and when you look over, you notice the rock in the dust, steaming. You look up at Marlo.\n\t\"Run!\" you yell.\n\tMarlo sprints away, between two buildings and into the woods. The black rider continues toward you, but before he can make it much farther, the other two riders emerge from the Donutorium.\n\t\"We got it,\" one of them yells, and the three of them ride back out of the city gates."
+        },
+        {
+            "premessage" : "You wind up, and throw your shoe at the black rider as hard as you can.\n\tYou miss wide left, and the rider doesn't seem to notice. You look on helplessly as the rider gets closer and closer to Marlo, who's struggling to scramble away but can't quite get up.\n\tThe black rider raises his sword as he approaches, and, with one quick swing, Marlo is dead.",
+            "changes" : [
+                ["npc", "marlo", "health", -190],
+                ["rooms", "town square", "items",
+                    "marlo's corpse", {
+                        "name" : "Marlo's dead body",
+                        "status" : "default",
+                        "states" : {
+                            "default" : {
+                                "descriptor" : "Marlo is on the ground here, dead of a sword wound to the head."
+                            }
+                        }
+                    }
+                ]
+            ],
+            "final" : "The black rider continues toward you, but before he can make it much farther, the other two riders emerge from the Donutorium.\n\t\"We got it,\" one of them yells, and the three of them ride back out of the city gates."
+        }
+    ]
 
 }
 
