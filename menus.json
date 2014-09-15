@@ -32,7 +32,7 @@
     "type" : "store",
     "origin" : "cider brewery", 
     "items" : [
-        {"name" : "Pint of cider",
+        {"name" : "pint of cider",
         "price" : 3,
         "qty available" : 780
         }
@@ -111,9 +111,9 @@
 
     "responses" : [
         {
-            "final" : "Marlo looks over and sees you cowering behind the barrel. She looks back and fires at the blue rider, who flips backward off his horse. The black rider, however, remains unscathed, and raises his sword over his head.\n\tBefore Marlo has time to react, the sword swings down and catches her on the side of the head. The crowd screams, and Marlo falls to the ground, dead.\n\t The black rider continues toward you, but before he can make it much farther, the other two riders emerge from the Donutorium.\n\t\"We got it,\" one of them yells, and the three of them ride back out of the city gates, leaving the two dead riders in the square.",
+            "final" : "Marlo looks over and sees you cowering behind the barrel. She looks back and fires at the blue rider, who flips backward off his horse. The black rider, however, remains unscathed, and raises his sword over his head.\n\tBefore Marlo has time to react, the sword swings down and catches her on the side of the head. The crowd screams, and Marlo falls to the ground, dead.\n\t The black rider continues toward you, but before he can make it much farther, the other two riders emerge from the Donutorium.\n\t\"We got it,\" one of them yells, and the three of them ride back out of the city gates.",
             "changes" : [
-                ["rooms", "town square", "entrance text", {"statement" : "Everybody is like, ohhhh shit."}],
+                ["rooms", "town square", "entrance text", {"statement" : "You're in the town square, practically deserted after the invasion."}],
                 ["npc", "marlo", "health", 0],
                 ["rooms", "town square", "items",
                     "marlo's corpse", {
@@ -121,6 +121,20 @@
                         "states" : {
                             "default" : {
                                 "descriptor" : "Marlo is on the ground here, dead of a sword wound to the head."
+                            }
+                        }
+                    }
+                ],
+                ["rooms", "town square", "items",
+                    "pistol", {
+                        "status" : "default",
+                        "states" : {
+                            "default" : {
+                                "descriptor" : "Marlo's flintlock pistol is in the dirt here."
+                            },
+                            "take" : {
+                                "descriptor" : "",
+                                "from" : {"default" : "You grab the hefty pistol and tuck it in your pack."}
                             }
                         }
                     }
@@ -137,6 +151,27 @@
                                 "from" : {"default" : "You reach down and pull off the rider's heavy green robes. They are sturdy and protective."}
                             }
                         }
+                    }
+                ],
+                ["rooms", "town square", "items",
+                    "blue robes", {
+                        "status" : "default",
+                        "states" : {
+                            "default" : {
+                                "descriptor" : "The corpse of a dark rider is on the ground here, wearing blue robes."
+                            },
+                            "take" : {
+                                "descriptor" : "The corpse of a dark rider is on the ground here. His robes have been taken.",
+                                "from" : {"default" : "You reach down and pull off the rider's heavy blue robes. They are sturdy and protective."}
+                            }
+                        }
+                    }
+                ],
+                ["rooms", "town square",
+                    "exits", {
+                        "north" : "cider brewery front",
+                        "south" : "drury lane front",
+                        "west"  : "donutorium gates"
                     }
                 ]
             ]

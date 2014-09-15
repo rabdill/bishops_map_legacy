@@ -20,7 +20,7 @@
     "exits": {
         "north" : "cider brewery front",
         "south" : "drury lane front",
-        "west"  : "donutorium front"
+        "west"  : "donutorium gates"
     },
 
     "entrance text" : {"statement" : "You are in the Delran town square, which is bustling with activity. It's autumn, and the weekends are always like this -- people traveling to the blacksmith or the cobbler's, or rushing over to the dairy to try to get the last of the week's butter. The sun is out, there are leaves on the ground, and all seems well."},
@@ -35,7 +35,19 @@
                 ["rooms", "town square", "entrance text", {"statement" : "You walk casually into the town square. The sky darkens.\n\tSOMETHING IS AMISS.\n\tYou start looking around at the same time everyone else seems to get a feeling of unease. Suddenly, the clatter of ironclad horse hooves floods the square, and five cloaked riders burst in throught he arches at the front of town, holding long swords with thick, studded gloves. Two head straight for the Donutorium.\n\tThree stay behind, blocking the factory gates and preventing anyone from coming or going from the square. One wears a blue cloak, another green, and the third is in black, with extra armor. All have long cavalry swords.\n\tThe black-robed rider, positioned in front of the Donutorium gates, removes his hood and speaks.\n\t\"Too long has Delran taken its donut success for granted,\" he says. \"As we speak, our colleagues are dismantling your factory. You may be able to repair the machines, but you will never see your glaze crystal again.\"\n\tEveryone stands perfectly still, spread out all over the square. A teenaged girl stands next to you, fidgeting with the sides of her cloak."} ],
                 ["rooms", "town square", "actions", {"talk" : {"girl" : {"menu" : "invasion0"}}}],
                 ["rooms", "town square", "exits", {}],
-                ["rooms", "town square", "change scenarios", []]
+                ["rooms", "town square", "change scenarios", []],
+                ["rooms", "town square", "look", "The town square, abandoned."]
+            ]
+        },
+
+        {
+            "conditions" : [
+                ["rooms", "town square", "look", "The town square, abandoned."]
+            ],
+            "changes" : [
+                ["rooms", "donutorium gates", "entrance text", "The old wooden gates of the Delran Donutorium, hanging broken after the invasion by the dark riders."],
+                ["rooms", "donutorium front", "entrance text", "The front door of the donutorium is boarded up. No one has gone in or out since the invasion."]
+
             ]
         }
 
@@ -130,7 +142,7 @@
 },
 
 
-"donutorium front": {
+"donutorium gates": {
     "type" : "room",
 
     "name" : "the front of the Donutorium",
@@ -138,7 +150,7 @@
     "look" : "The gates of the town donutorium, the most famous donut factory in all the land.",
 
     "exits": {
-        "west" : "donutorium",
+        "west" : "donutorium front",
         "east" : "town square"
     },
 
@@ -150,7 +162,7 @@
 },
 
 
-"donutorium" : {
+"donutorium front" : {
     "type" : "room",
 
     "name" : "the Donutorium",
@@ -158,7 +170,7 @@
     "look" : "The front door of the Donutorium, behind the short wooden fence that's clearly there more for decoration than security.",
 
     "exits" : {
-        "east" : "donutorium front"
+        "east" : "donutorium gates"
     },
 
     "entrance text" : {"statement" : "In the donut factory!"},
