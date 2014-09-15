@@ -189,6 +189,11 @@
                 ["player","health",-8]
             ],
             "menu" : "invasion3"
+        },
+        {******},
+        {
+            "premessage" : "You wind up, and throw your shoe at the blue rider as hard as you can.\n\tYou miss wide left, and the rider doesn't seem to notice.",
+            "menu" : "invasion3"
         }
     ]
 },
