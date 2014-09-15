@@ -1,5 +1,6 @@
 {
     "marlo" : {
+        "name": "Marlo",
         "health" : 100
     },
     "black rider" : {

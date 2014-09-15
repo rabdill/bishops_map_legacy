@@ -1,6 +1,7 @@
 {
 "name" : "Playaa",
 "hometown" : "Delran",
+"health" : 100,
 "inventory" : {
     "coins" : 100
     } 

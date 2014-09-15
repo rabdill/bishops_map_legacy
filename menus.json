@@ -111,10 +111,11 @@
 
     "responses" : [
         {
-            "final" : "Marlo looks over and sees you cowering behind the barrel. She looks back and fires at the blue rider, who flips backward off his horse. The black rider, however, remains unscathed, and raises his sword over his head.\n\tBefore Marlo has time to react, the sword swings down and catches her on the side of the head. The crowd screams, and Marlo falls to the ground, dead.\n\t The black rider continues toward you, but before he can make it much farther, the other two riders emerge from the Donutorium.\n\t\"We got it,\" one of them yells, and the three of them ride back out of the city gates.",
+            "premessage" : "Marlo looks over and sees you cowering behind the barrel. She looks back and fires at the blue rider, who flips backward off his horse. The black rider, however, remains unscathed, and raises his sword over his head.\n\tBefore Marlo has time to react, the sword swings down and catches her on the side of the head. The crowd screams, and Marlo falls to the ground, dead.",
+            "final" : "The black rider continues toward you, but before he can make it much farther, the other two riders emerge from the Donutorium.\n\t\"We got it,\" one of them yells, and the three of them ride back out of the city gates.",
             "changes" : [
                 ["rooms", "town square", "entrance text", {"statement" : "You're in the town square, practically deserted after the invasion."}],
-                ["npc", "marlo", "health", 0],
+                ["npc", "marlo", "health", -800],
                 ["rooms", "town square", "items",
                     "marlo's corpse", {
                         "status" : "default",
@@ -176,9 +177,14 @@
                 ]
             ]
         },
-        {xxxxxxxxxxxxxx**********}
+        {
+            "premessage" : "You reach out and grab Marlo's shoulder. Without looking, she punches you in the jaw. You fall down, then scramble backward behind a big wooden barrel.",
+            "changes" : [
+                ["player","health",-8]
+            ],
+            "menu" : "invasion3"
+        }
     ]
 }
-
 
 }
