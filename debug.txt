@@ -23,3 +23,8 @@ talk girl
 3
 3
 go east
+go east
+go east
+go east
+go east
+go south

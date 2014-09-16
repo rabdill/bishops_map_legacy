@@ -353,12 +353,31 @@
     "look" : "A squat, one-story shack that looks like it may have at one time been quite nice -- that time, however, is certainly not now.",
 
     "exits": {
-        "north" : "hermit path"
+        "north" : "hermit path",
+        "south" : "hermits foyer"
     },
 
     "entrance text" : {"statement" : "You emerge from the small path and walk up onto the rotting porch of the shack. There are hints of a former home here -- glass windows, what might be the remnants of a swing set -- but now, nature is reclaiming the land. Ivy coveres the walls, and a large branch crashed through the roof at some point during the house's many years of disrepair."}
-}
+},
 
+"hermits foyer": {
+    "type" : "room",
+    "name" : "the inside of the shack",
+
+    "look" : "Peering in a window, you see only darkness. What little light the trees let through the canopy, the roof is blocking from inside.",
+
+    "exits": {
+        "north" : "hermits house front"
+    },
+
+    "entrance text" : {"statement" : "You push your way into the house's decrepit foyer, which is dusty, dark, and suspiciously well-organized: mail sits on a small table by the door, photographs are hanging straight on the walls, and a bookshelf is full of alphabetized (but very dirty) tomes."},
+
+    "actions" : {
+        "inspect" : {
+            "mail" : {"statement" : "There are 4 unopened envelopes here, all with postmarks from years ago."}
+        }
+    }
+}
 
 
 }
