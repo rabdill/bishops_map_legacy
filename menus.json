@@ -51,7 +51,8 @@
             "exits", {
                 "north" : "cider brewery front",
                 "south" : "drury lane front",
-                "west"  : "donutorium gates"
+                "west"  : "donutorium gates",
+                "east" : "town gate"
             }],
         ["rooms", "town square", "entrance text", {"statement" : "You're in the town square, practically deserted after the invasion."}]
     ],

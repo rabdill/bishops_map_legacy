@@ -246,6 +246,76 @@
             }
         }
     }
+},
+
+"town gate": {
+    "type" : "room",
+    "name" : "the town gate",
+
+    "look" : "The town's heavy iron gates.",
+
+    "exits": {
+        "west"  : "town square",
+        "east" : "woods0"
+    },
+
+    "entrance text" : {"statement" : "You are standing in front of the town's 15-foot iron gates, holdovers of a more violent age. They've collected so much rust since the last time they were closed that they're probably stuck open forever."}
+},
+
+"woods0": {
+    "type" : "room",
+    "name" : "the edge of the Hecate Forest",
+
+    "look" : "The line of trees separating Delran from the vast forest beyond.",
+
+    "exits": {
+        "west"  : "town gate",
+        "east" : "woods1"
+    },
+
+    "entrance text" : {"statement" : "You're at the western terminus of the long, winding trail through the Hecate Forest."}
+},
+
+"woods1": {
+    "type" : "room",
+    "name" : "the trail leading into the Hecate forest",
+
+    "look" : "A small gravel trail, leading deep into the forest.",
+
+    "exits": {
+        "west"  : "woods0",
+        "south" : "woods2"
+    },
+
+    "entrance text" : {"statement" : "You're in the woods."}
+},
+
+"woods2": {
+    "type" : "room",
+    "name" : "more trail, through a thick part of the forest",
+
+    "look" : "A patch of trail like any other.",
+
+    "exits": {
+        "north" : "woods2",
+        "east" : "woods3"
+    },
+
+    "entrance text" : {"statement" : "You're in the woods. The trees here are so thick that you can only see a few yards off of the path before everything is obscured by leaves."}
+},
+
+"woods3": {
+    "type" : "room",
+    "name" : "more of the Hecate Forest trail",
+
+    "look" : "A patch of trail like any other.",
+
+    "exits": {
+        "west" : "woods2",
+        "south" : "woods4"
+    },
+
+    "entrance text" : {"statement" : "You're in the woods, walking along the winding main trail through the Hecate."}
 }
 
 }
