@@ -297,7 +297,7 @@
     "look" : "A patch of trail like any other.",
 
     "exits": {
-        "north" : "woods2",
+        "north" : "woods1",
         "east" : "woods3"
     },
 

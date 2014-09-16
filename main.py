@@ -17,10 +17,12 @@ if len(sys.argv) > 1:
 print "\n\nBishop's Map v0.1.0\n\n"
 
 first_scene="lobby"
-
-printer.scene(rooms[first_scene],rooms,player,menus,npc)
-next_move = command.get(rooms[first_scene],rooms,menus,player,npc,debug)
+next_move = rooms[first_scene]
+last_move = rooms[first_scene]
+printer.scene(next_move,rooms,player,menus,npc,last_move)
+next_move = command.get(next_move,rooms,menus,player,npc,debug)
 
 while True:
-    printer.scene(next_move,rooms,player,menus,npc)
+    printer.scene(next_move,rooms,player,menus,npc,last_move)
+    last_move = next_move
     next_move = command.get(next_move,rooms,menus,player,npc,debug)

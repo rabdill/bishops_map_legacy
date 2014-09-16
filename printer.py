@@ -10,9 +10,12 @@ def block(text):
             print "\n\t".join( textwrap.wrap(line,50) ),"\n"
 
 # Print all the exits of a room
-def directions(location,rooms):
+def directions(location,rooms,previous_location):
     for direction in location['exits']:
-       block("To the {0} is {1}.".format(direction, rooms[location['exits'][direction]]['name']))
+        if previous_location['type'] == "room" and rooms[location['exits'][direction]] == previous_location:
+            block("To the {0} is where you came from: {1}.".format(direction, rooms[location['exits'][direction]]['name']))
+        else:
+            block("To the {0} is {1}.".format(direction, rooms[location['exits'][direction]]['name']))
 
 def items(items):
     for item in items:
@@ -82,7 +85,7 @@ def process_changes(changes,rooms,menus,player,npc):
 
 # Go through all the stuff you'd have to print when arriving
 # in a new room
-def room(location,rooms,menus,player,npc):
+def room(location,rooms,menus,player,npc,previous_location):
     if "change scenarios" in location:
         check_for_changes(location,rooms,player,menus,npc)
 
@@ -94,7 +97,7 @@ def room(location,rooms,menus,player,npc):
         block(location['entrance text']['statement'])
         if 'items' in location:
             items(location['items'])
-        directions(location,rooms)
+        directions(location,rooms,previous_location)
 
 def menu(menu,rooms,menus,player,npc):
     block(menu["prompt"])
@@ -115,9 +118,9 @@ def store(room,player):
         print "\t{0}: {1} - {2} coins\n\t\t({3} available)".format(room['items'].index(item), item['name'],item['price'],item['qty available'] )
 
 
-def scene(current,rooms,player,menus,npc):
+def scene(current,rooms,player,menus,npc,previous_location):
     if current['type'] == "room":
-        room(current,rooms,menus,player,npc)
+        room(current,rooms,menus,player,npc,previous_location)
     elif current['type'] == "menu":
         menu(current,rooms,menus,player,npc)
     elif current['type'] == "store":
