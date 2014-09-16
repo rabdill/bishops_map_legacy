@@ -284,7 +284,7 @@
 
     "exits": {
         "west"  : "woods0",
-        "south" : "woods2"
+        "east" : "woods2"
     },
 
     "entrance text" : {"statement" : "You're in the woods."}
@@ -297,7 +297,7 @@
     "look" : "A patch of trail like any other.",
 
     "exits": {
-        "north" : "woods1",
+        "west" : "woods1",
         "east" : "woods3"
     },
 
@@ -316,6 +316,49 @@
     },
 
     "entrance text" : {"statement" : "You're in the woods, walking along the winding main trail through the Hecate."}
+},
+
+"woods4": {
+    "type" : "room",
+    "name" : "more of the Hecate Forest trail",
+
+    "look" : "A patch of trail like any other.",
+
+    "exits": {
+        "north" : "woods3",
+        "south" : "hermit path"
+    },
+
+    "entrance text" : {"statement" : "You're in the woods, walking along the winding main trail through the Hecate."}
+},
+
+"hermit path": {
+    "type" : "room",
+    "name" : "a tiny, overgrown path, leading through the trees",
+
+    "look" : "You can't really tell where it goes, but a small offshoot of the trail meanders off and down a small hill.",
+
+    "exits": {
+        "north" : "woods4",
+        "south" : "hermits house front"
+    },
+
+    "entrance text" : {"statement" : "You push aside some branches and step cautiously down the path, which is strewn with loose rocks and brambles. Someone cleared this path once, but it was long ago."}
+},
+
+"hermits house front": {
+    "type" : "room",
+    "name" : "a broken-down shack",
+
+    "look" : "A squat, one-story shack that looks like it may have at one time been quite nice -- that time, however, is certainly not now.",
+
+    "exits": {
+        "north" : "hermit path"
+    },
+
+    "entrance text" : {"statement" : "You emerge from the small path and walk up onto the rotting porch of the shack. There are hints of a former home here -- glass windows, what might be the remnants of a swing set -- but now, nature is reclaiming the land. Ivy coveres the walls, and a large branch crashed through the roof at some point during the house's many years of disrepair."}
 }
+
+
 
 }
