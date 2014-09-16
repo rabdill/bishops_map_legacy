@@ -93,7 +93,10 @@ def get(current,rooms,menus,player,npc,debug):
                     if command[1] in current['actions'][command[0]]:
                         #if the result is a menu:
                         if "menu" in current['actions'][command[0]][command[1]]:
-                            return menus[current['actions'][command[0]][command[1]]["menu"]] 
+                            return menus[current['actions'][command[0]][command[1]]["menu"]]
+                        elif "statement" in current['actions'][command[0]][command[1]]:
+                            printer.block(current['actions'][command[0]][command[1]]["statement"])
+                            processed_command = True
             
             if command[0] == 'go':
                 if command[1] in current['exits']:
