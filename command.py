@@ -89,6 +89,9 @@ def get(current,rooms,menus,player,npc,debug):
                         if "disallowed states" in current['items'][command[1]] and command[0] in current['items'][command[1]]['disallowed states']:
                             printer.block(current['items'][command[1]]['disallowed states'][command[0]])
                             processed_command = True
+                        elif command[0] == "inspect":
+                            printer.block("Nothing spectacular about it.")
+                            processed_command = True
                         else:
                             printer.block("Sorry, you can't {} that.".format(command[0]))
                             processed_command = True
