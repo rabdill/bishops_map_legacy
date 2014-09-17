@@ -86,7 +86,7 @@ def get(current,rooms,menus,player,npc,debug):
                             processed_command = True
                     else:
                         #If there is a specific message to tell the user the action can't be done:
-                        if command[0] in current['items'][command[1]]['disallowed states']:
+                        if "disallowed states" in current['items'][command[1]] and command[0] in current['items'][command[1]]['disallowed states']:
                             printer.block(current['items'][command[1]]['disallowed states'][command[0]])
                             processed_command = True
                         else:
