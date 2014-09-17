@@ -76,6 +76,11 @@ def get(current,rooms,menus,player,npc,debug):
                             if command[0] == 'take':
                                 inventory_add(current['items'][command[1]]["name"], 1, player)
                                 processed_command = True
+
+                            #if acting on the object changes other things:
+                            if "changes" in current['items'][command[1]]['states'][command[0]]:
+                                printer.process_changes(current['items'][command[1]]['states'][command[0]]['changes'],rooms,menus,player,npc)
+
                         else:
                             printer.block("You can't {0} that item after you {1} it.".format(command[0], current['items'][command[1]]['status']))
                             processed_command = True
@@ -126,7 +131,7 @@ def get(current,rooms,menus,player,npc,debug):
                 
             else:
                 if processed_command == False:
-                    printer.block("Sorry, unrecognized command.") 
+                    printer.block("Sorry, unrecognized command.")
                     processed_command = True
 
 
