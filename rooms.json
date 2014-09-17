@@ -446,7 +446,8 @@
 
     "exits": {
         
-        "west" : "hermits foyer"
+        "west" : "hermits foyer",
+        "south" : "hermits bedroom"
     },
 
     "entrance text" : {"statement" : ""},
@@ -466,6 +467,20 @@
             }
         }
     }
+},
+
+"hermits bedroom": {
+    "type" : "room",
+    "name" : "another room behind a small door",
+
+    "look" : "The door is closed; you can't see anything but a sliver of sunlight escaping from under the door.",
+
+    "exits": {
+        "north" : "hermits hallway"
+    },
+
+    "entrance text" : {"statement" : "You cautiously open the door; its hinges creak and shudder, pulling against years of grit and dust. You discover the door leads to a small bedroom -- the twin-size bed is made neatly with sun-faded blankets, and a book with a black cover sits on the pillowcase."}
 }
+
 
 }
