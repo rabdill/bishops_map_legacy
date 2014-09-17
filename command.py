@@ -85,8 +85,13 @@ def get(current,rooms,menus,player,npc,debug):
                             printer.block("You can't {0} that item after you {1} it.".format(command[0], current['items'][command[1]]['status']))
                             processed_command = True
                     else:
-                        printer.block("Sorry, you can't {} that.".format(command[0]))
-                        processed_command = True
+                        #If there is a specific message to tell the user the action can't be done:
+                        if command[0] in current['items'][command[1]]['disallowed states']:
+                            printer.block(current['items'][command[1]]['disallowed states'][command[0]])
+                            processed_command = True
+                        else:
+                            printer.block("Sorry, you can't {} that.".format(command[0]))
+                            processed_command = True
 
             ####
             # "Check actions" block above the generic commands so you can override
