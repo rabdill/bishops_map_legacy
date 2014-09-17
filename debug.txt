@@ -28,3 +28,5 @@ go east
 go east
 go east
 go south
+go south
+go south

@@ -326,13 +326,13 @@
 
     "exits": {
         "north" : "woods3",
-        "south" : "hermit path"
+        "south" : "hermits path"
     },
 
     "entrance text" : {"statement" : "You're in the woods, walking along the winding main trail through the Hecate."}
 },
 
-"hermit path": {
+"hermits path": {
     "type" : "room",
     "name" : "a tiny, overgrown path, leading through the trees",
 
@@ -348,12 +348,12 @@
 
 "hermits house front": {
     "type" : "room",
-    "name" : "a broken-down shack",
+    "name" : "the front porch of a broken-down shack",
 
     "look" : "A squat, one-story shack that looks like it may have at one time been quite nice -- that time, however, is certainly not now.",
 
     "exits": {
-        "north" : "hermit path",
+        "north" : "hermits path",
         "south" : "hermits foyer"
     },
 
@@ -367,17 +367,105 @@
     "look" : "Peering in a window, you see only darkness. What little light the trees let through the canopy, the roof is blocking from inside.",
 
     "exits": {
-        "north" : "hermits house front"
+        "north" : "hermits house front",
+        "west" : "hermits farm",
+        "east" : "hermits hallway"
     },
 
     "entrance text" : {"statement" : "You push your way into the house's decrepit foyer, which is dusty, dark, and suspiciously well-organized: mail sits on a small table by the door, photographs are hanging straight on the walls, and a bookshelf is full of alphabetized (but very dirty) tomes."},
 
     "actions" : {
         "inspect" : {
-            "mail" : {"statement" : "There are 4 unopened envelopes here, all with postmarks from years ago."}
+            "mail" : {"statement" : "There are four unopened envelopes sitting on the table, postmarked years and years ago. The name on them is \"Louis Turner\" -- but the address is your parents'."}
+        }
+    }
+},
+
+"hermits farm": {
+    "type" : "room",
+    "name" : "a small garden, hidden in the weeds",
+
+    "look" : "The side yard is full of weeds, but there also seem to be some vegetables mixed in.",
+
+    "exits": {
+        "east" : "hermits foyer"
+    },
+
+    "entrance text" : {"statement" : "You push through the rickety side door and into the garden -- it's as overgrown as the rest of the place, but somebody's tended to the area enough that there's room for some plants that are actually edible."},
+
+    "items" : {
+        "cucumber" : {
+            "name" : "vegetable",
+            "status" : "default",
+            "states" : {
+                "default" : {
+                    "descriptor" : "A cucumber sits in the dirt."
+                },
+                "take" : {
+                    "descriptor" : "",
+                    "from" : {"default" : "You take the cucumber."}
+                }
+            }
+        },
+
+        "tomato" : {
+            "name" : "vegetable",
+            "status" : "default",
+            "states" : {
+                "default" : {
+                    "descriptor" : "A tomato sits in the dirt."
+                },
+                "take" : {
+                    "descriptor" : "",
+                    "from" : {"default" : "You take the tomato."}
+                }
+            }
+        },
+
+        "squash" : {
+            "name" : "vegetable",
+            "status" : "default",
+            "states" : {
+                "default" : {
+                    "descriptor" : "A squash sits in the dirt."
+                },
+                "take" : {
+                    "descriptor" : "",
+                    "from" : {"default" : "You take the squash."}
+                }
+            }
+        }
+    }
+},
+
+"hermits hallway": {
+    "type" : "room",
+    "name" : "a small, dark hallway",
+
+    "look" : "A skinny hallway with a single door at the end.",
+
+    "exits": {
+        
+        "west" : "hermits foyer"
+    },
+
+    "entrance text" : {"statement" : ""},
+
+    "items" : {
+        "photo" : {
+            "name" : "old, old photo",
+            "status" : "default",
+            "states" : {
+                "default" : {
+                    "descriptor" : "You can't see very well, but there's an old photo hanging on the wall. There are five people in it: an old, old man, two children (a girl and a boy), a middle-aged woman, and a young man, about 20 years old."
+                },
+                "take" : {
+                    "descriptor" : "You're in a dark hallway.",
+                    "from" : {"default" : "You take the photo."}
+                }
+            }
         }
     }
 }
-
 
 }
