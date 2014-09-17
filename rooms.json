@@ -479,8 +479,43 @@
         "north" : "hermits hallway"
     },
 
-    "entrance text" : {"statement" : "You cautiously open the door; its hinges creak and shudder, pulling against years of grit and dust. You discover the door leads to a small bedroom -- the twin-size bed is made neatly with sun-faded blankets, and a book with a black cover sits on the pillowcase."}
-}
+    "entrance text" : {"statement" : "You cautiously open the door; its hinges creak and shudder, pulling against years of grit and dust. You discover the door leads to a small bedroom -- the twin-size bed is made neatly with sun-faded blankets."},
 
+    "items" : {
+        "book" : {
+            "name" : "purple book",
+            "status" : "default",
+            "states" : {
+                "default" : {
+                    "descriptor" : "A small purple book sits on the pillowcase."
+                },
+
+                "inspect" : {
+                    "descriptor" : "",
+                    "from" : {"default" : "You pick up the book and open it gently -- the spine and back cover make a quiet cracking sound... no one's opened this for a long time.\n\tYou turn a few pages and glance at the words. It seems like some kind of nursery rhyme. Then, however, you turn another page -- and reveal a hidden compartment, carved into the middle of the book. Inside the tiny rectangle is a small metal key."},
+                    "changes" : [
+                        ["rooms", "hermits bedroom", "items", "key",  {
+                            "name" : "small key",
+                            "status" : "default",
+                            "states" : {
+                                "default" : {
+                                    "descriptor" : ""
+                                },
+                                "take" : {
+                                    "descriptor" : "",
+                                    "from" : {"default" : "You take the key."}
+                                }
+                            }
+                        }
+                        ]
+                    ]
+                }
+            },
+            "disallowed states" : {
+                "take" : "You pick up the book to toss it in your pack, but something seems strange about it. It's lighter than it should be..."
+            }
+        }
+    }
+}
 
 }
