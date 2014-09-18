@@ -170,12 +170,36 @@
     "look" : "The front door of the Donutorium, behind the short wooden fence that's clearly there more for decoration than security.",
 
     "exits" : {
-        "east" : "donutorium gates"
+        "east" : "donutorium gates",
+        "west" : "donutorium"
     },
 
-    "entrance text" : {"statement" : "In the donut factory!"},
+    "entrance text" : {"statement" : "The elaborately carved front door of the Delran Donutorium."},
 
     "visited" : 0
+
+},
+
+"donutorium" : {
+    "type" : "room",
+
+    "name" : "the lobby of the Donutorium",
+
+    "look" : "The window next to the door is small, so you can't see much. The lobby is definitely large, and you can see the outlines of what must be people moving around.",
+
+    "exits" : {
+        "east" : "donutorium front"
+    },
+
+    "entrance text" : {"statement" : "You push open the door to the Donutorium, revealing the beautiful foyer and donut shop that's been run out of the building since the business started so long ago. People are pushing carts of donuts back and forth, clipboards are passed between busy workers. A clerk stands behind the donut counter."},
+
+    "visited" : 0,
+
+    "actions" : {
+        "talk" : {
+            "clerk" : {"menu" : "donutorium"}
+        }
+    }
 
 },
 
@@ -326,7 +350,8 @@
 
     "exits": {
         "north" : "woods3",
-        "south" : "hermits path"
+        "south" : "hermits path",
+        "east" : "woods5"
     },
 
     "entrance text" : {"statement" : "You're in the woods, walking along the winding main trail through the Hecate."}
@@ -483,16 +508,18 @@
 
     "items" : {
         "book" : {
-            "name" : "purple book",
+            "name" : "purple book with hidden compartment",
             "status" : "default",
             "states" : {
                 "default" : {
                     "descriptor" : "A small purple book sits on the pillowcase."
                 },
-
                 "inspect" : {
                     "descriptor" : "",
-                    "from" : {"default" : "You pick up the book and open it gently -- the spine and back cover make a quiet cracking sound... no one's opened this for a long time.\n\tYou turn a few pages and glance at the words. It seems like some kind of nursery rhyme. Then, however, you turn another page -- and reveal a hidden compartment, carved into the middle of the book. Inside the tiny rectangle is a small metal key."},
+                    "from" : {
+                        "default" : "You pick up the book and open it gently -- the spine and back cover make a quiet cracking sound... no one's opened this for a long time.\n\tYou turn a few pages and glance at the words. It seems like some kind of nursery rhyme. Then, however, you turn another page -- and reveal a hidden compartment, carved into the middle of the book. Inside the tiny rectangle is a small metal key.",
+                        "inspect" : "You pick up the book and open it gently -- the spine and back cover make a quiet cracking sound... no one's opened this for a long time.\n\tYou turn a few pages and glance at the words. It seems like some kind of nursery rhyme. Then, however, you turn another page -- and reveal a hidden compartment, carved into the middle of the book. Inside the tiny rectangle is a small metal key."
+                    },
                     "changes" : [
                         ["rooms", "hermits bedroom", "items", "key",  {
                             "name" : "small key",
@@ -503,7 +530,20 @@
                                 },
                                 "take" : {
                                     "descriptor" : "",
-                                    "from" : {"default" : "You take the key."}
+                                    "from" : {"default" : "You take the key."},
+                                    "changes" : [
+                                        ["rooms", "hermits bedroom", "items", "book","disallowed states",{}],
+                                        ["rooms", "hermits bedroom", "items", "book", "states", "take", {
+                                            "descriptor" : "",
+                                            "from" : {"inspect" : "You take the book."}
+                                        }
+                                        ],
+                                        ["rooms", "hermits bedroom", "items", "book", "states", "inspect", {
+                                            "descriptor" : "",
+                                            "from" : {"inspect" : "A creaky old book with a tidy little hiding spot inside."}
+                                        }
+                                        ]
+                                    ]
                                 }
                             }
                         }
@@ -516,6 +556,62 @@
             }
         }
     }
+},
+
+"woods5": {
+    "type" : "room",
+    "name" : "more of the Hecate Forest trail",
+
+    "look" : "A patch of trail like any other.",
+
+    "exits": {
+        "west" : "woods4",
+        "east" : "woods6"
+    },
+
+    "entrance text" : {"statement" : "You're in the woods, walking along the winding main trail through the Hecate."}
+},
+
+
+"woods6": {
+    "type" : "room",
+    "name" : "a curve in the trail",
+
+    "look" : "A patch of trail like any other, this one turning sharply north.",
+
+    "exits": {
+        "west" : "woods5",
+        "north" : "woods7"
+    },
+
+    "entrance text" : {"statement" : "You're in the woods, walking along the winding main trail through the Hecate."}
+},
+
+"woods7": {
+    "type" : "room",
+    "name" : "more of the trail",
+
+    "look" : "A patch of trail like any other.",
+
+    "exits": {
+        "south" : "woods6",
+        "north" : "woods8"
+    },
+
+    "entrance text" : {"statement" : "You're in the woods, walking along the winding main trail through the Hecate."}
+},
+
+"woods8": {
+    "type" : "room",
+    "name" : "another stretch of trail",
+
+    "look" : "A patch of trail like any other.",
+
+    "exits": {
+        "south" : "woods7"
+    },
+
+    "entrance text" : {"statement" : "You're in the woods, walking along the winding main trail through the Hecate."}
 }
 
 }
