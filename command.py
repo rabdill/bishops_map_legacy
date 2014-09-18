@@ -31,28 +31,12 @@ def get(current,rooms,menus,player,npc,debug):
             #whether the player has been told the results of a command           
             processed_command = False
             
-            command = get_text("What do you want to do? > ", debug).split() # makes it a list
+            command = get_text("What do you want to do? > ", debug)
             # Strip out the articles:
-            try:
-                command.remove("the")
-            except Exception: 
-                pass
-            try:
-                command.remove("to")
-            except Exception: 
-                pass
-            try:
-                command.remove("a")
-            except Exception: 
-                pass
-            try:
-                command.remove("an")
-            except Exception: 
-                pass
-            try:
-                command.remove("in")
-            except Exception: 
-                pass
+            articles = ["the","to","a","an","in"]
+            for article in articles:
+                command.replace(article,"")
+            command = command.split() # makes the command a list
 
             #check to see if the direct object is 2 words instead of 1:
             if len(command) > 2:
@@ -60,6 +44,7 @@ def get(current,rooms,menus,player,npc,debug):
 
 
             #check if the verb is something that can be done to an item in the room:
+            #**add "continue" statements here instead of nested ifs***
             if 'items' in current: #if the room has items
                 #if the room has this item:
                 if command[1] in current['items']:
