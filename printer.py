@@ -92,7 +92,7 @@ def room(location,rooms,menus,player,npc,previous_location):
     location['visited'] = 1
     
     if "menu" in location['entrance text']: #if there's a menu, it takes precedence over everything else
-        menu(menus[location['entrance text']['menu']])
+        menu(menus[location['entrance text']['menu']],rooms,menus,player,npc)
     elif "statement" in location['entrance text']:
         block(location['entrance text']['statement'])
         if 'items' in location:

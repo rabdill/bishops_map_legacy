@@ -31,21 +31,40 @@ def get(current,rooms,menus,player,npc,debug):
             #whether the player has been told the results of a command           
             processed_command = False
             
-            command = get_text("What do you want to do? > ", debug)
-            # Strip out the articles:
-            articles = ["the","to","a","an","in"]
-            for article in articles:
-                command.replace(article,"")
-            command = command.split() # makes the command a list
+            command = get_text("What do you want to do? > ", debug).split() # makes the command a list
 
+            # Strip out the articles:
+            #*Make this less ugly
+            articles = ["the", "to", "a", "an", "in", "out"]
+            for article in articles:
+                i = 0
+                while i < len(command): 
+                    if command[i] == article:
+                        command.pop(i)
+                    i += 1
             #check to see if the direct object is 2 words instead of 1:
             if len(command) > 2:
-                command[1] += " " + command[2] 
+                command[1] += " " + command[2]
+                #*add a line here to delete what used to be command[2]
 
+            ####
+            # "Check actions" block above the generic commands so you can override
+            # the generic commands in the actions section.
+
+            if 'actions' in current: #if the room has possible actions
+                if command[0] in current['actions']: #if the action is possible
+                    #if the noun is a possible recipient of the verb:
+                    if command[1] in current['actions'][command[0]]:
+                        #if the result is a menu:
+                        if "menu" in current['actions'][command[0]][command[1]]:
+                            return menus[current['actions'][command[0]][command[1]]["menu"]]
+                        elif "statement" in current['actions'][command[0]][command[1]]:
+                            printer.block(current['actions'][command[0]][command[1]]["statement"])
+                            processed_command = True
 
             #check if the verb is something that can be done to an item in the room:
             #**add "continue" statements here instead of nested ifs***
-            if 'items' in current: #if the room has items
+            if 'items' in current and processed_command == False: #if the room has items
                 #if the room has this item:
                 if command[1] in current['items']:
                     #if the item can be put into the proposed state:
@@ -80,22 +99,6 @@ def get(current,rooms,menus,player,npc,debug):
                         else:
                             printer.block("Sorry, you can't {} that.".format(command[0]))
                             processed_command = True
-
-            ####
-            # "Check actions" block above the generic commands so you can override
-            # the generic commands in the actions section.
-
-            if 'actions' in current: #if the room has possible actions
-                if command[0] in current['actions']: #if the action is possible
-                    #if the noun is a possible recipient of the verb:
-                    if command[1] in current['actions'][command[0]]:
-                        #if the result is a menu:
-                        if "menu" in current['actions'][command[0]][command[1]]:
-                            return menus[current['actions'][command[0]][command[1]]["menu"]]
-                        elif "statement" in current['actions'][command[0]][command[1]]:
-                            printer.block(current['actions'][command[0]][command[1]]["statement"])
-                            processed_command = True
-            
             if command[0] == 'go':
                 if command[1] in current['exits']:
                     return rooms[current['exits'][command[1]]]
@@ -104,7 +107,7 @@ def get(current,rooms,menus,player,npc,debug):
                         printer.block("That's not a direction in which you can go.")
                         processed_command = True
             elif command[0] == 'look':
-                if command[1] in current['exits']:
+                if command[1] in current['exits'] and processed_command is False:
                     printer.block(rooms[current['exits'][command[1]]]['look'])
                     processed_command = True
                 elif command[1] == 'around':
