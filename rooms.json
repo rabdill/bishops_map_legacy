@@ -603,15 +603,261 @@
 
 "woods8": {
     "type" : "room",
-    "name" : "another stretch of trail",
+    "name" : "a gap in the trees",
 
-    "look" : "A patch of trail like any other.",
+    "look" : "The path disappears around a corner. It looks like there is some kind of clearing ahead.",
 
     "exits": {
-        "south" : "woods7"
+        "south" : "woods7",
+        "east" : "appleton northwest"
     },
 
-    "entrance text" : {"statement" : "You're in the woods, walking along the winding main trail through the Hecate."}
+    "entrance text" : {"statement" : "You are at the edge of a clearing - on one side of you, the expansive forest. On the other, what appears to be a small farm town."},
+
+     "items" : {
+        "sign" : {
+            "name" : "Appleton welcome sign",
+            "status" : "default",
+            "states" : {
+                "default" : {
+                    "descriptor" : "A small sign on a post is nearby."
+                },
+                "inspect" : {
+                    "descriptor" : "",
+                    "from" : {
+                        "default" : "It says 'Welcome to Appleton.'"
+                    },
+                    "changes" : [
+                        ["rooms", "woods8", "items", "sign", "status", "default"]
+                    ]
+                }
+            },
+            "disallowed states" : {
+                "take" : "It's firmly rooted in the ground. Plus, what would you do with it?",
+                "eat" : "You take a nibble. It tastes terrible."
+            }
+        }
+    }
+},
+
+"appleton northwest" : {
+    "type" : "room",
+    "name" : "the entrance to town",
+    "look" : "A tall wooden archway stretches over the path separating the town from the Hecate Forest.",
+    "exits" : {
+        "west" : "woods8",
+        "east" : "main street0"
+    },
+
+    "entrance text" : {"statement" : "You stroll beneath the large wooden arch at Appleton's western entrance. Vines climb halfway up the columns."},
+
+    "items" : {
+        "flower" : {
+            "name" : "sunflower",
+            "status" : "default",
+            "states" : {
+                "default" : {
+                    "descriptor" : "There is a large sunflower at the base of the arch."
+                },
+                "take" : {
+                    "descriptor" : "",
+                    "from" : {
+                        "default" : "You gently pull the sunflower from the garden and tuck it into your pack. The top sticks out just above your shoulder."
+                    }
+                }
+            }
+        }
+    }
+},
+
+"main street0" : {
+    "type" : "room",
+    "name" : "the end of Main Street",
+    "look" : "The northern terminus of Main Street, Appleton's central thruway.",
+    "exits" : {
+        "west" : "appleton northwest",
+        "south" : "main street1"
+    },
+
+    "entrance text" : {"statement" : "You're at the northern end of Appleton's Main Street. This end of town is quiet, and made up mostly of people's homes."}
+},
+
+"main street1" : {
+    "type" : "room",
+    "name" : "another stretch of Main Street",
+    "look" : "A portion of main street lined with homes.",
+    "exits" : {
+        "north" : "main street0",
+        "west" : "hobos house front"
+    },
+
+    "entrance text" : {"statement" : "You're at the northern end of Appleton's Main Street. This end of town is quiet, and made up mostly of people's homes."}
+},
+
+"hobos house front" : {
+    "type" : "room",
+    "name" : "an abandoned house",
+    "look" : "The slowly decaying shell of what was once a modest house. A \"no trespassing\" sign is on the door, but you can't see how it would be enforced.",
+    "exits" : {
+        "east" : "main street1",
+        "south" : "hobos house corner"
+    },
+
+    "entrance text" : {"statement" : "You step carefully onto the rickety porch. It creaks under your weight, though it seems very possible it was creaking before you even got there.\n\tTo the west is the front door of the house."},
+
+    "actions" : {
+        "go" : {
+            "west" : {"statement" : "You push on the door as hard as you can - it won't budge."}
+        }
+    }
+},
+
+"hobos house corner" : {
+    "type" : "room",
+    "name" : "the corner of the abandoned house's porch",
+    "look" : "The end of the house's long porch, wrapping around the side.",
+    "exits" : {
+        "north" : "hobos house front",
+        "west" : "hobos house side"
+    },
+
+    "entrance text" : {"statement" : "A short hop down from the abandoned house's porch, you're at the southeast corner of the building, standing in the weeds."}
+},
+
+"hobos house side" : {
+    "type" : "room",
+    "name" : "the side of the abandoned house",
+    "look" : "The side of the house, in equally bad shape to the rest of the place. It looks like a window may be on the side of the building.",
+    "exits" : {
+        "east" : "hobos house corner"
+    },
+
+    "entrance text" : {"statement" : "You're on the side of the house, in a prickly, muddy patch that looks like it used to be some kind of garden. It doesn't smell like flowers anymore."},
+
+     "items" : {
+        "window" : {
+            "name" : "window",
+            "status" : "close",
+            "states" : {
+                "close" : {
+                    "descriptor" : "A surprisingly wide window is in the wall here, at about eye level. It's closed, but it's not apparent if it's stuck that way.",
+                    "from" : {
+                        "open" : "You close it.",
+                        "close" : "It's already closed, silly."
+                    },
+
+                    "changes" : [
+                        ["rooms", "hobos house side", "actions", "look", "window", {"statement" : "You wipe some crud off of the glass and squint inside. It's the kitchen, you can tell that much. Other than that, you can't see well enough to tell."}],
+                        ["rooms", "hobos house side", "actions", "look", "north", {"statement" : "You wipe some crud off of the glass and squint inside. It's the kitchen, you can tell that much. Other than that, you can't see well enough to tell."}],
+                        ["rooms", "hobos house side", "exits", {"east" : "hobos house corner"}]
+                    ]
+                },
+                "open" : {
+                    "descriptor" : "An open window is here, just a little bit wider than a person.",
+                    "from" : {
+                        "close" : "You grip the bottom of the window as best you can and give it a yank. It starts to move; another tough push and it's open. To the north is the inside of the house.",
+                        "open" : "It's already as open as it's going to get."
+                    },
+
+                    "changes" : [
+                        ["rooms", "hobos house side", "actions", "look", "window", {"statement" : "You can see a small kitchen table inside, and a battered ice chest. The counter is littered with old pots and pans."}],
+                        ["rooms", "hobos house side", "actions", "look", "north", {"statement" : "You can see a small kitchen table inside, and a battered ice chest. The counter is littered with old pots and pans."}],
+                        ["rooms", "hobos house side", "exits", {"east" : "hobos house corner", "north" : "hobos kitchen"}]
+                    ]
+                }
+            },
+            "disallowed states" : {
+            "break" : "Nobody has noticed your snooping so far, but shattering an old window in the middle of a neighborhood would probably change that."
+            }
+        }
+    },
+
+    "actions" : {
+        "look" : {
+            "window" : {"statement" : "You wipe some crud off of the glass and squint inside. It's the kitchen, you can tell that much. Other than that, you can't see well enough to tell."},
+            "north" : {"statement" : "You wipe some crud off of the glass and squint inside. It's the kitchen, you can tell that much. Other than that, you can't see well enough to tell."}
+        }
+    }
+},
+
+"hobos kitchen" : {
+    "type" : "room",
+    "name" : "the kitchen",
+    "look" : "You can see a small kitchen table inside, and a battered ice chest. The counter is littered with old pots and pans.",
+    "exits" : {
+        "south" : "hobos house side",
+        "west" : "hobos living room"
+    },
+
+    "entrance text" : {"statement" : "Ykitchen"
+    },
+    "items" : {
+        "window" : {
+            "name" : "window",
+            "status" : "open",
+            "states" : {
+                "close" : {
+                    "descriptor" : "A window looks out over the side of the house here, closed.",
+                    "from" : {
+                        "open" : "You close it.",
+                        "close" : "It's already closed, silly."
+                    },
+
+                    "changes" : [
+                        ["rooms", "hobos kitchen", "actions", "look", "window", {"statement" : "You wipe some crud off of the glass and squint outside. All you can see is a bit of the yard, overgrown and full of bugs."}],
+                        ["rooms", "hobos house side", "actions", "look", "north", {"statement" : "You wipe some crud off of the glass and squint outside. All you can see is a bit of the yard, overgrown and full of bugs."}],
+                        ["rooms", "hobos kitchen", "exits", {"west" : "hobos living room"}]
+                    ]
+                },
+                "open" : {
+                    "descriptor" : "An open window is here, just a little bit wider than a person.",
+                    "from" : {
+                        "close" : "You grip the bottom of the window as best you can and give it a yank. It starts to move; another tough push and it's open. To the south is the outside of the house.",
+                        "open" : "It's already as open as it's going to get."
+                    },
+
+                    "changes" : [
+                        ["rooms", "hobos kitchen", "actions", "look", "window", {"statement" : "The scrubby yard, full of shrubs and little biting creatures."}],
+                        ["rooms", "hobos house side", "actions", "look", "south", {"statement" : "The scrubby yard, full of shrubs and little biting creatures."}],
+                        ["rooms", "hobos kitchen", "exits", {"west" : "hobos living room", "south" : "hobos house side"}]
+                    ]
+                }
+            },
+            "disallowed states" : {
+            "break" : "Nobody has noticed your snooping so far, but shattering an old window in the middle of a neighborhood would probably change that."
+            }
+        }
+    },
+
+    "actions" : {
+        "look" : {
+            "window" : {"statement" : "The scrubby yard, full of shrubs and little biting creatures."},
+            "south" : {"statement" : "The scrubby yard, full of shrubs and little biting creatures."}
+        }
+    }
+},
+
+"hobos living room" : {
+    "type" : "room",
+    "name" : "the living room",
+    "look" : "An old sofa is in there, and a bookshelf. It looks like some junk is piled up around the corner, too. You hear a mouse or something rustling.",
+    "exits" : {
+        "east" : "hobos kitchen"
+    },
+
+    "entrance text" : {"statement" : "You walk into the room and look around. Everything is covered in dust - the furniture, the floor. Looking closer, though, you can see the faint imprint of footsteps in the dirt covering the carpet..."},
+
+
+    "change scenarios" : [
+        {
+            "conditions" : [
+                ["rooms", "hobos kitchen", "visited", 1]
+            ],
+            "changes" : [
+                ["rooms", "hobos kitchen", "entrance text", {"menu" : "hobo0"}]
+            ]
+        }
+    ]
 }
 
 }

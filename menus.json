@@ -411,6 +411,42 @@
             "final" : "Your shoulder feels burned, and when you look over, you notice the rock in the dust, steaming. You look up at Marlo.\n\t\"Run!\" you yell.\n\tMarlo sprints away, between two buildings and into the woods. The black rider continues toward you, but before he can make it much farther, the other two riders emerge from the Donutorium.\n\t\"We got it,\" one of them yells, and the three of them ride back out of the city gates."
         }
     ]
+},
+
+"hobo0" : {
+    "type" : "menu",
+    "prompt" : "You walk back into the kitchen, brushing dust off your clothes and trying to avoid the cobwebs. You hear a sudden rustling behind you, followed by a hard metallic click. You spin around quickly. A man stands in front of the window - he is filthy, and wearing rags. He's pointing a revolver, as old and rusty as he is, straight at your chest.",
+    "changes" : [
+        ["rooms", "hobos living room", "change scenarios", []],
+        ["rooms", "hobos kitchen", "entrance statement", {"statement" : "In the ktichen"}]
+    ],
+    "choices" : [
+        "Respond: \"What's going on here? Put down that gun or I'll put it down for you.\"",
+        "Respond: \"Now calm down, I don't mean to hurt you. I didn't realize anyone lived here.\"",
+        "Shove him out of the way and jump out the window."
+    ],
+
+    "responses" : [
+        {"menu" : "hobo1"},
+        {"menu" : "hobo2"},
+        {"menu" : "hobo3"}
+    ]
+},
+
+"hobo1" : {
+    "type" : "menu",
+    "prompt" : "\"Now let's calm down,\" he says, \"no reason to get all worked up.\"",
+    "choices" : [
+        "Respond: \"You're the one with the gun, friend.\"",
+        "Respond: \"I'm sorry, I don't have a single dime.\"",
+        "Shove him out of the way and jump out the window."
+    ],
+
+    "responses" : [
+        {"menu" : "hobo4"},
+        {"menu" : "hobo2"},
+        {"menu" : "hobo3"}
+    ]
 }
 
 }

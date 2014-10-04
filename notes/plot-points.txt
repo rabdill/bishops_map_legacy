@@ -1,3 +1,7 @@
+(Make the map dictate which room is next to which, to avoid having to write it into every room's description. Also have a list of connections, so the dev can limit movement between ineligible rooms that happen to be next to each other.)
+(Should there be an option to change the entrance text of a room based on which direction the player came from?)
+
+****
 Your mom gives you a cookie.
 
 The dark riders came into town and stole the glaze crystal
@@ -13,3 +17,10 @@ There's an old photo of a family in the hermit's hallway.
 The hermit has a purple book with a small hidden compartment in it.
 
 The hermit hides a small metal key in a purple book.
+
+
+
+****
+Details that might be nice to remember and change later:
+
+There is a sign at woods8 that says "Welcome to Appleton"

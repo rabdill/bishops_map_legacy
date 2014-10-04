@@ -30,3 +30,15 @@ go east
 go south
 go east
 go east
+go north
+go north
+go east
+go east
+go south
+go west
+go west
+go south
+go west
+open window
+go north
+go west
