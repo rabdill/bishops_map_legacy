@@ -1,25 +1,30 @@
 import textwrap     # for block print
 
 #   Print arbitrary blocks of text:
-def block(text):
+def block(text, player):
     if text != "":
+        #do the string substitutions:
+        text = text.replace("@hometown@",player["hometown"])
+        text = text.replace("@name@",player["name"])
+
         text = text.split('\n')            #split up the text into a list
+
         print "\t",               #   indents the first line of the block
                                 #   THE COMMA PREVENTS A NEWLINE
         for line in text:
             print "\n\t".join( textwrap.wrap(line,50) ),"\n"
 
 # Print all the exits of a room
-def directions(location,rooms,previous_location):
+def directions(location,rooms,previous_location,player):
     for direction in location['exits']:
         if previous_location['type'] == "room" and rooms[location['exits'][direction]] == previous_location:
-            block("To the {0} is where you came from: {1}.".format(direction, rooms[location['exits'][direction]]['name']))
+            block("To the {0} is where you came from: {1}.".format(direction, rooms[location['exits'][direction]]['name']), player)
         else:
-            block("To the {0} is {1}.".format(direction, rooms[location['exits'][direction]]['name']))
+            block("To the {0} is {1}.".format(direction, rooms[location['exits'][direction]]['name']), player)
 
-def items(items):
+def items(items, player):
     for item in items:
-        block(items[item]['states'][items[item]['status']]['descriptor'])
+        block(items[item]['states'][items[item]['status']]['descriptor'], player)
 
 
 
@@ -58,16 +63,16 @@ def process_changes(changes,rooms,menus,player,npc):
             if "player" in change:
                 player["health"] += change[2]
                 if change[2] > 0:
-                    block("You gain {0} health points! (Now at {1}.)".format(change[2],player["health"])) 
+                    block("You gain {0} health points! (Now at {1}.)".format(change[2],player["health"]), player) 
                 else:
-                    block("You lose {0} health points! (Now at {1}.)".format(-change[2],player["health"]))
+                    block("You lose {0} health points! (Now at {1}.)".format(-change[2],player["health"]), player)
             #if it's an NPC:
             else:
                 npc[change[1]]["health"] += change[3]
                 if change[3] > 0:
-                    block("{0} gains {1} health points! (Now at {2}.)".format(npc[change[1]]["name"],change[3],npc[change[1]]["health"]))
+                    block("{0} gains {1} health points! (Now at {2}.)".format(npc[change[1]]["name"],change[3],npc[change[1]]["health"]), player)
                 else:
-                    block("{0} loses {1} health points! (Now at {2}.)".format(npc[change[1]]["name"],change[3],npc[change[1]]["health"]))
+                    block("{0} loses {1} health points! (Now at {2}.)".format(npc[change[1]]["name"],change[3],npc[change[1]]["health"]), player)
         #if it's any other modifier:
         else:
             if len(change) == 2:
@@ -94,23 +99,23 @@ def room(location,rooms,menus,player,npc,previous_location):
     if "menu" in location['entrance text']: #if there's a menu, it takes precedence over everything else
         menu(menus[location['entrance text']['menu']],rooms,menus,player,npc)
     elif "statement" in location['entrance text']:
-        block(location['entrance text']['statement'])
+        block(location['entrance text']['statement'], player)
         if 'items' in location:
-            items(location['items'])
-        directions(location,rooms,previous_location)
+            items(location['items'], player)
+        directions(location,rooms,previous_location,player)
 
 def menu(menu,rooms,menus,player,npc):
-    block(menu["prompt"])
+    block(menu["prompt"], player)
     if "changes" in menu:
         process_changes(menu['changes'],rooms,menus,player,npc)
     print "\t\t\t\t--"
     for choice in menu["choices"]:
-        block("{0}: {1}".format(menu["choices"].index(choice), choice))
+        block("{0}: {1}".format(menu["choices"].index(choice), choice), player)
 
 def store(room,player):
-    block(room['greeting'])
+    block(room['greeting'], player)
 
-    block("FOR SALE:")
+    block("FOR SALE:", player)
     for item in room['items']:
         if item['name'] not in player['inventory']:
             player['inventory'][item['name']] = 0
