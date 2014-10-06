@@ -20,6 +20,7 @@ def inventory_add(item,qty,player):
 def get(current,rooms,menus,player,npc,debug):
     need_command = True
     
+    #if it's a room that presents a menu upon entering:
     if current['type'] == "room" and "menu" in current['entrance text']: #if entrance text is a menu label
         menu_name = current['entrance text']['menu'] #save the name so we can clear it from the room
         del(current['entrance text']['menu']) #get rid of the menu so it's only processed once
@@ -119,7 +120,8 @@ def get(current,rooms,menus,player,npc,debug):
             elif command[0] == 'view':
                 if command[1] == 'inventory':
                     for item in player['inventory']:
-                        printer.block("{0}  x  {1}".format(item, player['inventory'][item]), player)
+                        if player['inventory'][item] > 0:
+                            printer.block("{0}  x  {1}".format(item, player['inventory'][item]), player)
                     
                 else:
                     if processed_command == False:
@@ -173,7 +175,7 @@ def get(current,rooms,menus,player,npc,debug):
             command = int(get_text("Which item to buy? > ", debug, player))
             if command < len(current['items']):
                 qty = int(get_text("How many? (You have {0} coins, or enough for as many as {1}) > ".format(player['inventory']['coins'], player['inventory']['coins']/current['items'][command]['price'] ), debug, player))
-                # If you want to buy too many:
+                # If you want to buy more than the store has:
                 if qty > current['items'][command]['qty available']:
                     block("The store doesn't have that many available.")
             
@@ -183,10 +185,11 @@ def get(current,rooms,menus,player,npc,debug):
 
                 # Otherwise, buy em:
                 else:
-                    player['inventory']['coins'] -= qty * current['items'][command]['price']
-                    player['inventory'][current['items'][command]['name']] += qty
-            
-                    printer.block("{0}: You spent {1} coins on {2} of them.".format(current['items'][command]['name'], qty * current['items'][command]['price'], qty), player)
+                    if qty > 0:
+                        inventory_add('coins', -1 * qty * current['items'][command]['price'], player)
+                        inventory_add(current['items'][command]['name'], qty, player)
+                
+                        printer.block("{0}: You spent {1} coins on {2} of them.".format(current['items'][command]['name'], qty * current['items'][command]['price'], qty), player)
                     return rooms[current['origin']]
 
             # If you pick something that isn't an option
