@@ -2,7 +2,7 @@
 "cider" : {
     "type" : "menu",
     "origin" : "cider brewery",
-    "prompt" : "You approach the front desk. The man smiles.\n\t\"Hello!\" he says, \"Welcome to the Delran Cider Brewery, where apples turn into heaven. What can I do for you?\"",
+    "prompt" : "You approach the front desk. The man smiles.\n\t\"Hello!\" he says, \"Welcome to the @hometown@ Cider Brewery, where apples turn into heaven. What can I do for you?\"",
     "choices" :[ 
         "\"Can you tell me a little about this place?\"",
         "\"Why do people like the cider so much?\"",
@@ -11,7 +11,7 @@
     ],
    
     "responses" : [ 
-        {"loop" : "\"Sure I can. We were founded here in this very building back in 1712, so next year will be our big 50th anniversary celebration. I don't have to tell you how hard it is to transport stuff from place to place, but even so, our cider is sold all over the country. People love this stuff.\n\tA lot of our unique flavor can be attributed to the wonderful orchards of Appleton, the town to the east. Their soil isn't like the soil anywhere else -- the apples that grow there are bigger and juicier than any we could ever grow here, but there wasn't enough room in town to build a brewery. So the founders came here instead.\n\tDelran was a lot smaller then, of course. There were some houses, and a small general store, but it was really a company town at that point -- everyone who lived here worked at the donut factory. We were one of the first independent businesses in town.\"",
+        {"loop" : "\"Sure I can. We were founded here in this very building back in 1712, so next year will be our big 50th anniversary celebration. I don't have to tell you how hard it is to transport stuff from place to place, but even so, our cider is sold all over the country. People love this stuff.\n\tA lot of our unique flavor can be attributed to the wonderful orchards of Appleton, the town to the east. Their soil isn't like the soil anywhere else -- the apples that grow there are bigger and juicier than any we could ever grow here, but there wasn't enough room in town to build a brewery. So the founders came here instead.\n\t@hometown@ was a lot smaller then, of course. There were some houses, and a small general store, but it was really a company town at that point -- everyone who lived here worked at the donut factory. We were one of the first independent businesses in town.\"",
             "prompt" : "\"What else can I help you with?\" the man asks."
         },
 
@@ -94,7 +94,7 @@
 "invasion1a" : {
     "type" : "menu",
     "origin" : "town square",
-    "prompt" : "\"The glaze crystal is what makes the Delran donuts so famous -- it's used in the process, I don't know how. But it's the reason the town *exists*. They can't take it. They CAN'T,\" Marlo says.",
+    "prompt" : "\"The glaze crystal is what makes the @hometown@ donuts so famous -- it's used in the process, I don't know how. But it's the reason the town *exists*. They can't take it. They CAN'T,\" Marlo says.",
     "choices" : [
         "Respond: \"It's not worth it! They probably have guns too! Let them go.\"",
         "Respond: \"How can I help?\""
@@ -415,15 +415,16 @@
 
 "hobo0" : {
     "type" : "menu",
-    "prompt" : "You walk back into the kitchen, brushing dust off your clothes and trying to avoid the cobwebs. You hear a sudden rustling behind you, followed by a hard metallic click. You spin around quickly. A man stands in front of the window - he is filthy, and wearing rags. He's pointing a revolver, as old and rusty as he is, straight at your chest.",
+    "prompt" : "You walk back into the kitchen, brushing dust off your clothes and trying to avoid the cobwebs. You hear a sudden rustling behind you, followed by a hard metallic click. You spin around quickly. A man stands in front of the window - he is dirty, elderly, and wearing rags. He's pointing a revolver, as old and rusty as he is, straight at your chest.",
     "changes" : [
         ["rooms", "hobos living room", "change scenarios", []],
-        ["rooms", "hobos kitchen", "entrance statement", {"statement" : "In the ktichen"}]
+        ["rooms", "hobos kitchen", "entrance statement", {"statement" : "In the ktichen"}],
+        ["npc", "appleton hobo", "status", "neutral"]
     ],
     "choices" : [
         "Respond: \"What's going on here? Put down that gun or I'll put it down for you.\"",
         "Respond: \"Now calm down, I don't mean to hurt you. I didn't realize anyone lived here.\"",
-        "Shove him out of the way and jump out the window."
+        "Shove him aside and jump out the window."
     ],
 
     "responses" : [
@@ -435,18 +436,112 @@
 
 "hobo1" : {
     "type" : "menu",
-    "prompt" : "\"Now let's calm down,\" he says, \"no reason to get all worked up.\"",
+    "prompt" : "The old man kicks you in the shin and pushes you into one of the kitchen chairs. \"I've made it 74 years without killing anybody,\" he says. \"I'm not going to break the streak for some dummy in my kitchen.\"",
     "choices" : [
-        "Respond: \"You're the one with the gun, friend.\"",
-        "Respond: \"I'm sorry, I don't have a single dime.\"",
-        "Shove him out of the way and jump out the window."
+        "Respond: \"I'm sorry, I didn't realize anyone lived here.\"",
+        "Respond: \"Well then, I better be going.\"",
+        "Try to take his gun.",
+        "Shove him aside and jump out the window."
     ],
 
     "responses" : [
-        {"menu" : "hobo4"},
         {"menu" : "hobo2"},
+        {"menu" : "hobo4"},
+        {"menu" : "hobo5"},
+        {"menu" : "hobo3"}
+    ]
+},
+
+"hobo2" : {
+    "type" : "menu",
+    "prompt" : "\"Well, I suppose I don't *technically* live here,\" he says. \"But I don't technically live anywhere anymore. This house has been empty for so long, I figured it would be a good place to spend the winter without botherin' anybody.\"",
+    "choices" : [
+        "Respond: \"Have you been around here for a while? How long have you been homeless?\"",
+        "Respond: \"Well then, I better be going.\"",
+        "Try to take his gun.",
+        "Shove him aside and jump out the window."
+    ],
+
+    "responses" : [
+        {"menu" : "hobo7"},
+        {"menu" : "hobo4"},
+        {"menu" : "hobo5"},
+        {"menu" : "hobo3"}
+    ]
+},
+
+"hobo3" : {
+    "type" : "menu",
+    "prompt" : "You jump at the old man, catching him off-guard and sending him to the ground. He bounces off the side of the oven and grunts; while he's on the ground, you dive for the window. You crash to the ground outside.",
+    "changes" : [
+        ["player", "health", -9],
+        ["npc", "appleton hobo", "status", "angry"]
+    ],
+    "choices" : [
+        "Keep running",
+        "Hide on the side of the house",
+        "Jump back into the window"
+    ],
+
+    "responses" : [
+        {
+            "final" : "You drag yourself up out of the weeds and sprint back to the road. You can hear the hobo yelling for you to \"get back over here, you damned rascal,\" but he doesn't emerge from the house.",
+            "changes" : [
+                ["menus", "hobo3", "origin", "main street1"]
+            ]
+        },
+        {"menu" : "hobo6"},
+        {"menu" : "hobo7"}
+    ]
+},
+
+"hobo4" : {
+    "type" : "menu",
+    "prompt" : "You get up to leave, but the hobo suddenly looks... almost sad.\n\t\"Well now, hold on a second,\" he says. \"What are you doing around here in the first place?\"",
+    "choices" : [
+        "Respond: \"I'm sorry, I'd rather not say.\"",
+        "Respond: \"Horsemen invaded ",
+        "Jump back into the window"
+    ],
+
+    "responses" : [
+        {
+            "final" : "You drag yourself up out of the weeds and sprint back to the road. You can hear the hobo yelling for you to \"get back over here, you damned rascal,\" but he doesn't emerge from the house.",
+            "changes" : [
+                ["menus", "hobo3", "origin", "main street1"]
+            ]
+        },
+        {"menu" : "hobo6"},
+        {"menu" : "hobo7"}
+    ]
+},
+
+
+
+
+
+
+
+
+
+
+"hobo7" : {
+    "type" : "menu",
+    "prompt" : "\"You've got a lot of questions for a stranger in an abandoned house,\" the old man says. \"I've got one first - what are you doing here in Appleton?\"",
+    "choices" : [
+        "Respond: \"H\"",
+        "Respond: \"\"",
+        "Try to take his gun.",
+        "Shove him aside and jump out the window."
+    ],
+
+    "responses" : [
+        {"menu" : "hobo7"},
+        {"menu" : "hobo5"},
+        {"menu" : "hobo6"},
         {"menu" : "hobo3"}
     ]
 }
+
 
 }

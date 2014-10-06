@@ -23,7 +23,7 @@
         "west"  : "donutorium gates"
     },
 
-    "entrance text" : {"statement" : "You are in the Delran town square, which is bustling with activity. It's autumn, and the weekends are always like this -- people traveling to the blacksmith or the cobbler's, or rushing over to the dairy to try to get the last of the week's butter. The sun is out, there are leaves on the ground, and all seems well."},
+    "entrance text" : {"statement" : "You are in the @hometown@ town square, which is bustling with activity. It's autumn, and the weekends are always like this -- people traveling to the blacksmith or the cobbler's, or rushing over to the dairy to try to get the last of the week's butter. The sun is out, there are leaves on the ground, and all seems well."},
 
     "change scenarios" : [
         {
@@ -32,7 +32,7 @@
                 ["rooms", "parents house", "visited", 1]
             ],
             "changes" : [
-                ["rooms", "town square", "entrance text", {"statement" : "You walk casually into the town square. The sky darkens.\n\tSOMETHING IS AMISS.\n\tYou start looking around at the same time everyone else seems to get a feeling of unease. Suddenly, the clatter of ironclad horse hooves floods the square, and five cloaked riders burst in throught he arches at the front of town, holding long swords with thick, studded gloves. Two head straight for the Donutorium.\n\tThree stay behind, blocking the factory gates and preventing anyone from coming or going from the square. One wears a blue cloak, another green, and the third is in black, with extra armor. All have long cavalry swords.\n\tThe black-robed rider, positioned in front of the Donutorium gates, removes his hood and speaks.\n\t\"Too long has Delran taken its donut success for granted,\" he says. \"As we speak, our colleagues are dismantling your factory. You may be able to repair the machines, but you will never see your glaze crystal again.\"\n\tEveryone stands perfectly still, spread out all over the square. A teenaged girl stands next to you, fidgeting with the sides of her cloak."} ],
+                ["rooms", "town square", "entrance text", {"statement" : "You walk casually into the town square. The sky darkens.\n\tSOMETHING IS AMISS.\n\tYou start looking around at the same time everyone else seems to get a feeling of unease. Suddenly, the clatter of ironclad horse hooves floods the square, and five cloaked riders burst in throught he arches at the front of town, holding long swords with thick, studded gloves. Two head straight for the Donutorium.\n\tThree stay behind, blocking the factory gates and preventing anyone from coming or going from the square. One wears a blue cloak, another green, and the third is in black, with extra armor. All have long cavalry swords.\n\tThe black-robed rider, positioned in front of the Donutorium gates, removes his hood and speaks.\n\t\"Too long has @hometown@ taken its donut success for granted,\" he says. \"As we speak, our colleagues are dismantling your factory. You may be able to repair the machines, but you will never see your glaze crystal again.\"\n\tEveryone stands perfectly still, spread out all over the square. A teenaged girl stands next to you, fidgeting with the sides of her cloak."} ],
                 ["rooms", "town square", "actions", {"talk" : {"girl" : {"menu" : "invasion0"}}}],
                 ["rooms", "town square", "exits", {}],
                 ["rooms", "town square", "change scenarios", []],
@@ -45,7 +45,7 @@
                 ["rooms", "town square", "look", "The town square, abandoned."]
             ],
             "changes" : [
-                ["rooms", "donutorium gates", "entrance text", {"statement" : "The old wooden gates of the Delran Donutorium, hanging broken after the invasion by the dark riders."}],
+                ["rooms", "donutorium gates", "entrance text", {"statement" : "The old wooden gates of the @hometown@ Donutorium, hanging broken after the invasion by the dark riders."}],
                 ["rooms", "donutorium front", "entrance text", {"statement" : "The front door of the donutorium is boarded up. No one has gone in or out since the invasion."}]
 
             ]
@@ -91,7 +91,7 @@
         "south" : "cider brewery front"
     },
 
-    "entrance text" : {"statement" : "The old Delran Cider Brewery, the second-largest culinary outfit in town. You can hear the workers yelling apple-related things at each other just behind a large door. A young man sits at a desk in the lobby."},
+    "entrance text" : {"statement" : "The old @hometown@ Cider Brewery, the second-largest culinary outfit in town. You can hear the workers yelling apple-related things at each other just behind a large door. A young man sits at a desk in the lobby."},
 
     "visited" : 0,
 
@@ -154,7 +154,7 @@
         "east" : "town square"
     },
 
-    "entrance text" : {"statement" : "You are at the front gates of the illustrious Delran Donutorium. No better donut has ever been made than the one that comes out of this place hundreds of times a day."},
+    "entrance text" : {"statement" : "You are at the front gates of the illustrious @hometown@ Donutorium. No better donut has ever been made than the one that comes out of this place hundreds of times a day."},
 
     "visited" : 0
 
@@ -174,7 +174,7 @@
         "west" : "donutorium"
     },
 
-    "entrance text" : {"statement" : "The elaborately carved front door of the Delran Donutorium."},
+    "entrance text" : {"statement" : "The elaborately carved front door of the @hometown@ Donutorium."},
 
     "visited" : 0
 
@@ -197,7 +197,7 @@
 
     "actions" : {
         "talk" : {
-            "clerk" : {"menu" : "donutorium"}
+            "clerk" : {"menu" : "buy donuts"}
         }
     }
 
@@ -261,7 +261,7 @@
             "status" : "default",
             "states" : {
                 "default" : {
-                    "descriptor" : "Your mom hugs you tightly. \n\t\"Welcome home, dear,\" she says. \"Have a cookie!\""
+                    "descriptor" : "\"@name@!\" Your mom yells as she hugs you tightly. \"Welcome home, dear. Have a cookie!\""
                 },
                 "take" : {
                     "descriptor" : "Your mom is bustling around the house, doing random spring cleaning.",
@@ -290,7 +290,7 @@
     "type" : "room",
     "name" : "the edge of the Hecate Forest",
 
-    "look" : "The line of trees separating Delran from the vast forest beyond.",
+    "look" : "The line of trees separating @hometown@ from the vast forest beyond.",
 
     "exits": {
         "west"  : "town gate",
@@ -840,7 +840,7 @@
 "hobos living room" : {
     "type" : "room",
     "name" : "the living room",
-    "look" : "An old sofa is in there, and a bookshelf. It looks like some junk is piled up around the corner, too. You hear a mouse or something rustling.",
+    "look" : "An old sofa is in there, and a bookshelf. It looks like some junk is piled up around the corner, too. You hear a mouse or something rustling somewhere in the house.",
     "exits" : {
         "east" : "hobos kitchen"
     },

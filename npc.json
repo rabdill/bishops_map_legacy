@@ -2,5 +2,11 @@
     "marlo" : {
         "name": "Marlo",
         "health" : 100
+    },
+
+    "appleton hobo" : {
+    	"name": "Appleton hobo",
+    	"health" : 65,
+    	"status" : "unmet"
     }
 }

@@ -42,3 +42,4 @@ go west
 open window
 go north
 go west
+go east
