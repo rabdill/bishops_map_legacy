@@ -182,9 +182,20 @@ def get(current,rooms,menus,player,npc,debug):
 
     elif current['type'] == "store":
         while True:
-            command = int(get_text("Which item to buy? > ", debug, player))
+            choice = get_text("Which item to buy? > ", debug, player)
+            try:
+                command = int(choice)
+            except ValueError:  #if it's not an integer
+                command = len( current['items']) #skips all the checking and asks for another response
+
             if command < len(current['items']):
-                qty = int(get_text("How many? (You have {0} coins, or enough for as many as {1}) > ".format(player['inventory']['coins'], player['inventory']['coins']/current['items'][command]['price'] ), debug, player))
+                choice = get_text("How many? (You have {0} coins, or enough for as many as {1}) > ".format(player['inventory']['coins'], player['inventory']['coins']/current['items'][command]['price'] ), debug, player)
+                try:
+                    qty = int(choice)
+                except ValueError:  #if it's not an integer
+                    qty = 0 #skips all the checking and asks for another response
+                
+
                 # If you want to buy more than the store has:
                 if qty > current['items'][command]['qty available']:
                     block("The store doesn't have that many available.")
