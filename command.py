@@ -47,90 +47,95 @@ def get(current,rooms,menus,player,npc,debug):
             if len(command) > 2:
                 command[1] += " " + command[2]
                 #*add a line here to delete what used to be command[2]
+            
+            #check if it isn't long enough:
+            if len(command) < 2:
+               printer.block("Sorry, command too short.", player)
+               processed_command = True
+            else:
+                ####
+                # "Check actions" block above the generic commands so you can override
+                # the generic commands in the actions section.
 
-            ####
-            # "Check actions" block above the generic commands so you can override
-            # the generic commands in the actions section.
-
-            if 'actions' in current: #if the room has possible actions
-                if command[0] in current['actions']: #if the action is possible
-                    #if the noun is a possible recipient of the verb:
-                    if command[1] in current['actions'][command[0]]:
-                        #if the result is a menu:
-                        if "menu" in current['actions'][command[0]][command[1]]:
-                            return menus[current['actions'][command[0]][command[1]]["menu"]]
-                        elif "statement" in current['actions'][command[0]][command[1]]:
-                            printer.block(current['actions'][command[0]][command[1]]["statement"], player)
-                            processed_command = True
-
-            #check if the verb is something that can be done to an item in the room:
-            #**add "continue" statements here instead of nested ifs***
-            if 'items' in current and processed_command == False: #if the room has items
-                #if the room has this item:
-                if command[1] in current['items']:
-                    #if the item can be put into the proposed state:
-                    if command[0] in current['items'][command[1]]['states']:
-                        #if the item can be put into the proposed state from its current state, do it:
-                        if current['items'][command[1]]['status'] in \
-                          current['items'][command[1]]['states'][command[0]]['from']:
-                            processed_command = True
-                            printer.block(current['items'][command[1]]['states'][command[0]]['from'][current['items'][command[1]]['status']], player)
-                            current['items'][command[1]]['status'] = command[0]
-                            
-                            #special section for "take":
-                            if command[0] == 'take':
-                                inventory_add(current['items'][command[1]]["name"], 1, player)
+                if 'actions' in current: #if the room has possible actions
+                    if command[0] in current['actions']: #if the action is possible
+                        #if the noun is a possible recipient of the verb:
+                        if command[1] in current['actions'][command[0]]:
+                            #if the result is a menu:
+                            if "menu" in current['actions'][command[0]][command[1]]:
+                                return menus[current['actions'][command[0]][command[1]]["menu"]]
+                            elif "statement" in current['actions'][command[0]][command[1]]:
+                                printer.block(current['actions'][command[0]][command[1]]["statement"], player)
                                 processed_command = True
 
-                            #if acting on the object changes other things:
-                            if "changes" in current['items'][command[1]]['states'][command[0]]:
-                                printer.process_changes(current['items'][command[1]]['states'][command[0]]['changes'],rooms,menus,player,npc)
+                #check if the verb is something that can be done to an item in the room:
+                #**add "continue" statements here instead of nested ifs***
+                if 'items' in current and processed_command == False: #if the room has items
+                    #if the room has this item:
+                    if command[1] in current['items']:
+                        #if the item can be put into the proposed state:
+                        if command[0] in current['items'][command[1]]['states']:
+                            #if the item can be put into the proposed state from its current state, do it:
+                            if current['items'][command[1]]['status'] in \
+                              current['items'][command[1]]['states'][command[0]]['from']:
+                                processed_command = True
+                                printer.block(current['items'][command[1]]['states'][command[0]]['from'][current['items'][command[1]]['status']], player)
+                                current['items'][command[1]]['status'] = command[0]
+                                
+                                #special section for "take":
+                                if command[0] == 'take':
+                                    inventory_add(current['items'][command[1]]["name"], 1, player)
+                                    processed_command = True
 
+                                #if acting on the object changes other things:
+                                if "changes" in current['items'][command[1]]['states'][command[0]]:
+                                    printer.process_changes(current['items'][command[1]]['states'][command[0]]['changes'],rooms,menus,player,npc)
+
+                            else:
+                                printer.block("You can't {0} that item after you {1} it.".format(command[0], current['items'][command[1]]['status']), player)
+                                processed_command = True
                         else:
-                            printer.block("You can't {0} that item after you {1} it.".format(command[0], current['items'][command[1]]['status']), player)
-                            processed_command = True
+                            #If there is a specific message to tell the user the action can't be done:
+                            if "disallowed states" in current['items'][command[1]] and command[0] in current['items'][command[1]]['disallowed states']:
+                                printer.block(current['items'][command[1]]['disallowed states'][command[0]], player)
+                                processed_command = True
+                            elif command[0] == "inspect":
+                                printer.block("Nothing spectacular about it.", player)
+                                processed_command = True
+                            else:
+                                printer.block("Sorry, you can't {} that.".format(command[0]), player)
+                                processed_command = True
+                if command[0] == 'go':
+                    if command[1] in current['exits']:
+                        return rooms[current['exits'][command[1]]]
                     else:
-                        #If there is a specific message to tell the user the action can't be done:
-                        if "disallowed states" in current['items'][command[1]] and command[0] in current['items'][command[1]]['disallowed states']:
-                            printer.block(current['items'][command[1]]['disallowed states'][command[0]], player)
+                        if processed_command == False:
+                            printer.block("That's not a direction in which you can go.", player)
                             processed_command = True
-                        elif command[0] == "inspect":
-                            printer.block("Nothing spectacular about it.", player)
-                            processed_command = True
-                        else:
-                            printer.block("Sorry, you can't {} that.".format(command[0]), player)
-                            processed_command = True
-            if command[0] == 'go':
-                if command[1] in current['exits']:
-                    return rooms[current['exits'][command[1]]]
-                else:
-                    if processed_command == False:
-                        printer.block("That's not a direction in which you can go.", player)
+                elif command[0] == 'look':
+                    if command[1] in current['exits'] and processed_command is False:
+                        printer.block(rooms[current['exits'][command[1]]]['look'], player)
                         processed_command = True
-            elif command[0] == 'look':
-                if command[1] in current['exits'] and processed_command is False:
-                    printer.block(rooms[current['exits'][command[1]]]['look'], player)
-                    processed_command = True
-                elif command[1] == 'around':
-                    return current
-                else:
-                    if processed_command == False:
-                        printer.block("That's not a direction in which you can look.", player)
+                    elif command[1] == 'around':
+                        return current
+                    else:
+                        if processed_command == False:
+                            printer.block("That's not a direction in which you can look.", player)
 
-            elif command[0] == 'view':
-                if command[1] == 'inventory':
-                    for item in player['inventory']:
-                        if player['inventory'][item] > 0:
-                            printer.block("{0}  x  {1}".format(item, player['inventory'][item]), player)
+                elif command[0] == 'view':
+                    if command[1] == 'inventory':
+                        for item in player['inventory']:
+                            if player['inventory'][item] > 0:
+                                printer.block("{0}  x  {1}".format(item, player['inventory'][item]), player)
+                        
+                    else:
+                        if processed_command == False:
+                            printer.block("That's not something you can view.", player)
                     
                 else:
                     if processed_command == False:
-                        printer.block("That's not something you can view.", player)
-                
-            else:
-                if processed_command == False:
-                    printer.block("Sorry, unrecognized command.", player)
-                    processed_command = True
+                        printer.block("Sorry, unrecognized command.", player)
+                        processed_command = True
 
 
     elif current['type'] == "menu":
