@@ -140,7 +140,12 @@ def get(current,rooms,menus,player,npc,debug):
 
     elif current['type'] == "menu":
         while True:
-            command = int(get_text("Which do you choose? > ", debug, player))
+            choice = get_text("Which do you choose? > ", debug, player)
+            try:
+                command = int(choice)
+            except ValueError:  #if it's not an integer
+                command = len( current['choices']) #skips all the checking and asks for another response
+
             if command < len( current['choices']):
                 #if you want to print a message before the next printing
                 if "premessage" in current['responses'][command]:
